@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="relative mb-20">
+    <div className="relative mb-10">
       <div className="relative flex bg-zinc-100 rounded-xl w-full max-h-[30rem] overflow-hidden aspect-[1.5] sm:aspect-video">
         <div className="top-0 left-o absolute w-full h-full">
           <div className="flex flex-col justify-center gap-2 p-10 sm:w-[50%] h-full">
@@ -55,9 +55,7 @@ export default function Hero() {
           </select>
         </div>
         <div className="flex flex-col gap-2">
-          <label className="font-bold" htmlFor="">
-            Price Range
-          </label>
+          <label className="font-bold">Price Range</label>
           <div className="flex items-center gap-2">
             <input
               type="number"

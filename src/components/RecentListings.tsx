@@ -62,7 +62,9 @@ const properties = [
 export default function RecentListings() {
   return (
     <div>
-      <h3 className="mb-4 font-bold text-2xl">Explore our latest properties</h3>
+      <h3 className="mb-4 font-bold text-xl sm:text-2xl">
+        Explore our latest properties
+      </h3>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(16rem,_1fr))]">
         {properties.map((property) => (
           <Property property={property} key={property.id} />
