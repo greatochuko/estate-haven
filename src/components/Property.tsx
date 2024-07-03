@@ -6,7 +6,7 @@ type PropertyType = {
   id: string;
   thumbnail: string;
   price: number;
-  location: string;
+  location: { city: string; state: string };
   type: string;
   beds: number;
   bath: number;
@@ -32,7 +32,8 @@ export default function Property({ property }: { property: PropertyType }) {
       <div className="flex flex-col">
         <div className="flex justify-between items-center">
           <h4 className="font-bold sm:text-xl">
-            ${property.price.toLocaleString()}
+            ₦{property.price.toLocaleString()}
+            {property.isRent ? "/Mo" : ""}
           </h4>
           <button className="px-1 p-2">
             <svg
@@ -62,7 +63,9 @@ export default function Property({ property }: { property: PropertyType }) {
             </svg>
           </button>
         </div>
-        <p className="font-semibold text-zinc-500">{property.location}</p>
+        <p className="font-semibold text-zinc-500">
+          {property.location.city}, {property.location.state}
+        </p>
         <p className="font-semibold text-zinc-500">{property.type}</p>
         <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">
           <p className="flex items-center gap-2 font-semibold">

@@ -5,38 +5,58 @@ import Review from "./Review";
 const reviews = [
   {
     id: "1",
-    user: { firstname: "John", lastname: "Doe", imageUrl: "/profile-pic.jpg" },
-    rating: 4,
+    user: {
+      firstname: "Chidi",
+      lastname: "Okeke",
+      imageUrl: "/profile-pic.jpg",
+    },
+    rating: 5,
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est corrupti mollitia accusamus voluptatum dolorum ea expedita rerum quisquam? Soluta, facere distinctio placeat rem iusto non quibusdam iste. Quidem, et?",
+      "The process of buying my first home was smooth and stress-free, thanks to their professional team!",
   },
   {
     id: "2",
-    user: { firstname: "John", lastname: "Doe", imageUrl: "/profile-pic.jpg" },
+    user: {
+      firstname: "Amina",
+      lastname: "Bello",
+      imageUrl: "/profile-pic.jpg",
+    },
     rating: 4,
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est corrupti mollitia accusamus voluptatum dolorum ea expedita rerum quisquam? Soluta, facere distinctio placeat rem iusto non quibusdam iste. Quidem, et?",
+      "Excellent service! They helped me find the perfect apartment in a great neighborhood.",
   },
   {
     id: "3",
-    user: { firstname: "John", lastname: "Doe", imageUrl: "/profile-pic.jpg" },
-    rating: 4,
+    user: {
+      firstname: "Emeka",
+      lastname: "Ibe",
+      imageUrl: "/profile-pic.jpg",
+    },
+    rating: 5,
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est corrupti mollitia accusamus voluptatum dolorum ea expedita rerum quisquam? Soluta, facere distinctio placeat rem iusto non quibusdam iste. Quidem, et?",
+      "Very knowledgeable agents who guided me through the entire selling process effortlessly.",
   },
   {
     id: "4",
-    user: { firstname: "John", lastname: "Doe", imageUrl: "/profile-pic.jpg" },
+    user: {
+      firstname: "Funmi",
+      lastname: "Adeyemi",
+      imageUrl: "/profile-pic.jpg",
+    },
     rating: 4,
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est corrupti mollitia accusamus voluptatum dolorum ea expedita rerum quisquam? Soluta, facere distinctio placeat rem iusto non quibusdam iste. Quidem, et?",
+      "They were incredibly helpful in finding a rental property that met all my needs.",
   },
   {
     id: "5",
-    user: { firstname: "John", lastname: "Doe", imageUrl: "/profile-pic.jpg" },
-    rating: 4,
+    user: {
+      firstname: "Tunde",
+      lastname: "Olawale",
+      imageUrl: "/profile-pic.jpg",
+    },
+    rating: 5,
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae est corrupti mollitia accusamus voluptatum dolorum ea expedita rerum quisquam? Soluta, facere distinctio placeat rem iusto non quibusdam iste. Quidem, et?",
+      "Fantastic experience! Their team was professional and found the ideal property for my investment.",
   },
 ];
 
