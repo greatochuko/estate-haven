@@ -66,7 +66,7 @@ export default function SearchFilter({
 
   function resetFilters() {
     setCity("all");
-    setPropertyTypes([]);
+    setPropertyTypes(["house", "apartment", "duplex", "studio"]);
     setListingType("");
     setMinPrice("");
     setMaxPrice("");
@@ -74,6 +74,7 @@ export default function SearchFilter({
     setMaxBedroom(maxBeds);
     setMinBathroom(0);
     setMaxBathroom(maxBath);
+    applyFilters();
   }
 
   function applyFilters() {
@@ -98,7 +99,7 @@ export default function SearchFilter({
   return (
     <div
       onClick={closeModal}
-      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full h-dvh duration-300 ${
+      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 ${
         showFilter ? "visible opacity-100" : "invisible opacity-0"
       } lg:visible lg:opacity-100`}
     >
