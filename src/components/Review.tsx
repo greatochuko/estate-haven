@@ -15,13 +15,13 @@ type ReviewType = {
 
 export default function Review({ review }: { review: ReviewType }) {
   return (
-    <div className="flex flex-col flex-[0_0_100%] sm:flex-[0_0_calc(100%/2_-_.5rem)] lg:flex-[0_0_calc(100%/3_-_.67rem)] items-center gap-2 p-6 border rounded-xl text-center">
+    <div className="flex flex-col flex-[0_0_100%] sm:flex-[0_0_calc(100%/2_-_.5rem)] lg:flex-[0_0_calc(100%/3_-_.67rem)] items-center gap-2 border-2 p-6 rounded-xl text-center">
       <div className="relative rounded-full w-20 overflow-hidden aspect-square">
         <Image
           src={review.user.imageUrl}
           alt={review.user.firstname + " " + review.user.lastname}
           fill
-          sizes=""
+          sizes="80px"
           className="object-cover"
         ></Image>
       </div>

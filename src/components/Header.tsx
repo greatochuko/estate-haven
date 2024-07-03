@@ -5,7 +5,7 @@ import React from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Property", href: "/property" },
+  { name: "Properties", href: "/properties" },
   { name: "Agents", href: "/agents" },
 ];
 
@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <div className="flex justify-between items-center py-4 font-bold">
       <h1>Estate Haven</h1>
-      <ul className="flex items-center gap-4">
+      <ul className="sm:flex items-center gap-4 hidden">
         {navLinks.map((navLink) => (
           <li key={navLink.name}>
             <Link

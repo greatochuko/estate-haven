@@ -4,10 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   outline: none;
 }
 
 body {
-  font-family: "nunito sans", "sans serif";
+  font-family: "nunito sans", Arial, Helvetica, sans-serif;
 }

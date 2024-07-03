@@ -25,7 +25,7 @@ export default function Property({ property }: { property: PropertyType }) {
           src={property.thumbnail}
           alt="property image"
           fill
-          sizes=""
+          sizes="600px"
           className="object-cover"
         ></Image>
       </div>
@@ -177,7 +177,7 @@ export default function Property({ property }: { property: PropertyType }) {
                 </g>
               </svg>
             </span>
-            {property.bath}
+            {property.area.toLocaleString()}sqft
           </p>
         </div>
       </div>
