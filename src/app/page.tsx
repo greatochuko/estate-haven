@@ -2,7 +2,7 @@ import CustomerReviews from "@/components/CustomerReviews";
 import Hero from "@/components/Hero";
 import RecentListings from "@/components/RecentListings";
 import WhyUsSection from "@/components/WhyUsSection";
-import PropertiesByAreaSection from "@/components/PropertiesByAreaSection";
+import PropertiesByLocationSection from "@/components/PropertiesByLocationSection";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <RecentListings />
       <WhyUsSection />
-      <PropertiesByAreaSection />
+      <PropertiesByLocationSection />
       <CustomerReviews />
     </main>
   );

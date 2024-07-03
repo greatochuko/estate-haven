@@ -69,7 +69,7 @@ export default function CustomerReviews() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="font-bold text-center text-xl sm:text-2xl">
+      <h3 className="font-bold text-2xl text-center sm:text-2xl">
         Our Happy Customers
       </h3>
       <p className="text-center">What our customers say about Estate Haven</p>
