@@ -19,7 +19,7 @@ const reviews = [
     user: {
       firstname: "Amina",
       lastname: "Bello",
-      imageUrl: "/profile-pic.jpg",
+      imageUrl: "/profile-pic-2.jpg",
     },
     rating: 4,
     comment:
@@ -30,7 +30,7 @@ const reviews = [
     user: {
       firstname: "Emeka",
       lastname: "Ibe",
-      imageUrl: "/profile-pic.jpg",
+      imageUrl: "/profile-pic-3.jpg",
     },
     rating: 5,
     comment:
@@ -41,7 +41,7 @@ const reviews = [
     user: {
       firstname: "Funmi",
       lastname: "Adeyemi",
-      imageUrl: "/profile-pic.jpg",
+      imageUrl: "/profile-pic-4.jpg",
     },
     rating: 4,
     comment:
@@ -52,7 +52,7 @@ const reviews = [
     user: {
       firstname: "Tunde",
       lastname: "Olawale",
-      imageUrl: "/profile-pic.jpg",
+      imageUrl: "/profile-pic-5.jpg",
     },
     rating: 5,
     comment:
