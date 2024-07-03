@@ -15,9 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-zinc-700">
+      <body className="flex flex-col gap-4 min-h-dvh text-zinc-700">
         <Header />
-        {children}
+        <main className="flex-1 mx-auto w-[95%] sm:w-[90%] max-w-7xl">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

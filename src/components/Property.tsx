@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-type PropertyType = {
+export type PropertyType = {
   id: string;
+  name: string;
   thumbnail: string;
   price: number;
   location: { city: string; state: string };
@@ -16,11 +18,34 @@ type PropertyType = {
 
 export default function Property({ property }: { property: PropertyType }) {
   return (
-    <Link
-      href={`/porperty/${property.id}`}
-      className="flex flex-col gap-2 shadow-lg p-2 rounded-xl overflow-hidden hover:scale-105 duration-300"
-    >
-      <div className="relative rounded-lg overflow-hidden aspect-[1.5]">
+    <div className="flex flex-col gap-2 shadow-lg p-2 rounded-xl duration-300 overflow-hidden">
+      <div className="relative rounded-lg overflow-hidden aspect-[1.5] group">
+        <button className="top-[50%] left-2 z-10 absolute bg-white/50 [@media(pointer:_coarse)]:bg-white/30 [@media(pointer:_coarse)]:hover:bg-white/50 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-x-[150%] -translate-y-[50%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
+          <svg
+            height={20}
+            width={20}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            transform="matrix(-1, 0, 0, 1, 0, 0)"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.79289 6.29289C9.18342 5.90237 9.81658 5.90237 10.2071 6.29289L15.2071 11.2929C15.5976 11.6834 15.5976 12.3166 15.2071 12.7071L10.2071 17.7071C9.81658 18.0976 9.18342 18.0976 8.79289 17.7071C8.40237 17.3166 8.40237 16.6834 8.79289 16.2929L13.0858 12L8.79289 7.70711C8.40237 7.31658 8.40237 6.68342 8.79289 6.29289Z"
+                fill="#000000"
+              ></path>{" "}
+            </g>
+          </svg>
+        </button>
         <Image
           src={property.thumbnail}
           alt="property image"
@@ -28,17 +53,41 @@ export default function Property({ property }: { property: PropertyType }) {
           sizes="600px"
           className="object-cover"
         ></Image>
+        <button className="top-[50%] right-2 absolute bg-white/50 [@media(pointer:_coarse)]:bg-white/30 [@media(pointer:_coarse)]:hover:bg-white/50 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-y-[50%] translate-x-[150%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
+          <svg
+            height={20}
+            width={20}
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8.79289 6.29289C9.18342 5.90237 9.81658 5.90237 10.2071 6.29289L15.2071 11.2929C15.5976 11.6834 15.5976 12.3166 15.2071 12.7071L10.2071 17.7071C9.81658 18.0976 9.18342 18.0976 8.79289 17.7071C8.40237 17.3166 8.40237 16.6834 8.79289 16.2929L13.0858 12L8.79289 7.70711C8.40237 7.31658 8.40237 6.68342 8.79289 6.29289Z"
+                fill="#000000"
+              ></path>{" "}
+            </g>
+          </svg>
+        </button>
       </div>
-      <div className="flex flex-col">
+      <Link href={`/porperty/${property.id}`} className="flex flex-col group">
         <div className="flex justify-between items-center">
-          <h4 className="font-bold sm:text-xl">
-            ₦{property.price.toLocaleString()}
-            {property.isRent ? "/Mo" : ""}
+          <h4 className="group-hover:text-accent-green-200 font-bold duration-300">
+            {property.name}
           </h4>
-          <button className="px-1 p-2">
+          <button className="p-1" onClick={(e) => e.stopPropagation()}>
             <svg
-              height={20}
-              width={20}
+              height={24}
+              width={24}
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +116,10 @@ export default function Property({ property }: { property: PropertyType }) {
           {property.location.city}, {property.location.state}
         </p>
         <p className="font-semibold text-zinc-500">{property.type}</p>
+        <h5 className="mt-1 font-bold sm:text-lg">
+          ₦{property.price.toLocaleString()}
+          {property.isRent ? "/Mo" : ""}
+        </h5>
         <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">
           <p className="flex items-center gap-2 font-semibold">
             <span className="flex justify-center items-center p-1 border rounded-full w-8 h-8">
@@ -183,7 +236,7 @@ export default function Property({ property }: { property: PropertyType }) {
             {property.area.toLocaleString()}sqft
           </p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

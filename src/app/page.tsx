@@ -7,13 +7,13 @@ import NewsLetterSection from "@/components/NewsLetterSection";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-20 mx-auto w-[95%] sm:w-[90%] max-w-7xl">
+    <div className="flex flex-col gap-20">
       <Hero />
       <RecentListings />
       <WhyUsSection />
       <PropertiesByLocationSection />
       <CustomerReviews />
       <NewsLetterSection />
-    </main>
+    </div>
   );
 }

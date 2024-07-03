@@ -50,7 +50,7 @@ export default function Hero() {
           >
             <option value="all">All</option>
             <option value="apartment">Apartment</option>
-            <option value="bumgalow">Bungalow</option>
+            <option value="house">House</option>
             <option value="duplex">Duplex</option>
             <option value="town house">Town house</option>
           </select>

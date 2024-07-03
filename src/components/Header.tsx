@@ -13,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="flex justify-between items-center mx-auto py-4 w-[95%] sm:w-[90%] max-w-7xl font-bold">
+    <header className="flex justify-between items-center mx-auto p-2 w-[95%] sm:w-[90%] max-w-7xl font-bold">
       <h1>Estate Haven</h1>
       <ul className="sm:flex items-center gap-4 hidden">
         {navLinks.map((navLink) => (
