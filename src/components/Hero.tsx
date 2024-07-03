@@ -6,12 +6,12 @@ export default function Hero() {
   return (
     <div className="relative mb-10">
       <div className="relative flex bg-zinc-100 rounded-xl w-full min-h-80 max-h-[30rem] overflow-hidden aspect-[1.2] sm:aspect-[1.5] lg:aspect-video">
-        <div className="top-0 left-o absolute bg-gradient-to-r from-white/50 to-transparent w-full h-full">
-          <div className="flex flex-col justify-center gap-2 p-10 sm:w-[60%] h-full">
+        <div className="top-0 left-o absolute bg-white/50 sm:bg-transparent w-full h-full">
+          <div className="flex flex-col justify-center gap-2 p-6 md:p-10 sm:w-[60%] h-full">
             <h2 className="font-bold text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
               Find a modern property that suits you
             </h2>
-            <p className="font-semibold text-sm text-zinc-500 md:text-base lg:text-lg">
+            <p className="font-semibold text-sm sm:text-zinc-500 md:text-base lg:text-lg">
               Our platform offers the best opportunity to find the best real
               estate possible. We can make this process easy and comfortable
             </p>
@@ -48,6 +48,7 @@ export default function Hero() {
             id="property-type"
             className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
           >
+            <option value="all">All</option>
             <option value="apartment">Apartment</option>
             <option value="bumgalow">Bungalow</option>
             <option value="duplex">Duplex</option>
