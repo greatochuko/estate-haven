@@ -1,5 +1,6 @@
 import React from "react";
 import Property, { PropertyType } from "./Property";
+import Paginator from "./Paginator";
 
 export default function SearchResults({
   showFilter,
@@ -10,7 +11,7 @@ export default function SearchResults({
 }) {
   return (
     <div className="flex flex-col flex-1 gap-4">
-      <div className="flex flex-wrap justify-between gap-2">
+      <div className="flex flex-wrap justify-between items-center gap-2">
         <h3 className="font-bold whitespace-nowrap">
           Results: {properties.length} Properties found
         </h3>
@@ -58,11 +59,12 @@ export default function SearchResults({
           </button>
         </div>
       </div>
-      <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]">
+      <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
         {properties.map((property) => (
           <Property property={property} key={property.id} />
         ))}
       </div>
+      <Paginator maxPage={10}/>
     </div>
   );
 }

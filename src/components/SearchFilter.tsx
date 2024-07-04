@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from "react";
 import { locations } from "./PropertiesByLocationSection";
 import { PropertyType } from "./Property";
@@ -78,7 +77,7 @@ export default function SearchFilter({
   }
 
   function applyFilters() {
-    const newSearchParams = new URLSearchParams();
+    const newSearchParams = new URLSearchParams(searchParams);
 
     city !== "all" && newSearchParams.set("city", city);
     propertyTypes.length !== 4 &&
@@ -99,7 +98,7 @@ export default function SearchFilter({
   return (
     <div
       onClick={closeModal}
-      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 ${
+      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 mt-2 ${
         showFilter ? "visible opacity-100" : "invisible opacity-0"
       } lg:visible lg:opacity-100`}
     >
@@ -149,7 +148,7 @@ export default function SearchFilter({
             />
             <label htmlFor="house" className="flex items-center gap-2">
               <span
-                className={`flex justify-center items-center border-accent-green-100 ${
+                className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("house")
                     ? "bg-accent-green-100"
                     : "bg-white"
@@ -193,7 +192,7 @@ export default function SearchFilter({
             />
             <label htmlFor="apartment" className="flex items-center gap-2">
               <span
-                className={`flex justify-center items-center border-accent-green-100 ${
+                className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("apartment")
                     ? "bg-accent-green-100"
                     : "bg-white"
@@ -237,7 +236,7 @@ export default function SearchFilter({
             />
             <label htmlFor="duplex" className="flex items-center gap-2">
               <span
-                className={`flex justify-center items-center border-accent-green-100 ${
+                className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("duplex")
                     ? "bg-accent-green-100"
                     : "bg-white"
@@ -281,7 +280,7 @@ export default function SearchFilter({
             />
             <label htmlFor="studio" className="flex items-center gap-2">
               <span
-                className={`flex justify-center items-center border-accent-green-100 ${
+                className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("studio")
                     ? "bg-accent-green-100"
                     : "bg-white"

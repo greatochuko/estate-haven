@@ -127,7 +127,7 @@ export const properties = [
 
 export default function PropertiesPage() {
   return (
-    <div className="flex flex-col gap-4 lg:gap-8">
+    <div className="flex flex-col gap-4 lg:gap-6">
       <SearchForm />
       <PropertiesPageMain properties={properties} />
     </div>

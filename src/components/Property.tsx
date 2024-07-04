@@ -122,7 +122,7 @@ export default function Property({ property }: { property: PropertyType }) {
         </h5>
         <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">
           <p className="flex items-center gap-2 font-semibold">
-            <span className="flex justify-center items-center p-1 border rounded-full w-8 h-8">
+            <span className="flex-center p-1 border rounded-full w-8 h-8">
               <svg
                 height={20}
                 width={20}
@@ -155,7 +155,7 @@ export default function Property({ property }: { property: PropertyType }) {
             {property.beds}
           </p>
           <p className="flex items-center gap-2 font-semibold">
-            <span className="flex justify-center items-center p-1 border rounded-full w-8 h-8">
+            <span className="flex-center p-1 border rounded-full w-8 h-8">
               <svg
                 height={20}
                 width={20}
@@ -203,7 +203,7 @@ export default function Property({ property }: { property: PropertyType }) {
             {property.bath}
           </p>
           <p className="flex items-center gap-2 font-semibold">
-            <span className="flex justify-center items-center p-1 border rounded-full w-8 h-8">
+            <span className="flex-center p-1 border rounded-full w-8 h-8">
               <svg
                 height={20}
                 width={20}
