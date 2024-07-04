@@ -97,7 +97,7 @@ export default function Paginator({ maxPage }: { maxPage: number }) {
           >
             {page}
           </button>
-          {i === 2 && maxPage >= 5 ? (
+          {i === 2 && maxPage > 5 ? (
             <span className="font-black">...</span>
           ) : null}
         </>

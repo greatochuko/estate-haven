@@ -64,7 +64,7 @@ export default function SearchResults({
           <Property property={property} key={property.id} />
         ))}
       </div>
-      <Paginator maxPage={10}/>
+      <Paginator maxPage={10} />
     </div>
   );
 }
