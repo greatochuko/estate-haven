@@ -5,15 +5,32 @@ import React from "react";
 
 export type PropertyType = {
   id: string;
-  images: string[];
   name: string;
+  yearBuilt: string;
+  garageSpace: number;
+  description: string;
+  images: string[];
   price: number;
-  location: { city: string; state: string };
+  location: {
+    city: string;
+    state: string;
+  };
   type: string;
+  agent: {
+    id: string;
+    firstname: string;
+    lastname: string;
+    imageUrl: string;
+    companyName: string;
+    phoneNumber: string;
+    workEmail: string;
+  };
   beds: number;
   bath: number;
   area: number;
   isRent: boolean;
+  petsAllowed: boolean;
+  dateCreated: string;
 };
 
 export default function Property({ property }: { property: PropertyType }) {

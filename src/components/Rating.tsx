@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Rating({
   rating,
-  size = 16,
+  size = 14,
 }: {
   rating: number;
-  size: number;
+  size?: number;
 }) {
   return (
     <div
