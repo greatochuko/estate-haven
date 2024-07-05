@@ -1,6 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { Fragment } from "react";
 
 export default function Paginator({ maxPage }: { maxPage: number }) {
   const searchParams = useSearchParams();
@@ -86,7 +86,7 @@ export default function Paginator({ maxPage }: { maxPage: number }) {
         </svg>
       </button>
       {pagesArray.map((page, i) => (
-        <>
+        <Fragment key={i}>
           <button
             onClick={() => gotoPage(page)}
             className={`${
@@ -100,7 +100,7 @@ export default function Paginator({ maxPage }: { maxPage: number }) {
           {i === 2 && maxPage > 5 ? (
             <span className="font-black">...</span>
           ) : null}
-        </>
+        </Fragment>
       ))}
       <button
         disabled={currentPage >= maxPage}

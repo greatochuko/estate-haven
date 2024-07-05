@@ -26,7 +26,7 @@ export default function SearchFilter({
     ]
   );
   const [listingType, setListingType] = useState(
-    searchParams.get("listingType") || ""
+    searchParams.get("listingType") || "rent"
   );
   const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "");
   const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") || "");
@@ -55,18 +55,10 @@ export default function SearchFilter({
     }
   }
 
-  function toggleListingType(type: string) {
-    if (listingType === type) {
-      setListingType("");
-    } else {
-      setListingType(type);
-    }
-  }
-
   function resetFilters() {
     setCity("all");
     setPropertyTypes(["house", "apartment", "duplex", "studio"]);
-    setListingType("");
+    setListingType("rent");
     setMinPrice("");
     setMaxPrice("");
     setMinBedroom(0);
@@ -318,7 +310,7 @@ export default function SearchFilter({
           <div className="flex items-center gap-4">
             <p className="font-semibold">For</p>
             <button
-              onClick={() => toggleListingType("sale")}
+              onClick={() => setListingType("sale")}
               className={`${
                 listingType === "sale"
                   ? "bg-accent-green-100 text-white"
@@ -328,7 +320,7 @@ export default function SearchFilter({
               Sale
             </button>
             <button
-              onClick={() => toggleListingType("rent")}
+              onClick={() => setListingType("rent")}
               className={`${
                 listingType === "rent"
                   ? "bg-accent-green-100 text-white"
@@ -341,7 +333,7 @@ export default function SearchFilter({
           <div className="flex gap-4">
             <div className="flex flex-col flex-1 gap-1">
               <label htmlFor="min-price" className="font-semibold">
-                Min Price
+                Min {listingType === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
                 <span className="top-[50%] left-2 absolute -translate-y-[50%]">
@@ -364,7 +356,7 @@ export default function SearchFilter({
             </div>
             <div className="flex flex-col flex-1 gap-1">
               <label htmlFor="max-price" className="font-semibold">
-                Max Price
+                Max {listingType === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
                 <span className="top-[50%] left-2 absolute -translate-y-[50%]">

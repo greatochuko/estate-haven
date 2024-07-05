@@ -20,7 +20,7 @@ export default function SearchResults({
           <select
             name="sort-by"
             id="sort-by"
-            className="border-2 p-1 sm:p-2 rounded-lg"
+            className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
           >
             <option value="popular">Popular</option>
             <option value="oldest">Oldest</option>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Property from "./Property";
+import Property, { PropertyType } from "./Property";
 import Link from "next/link";
-import { properties } from "@/app/properties/page";
 
-export default function RecentListings() {
+export default function RecentListings({
+  properties,
+}: {
+  properties: PropertyType[];
+}) {
   return (
     <div className="flex flex-col gap-4">
       <h3 className="font-bold text-xl sm:text-2xl">

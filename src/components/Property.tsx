@@ -5,8 +5,8 @@ import React from "react";
 
 export type PropertyType = {
   id: string;
+  images: string[];
   name: string;
-  thumbnail: string;
   price: number;
   location: { city: string; state: string };
   type: string;
@@ -48,7 +48,7 @@ export default function Property({ property }: { property: PropertyType }) {
           </svg>
         </button>
         <Image
-          src={property.thumbnail}
+          src={property.images[0]}
           alt="property image"
           fill
           sizes="600px"
@@ -109,7 +109,7 @@ export default function Property({ property }: { property: PropertyType }) {
           </svg>
         </button>
       </div>
-      <Link href={`/porperty/${property.id}`} className="flex flex-col group">
+      <Link href={`/properties/${property.id}`} className="flex flex-col group">
         <div className="flex justify-between items-center">
           <h4 className="group-hover:text-accent-green-200 font-bold duration-300">
             {property.name}

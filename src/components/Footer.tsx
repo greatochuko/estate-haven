@@ -61,7 +61,7 @@ export default function Footer() {
             {locations.slice(0, 4).map((location) => (
               <li key={location.id}>
                 <Link
-                  href={`/properties/?city=${location.city}`}
+                  href={`/properties?city=${location.city}`}
                   className="block p-1 hover:text-accent-green-100"
                 >
                   {location.city}
