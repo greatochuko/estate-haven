@@ -1,4 +1,6 @@
-const reviews = [
+import { ReviewType } from "@/components/Review";
+
+const reviews: ReviewType[] = [
   {
     id: "1",
     user: {

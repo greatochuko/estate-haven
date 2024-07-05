@@ -2,9 +2,15 @@ import Image from "next/image";
 import React from "react";
 import Rating from "./Rating";
 
-type ReviewType = {
+export type ReviewType = {
   id: string;
   user: {
+    firstname: string;
+    lastname: string;
+    imageUrl: string;
+  };
+  agent: {
+    id: string;
     firstname: string;
     lastname: string;
     imageUrl: string;

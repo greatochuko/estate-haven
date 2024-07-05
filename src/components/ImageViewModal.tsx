@@ -188,7 +188,6 @@ export default function ImageViewModal({
                   strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                  <title>Close</title>
                   <g
                     id="Page-1"
                     stroke="none"
