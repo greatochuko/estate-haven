@@ -10,15 +10,15 @@ export default function LoadingIndicator({ color = "#2eb57e", size = 30 }) {
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           {" "}
-          <g fill={color} fill-rule="evenodd" clip-rule="evenodd">
+          <g fill={color} fill-rule="evenodd" clipRule="evenodd">
             {" "}
             <path
               d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"
