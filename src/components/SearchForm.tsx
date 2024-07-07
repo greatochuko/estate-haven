@@ -1,8 +1,12 @@
+"use client";
 import React from "react";
 
 export default function SearchForm() {
   return (
-    <form className="relative flex items-center gap-2">
+    <form
+      className="relative flex items-center gap-2"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <div className="top-[50%] left-2 absolute -translate-y-[50%]">
         <svg
           width={20}

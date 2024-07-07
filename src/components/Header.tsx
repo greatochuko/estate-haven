@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <>
       <header className="flex justify-between items-center bg-white mx-auto px-2 p-3 w-[95%] sm:w-[90%] max-w-7xl font-bold">
-        <h1>Estate Haven</h1>
+        <Link href={"/"}>Estate Haven</Link>
         <ul className="sm:flex items-center gap-4 hidden">
           {navLinks.map((navLink) => (
             <li key={navLink.name}>

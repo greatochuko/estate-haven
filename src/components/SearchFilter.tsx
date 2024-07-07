@@ -85,17 +85,19 @@ export default function SearchFilter({
       newSearchParams.set("maxBathroom", maxBathroom.toString());
 
     router.push(`/properties?${newSearchParams.toString()}`);
+    closeModal();
   }
 
   return (
     <div
       onClick={closeModal}
-      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 mt-2 ${
+      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 lg:mt-2 ${
         showFilter ? "visible opacity-100" : "invisible opacity-0"
       } lg:visible lg:opacity-100`}
     >
       <div
-        className={`flex flex-col gap-6 bg-white p-6 lg:p-0 w-80 lg:w-[16rem] h-full lg:h-fit lg:overflow-auto overflow-y-scroll duration-300 ${
+        onClick={(e) => e.stopPropagation()}
+        className={`flex flex-col gap-6 bg-white p-6 h-dvh lg:p-0 w-[80%] max-w-80 lg:w-[16rem] lg:h-fit lg:overflow-auto overflow-y-scroll duration-300 ${
           showFilter ? "" : "-translate-x-[120%]"
         } lg:translate-x-0 `}
       >
@@ -469,7 +471,7 @@ export default function SearchFilter({
         </div>
         <button
           onClick={applyFilters}
-          className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-bold text-white duration-300"
+          className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-bold text-white duration-300"
         >
           Apply Filters
         </button>

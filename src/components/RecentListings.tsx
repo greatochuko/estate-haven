@@ -19,7 +19,7 @@ export default function RecentListings({
       </div>
       <Link
         href={"/properties"}
-        className="block border-[3px] border-accent-green-100 hover:border-accent-green-200 hover:bg-accent-green-100 mx-auto mt-8 px-4 py-2 rounded-full w-fit font-bold text-accent-green-100 hover:text-white duration-300"
+        className="block border-[3px] border-accent-green-100 hover:bg-accent-green-100 mx-auto mt-8 px-4 py-2 rounded-full w-fit font-bold text-accent-green-100 hover:text-white duration-300"
       >
         Show All
       </Link>
