@@ -39,7 +39,7 @@ export default function Property({ property }: { property: PropertyType }) {
   return (
     <div className="flex flex-col gap-2 shadow-lg p-2 rounded-xl duration-300 overflow-hidden">
       <div className="relative rounded-lg overflow-hidden aspect-[1.5] group">
-        <button className="top-[50%] left-2 z-10 absolute bg-white/50 [@media(pointer:_coarse)]:bg-white/30 [@media(pointer:_coarse)]:hover:bg-white/50 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-x-[150%] -translate-y-[50%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
+        <button className="top-[50%] left-2 z-10 absolute bg-white/40 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-x-[150%] -translate-y-[50%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
           <svg
             height={20}
             width={20}
@@ -71,7 +71,7 @@ export default function Property({ property }: { property: PropertyType }) {
           sizes="600px"
           className="object-cover"
         ></Image>
-        <button className="top-[50%] right-2 absolute bg-white/50 [@media(pointer:_coarse)]:bg-white/30 [@media(pointer:_coarse)]:hover:bg-white/50 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-y-[50%] translate-x-[150%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
+        <button className="top-[50%] right-2 absolute bg-white/40 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-y-[50%] translate-x-[150%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
           <svg
             height={20}
             width={20}

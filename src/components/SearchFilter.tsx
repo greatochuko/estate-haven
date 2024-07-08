@@ -91,7 +91,7 @@ export default function SearchFilter({
   return (
     <div
       onClick={closeModal}
-      className={`top-0 left-0 z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 lg:mt-2 ${
+      className={`top-0 left-0 z-40 lg:z-20 lg:static fixed bg-black/50 lg:bg-transparent lg:w-fit w-full duration-300 lg:mt-2 ${
         showFilter ? "visible opacity-100" : "invisible opacity-0"
       } lg:visible lg:opacity-100`}
     >
