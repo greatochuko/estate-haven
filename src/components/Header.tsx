@@ -41,7 +41,7 @@ export default function Header() {
               Login
             </button>
             <button
-              onClick={() => setLoginModal({ open: true, type: "login" })}
+              onClick={() => setLoginModal({ open: true, type: "signup" })}
               className="bg-accent-green-100 hover:bg-accent-green-200 px-2 py-1 rounded-md text-white duration-300"
             >
               Sign Up
@@ -53,7 +53,7 @@ export default function Header() {
         type={loginModal.type}
         open={loginModal.open}
         switchModal={(type: string) => setLoginModal({ open: true, type })}
-        closeModal={() => setLoginModal({ open: false, type: "" })}
+        closeModal={() => setLoginModal((curr) => ({ ...curr, open: false }))}
       />
     </>
   );

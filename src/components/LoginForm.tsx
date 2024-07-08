@@ -15,7 +15,7 @@ export default function LoginForm({
           id="email"
           placeholder="name@example.com"
           required
-          className="p-3 border rounded-md"
+          className="p-2 sm:p-3 border rounded-md"
         />
       </div>
       <div className="flex flex-col gap-2">
@@ -26,13 +26,13 @@ export default function LoginForm({
           id="password"
           placeholder="********"
           required
-          className="p-3 border rounded-md"
+          className="p-2 sm:p-3 border rounded-md"
         />
       </div>
       <div className="flex flex-col gap-2">
         <button
           type="submit"
-          className="bg-accent-green-100 hover:bg-accent-green-200 p-3 rounded-md font-bold text-white duration-300"
+          className="bg-accent-green-100 hover:bg-accent-green-200 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
         >
           Login
         </button>

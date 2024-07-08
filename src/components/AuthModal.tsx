@@ -3,6 +3,7 @@ import ModalContainer from "./ModalContainer";
 import Image from "next/image";
 import loginBackground from "../../public/login-bg.jpg";
 import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
 export default function AuthModal({
   type,
@@ -18,10 +19,10 @@ export default function AuthModal({
   return (
     <ModalContainer open={open} closeModal={closeModal}>
       <div
-        className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-5xl max-h-[90dvh] overflow-hidden aspect-[1.2]"
+        className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-5xl max-h-[95dvh] md:max-h-[90dvh] overflow-hidden md:aspect-[1.5]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative flex-[1_0_50%] rounded-sm overflow-hidden">
+        <div className="sm:block relative flex-[1_0_50%] hidden rounded-sm overflow-hidden">
           <Image
             src={loginBackground}
             alt="Estate Haven"
@@ -31,14 +32,22 @@ export default function AuthModal({
             Estate Haven
           </div>
         </div>
-        <div className="flex flex-col flex-[1_0_50%] justify-between gap-8 p-8">
+        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 md:gap-8 p-4 md:p-8">
           <h1 className="font-semibold text-xl sm:text-2xl capitalize">
             {type}
           </h1>
-          {type === "login" ? <LoginForm switchModal={switchModal} /> : null}
+          {type === "login" ? (
+            <LoginForm switchModal={switchModal} />
+          ) : (
+            <SignupForm switchModal={switchModal} />
+          )}
           <div className="flex flex-col gap-4">
-            <hr />
-            <p className="bg-white mx-auto p-1 w-fit -translate-y-8">or</p>
+            <div className="relative">
+              <hr />
+              <p className="top-0 left-[50%] absolute bg-white mx-auto p-1 w-fit -translate-x-[50%] -translate-y-[50%]">
+                or
+              </p>
+            </div>
             <button className="flex justify-center items-center gap-2 bg-white hover:bg-zinc-100 p-2 border rounded-full font-semibold duration-300">
               <svg
                 height={20}

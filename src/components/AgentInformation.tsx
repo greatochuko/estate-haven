@@ -12,7 +12,7 @@ export default function AgentInformation({
   reviews: ReviewType[];
 }) {
   return (
-    <div className="top-5 sticky flex-1 h-fit">
+    <div className="top-16 sticky flex-1 h-fit">
       <div className="flex flex-col border rounded-md">
         <h2 className="p-4 border-b font-bold text-lg sm:text-xl">
           Agent Information
@@ -161,7 +161,7 @@ export default function AgentInformation({
             ></textarea>
             <button
               type="submit"
-              className="bg-accent-green-100 hover:bg-accent-green-200 p-3 rounded-md w-full font-bold text-white duration-300"
+              className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md w-full font-bold text-white duration-300"
             >
               Send Request
             </button>
