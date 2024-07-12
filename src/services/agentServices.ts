@@ -1,0 +1,66 @@
+const agents = [
+  {
+    id: "1",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+  {
+    id: "2",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic-2.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+  {
+    id: "3",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic-3.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+  {
+    id: "4",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic-4.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+  {
+    id: "5",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic-5.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+  {
+    id: "6",
+    firstname: "Chidi",
+    lastname: "Okeke",
+    bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
+    imageUrl: "/profile-pic.jpg",
+    companyName: "Treasure Estate",
+    phoneNumber: "+2341234567890",
+    workEmail: "chidi.okeke@gmail.com",
+  },
+];
+
+export async function getAgents() {
+  return agents;
+}

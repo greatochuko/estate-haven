@@ -3,6 +3,7 @@ import React from "react";
 import { PropertyType } from "./Property";
 import { ReviewType } from "./Review";
 import Rating from "./Rating";
+import Link from "next/link";
 
 export default function AgentInformation({
   property,
@@ -19,7 +20,10 @@ export default function AgentInformation({
         </h2>
         <div className="flex flex-col">
           <div className="flex flex-col gap-2 p-4 border-b">
-            <div className="flex items-center gap-2">
+            <Link
+              href={`/agents/${property.agent.id}`}
+              className="flex items-center gap-2 group"
+            >
               <div className="relative rounded-full w-16 h-16 overflow-hidden">
                 <Image
                   src={property.agent.imageUrl}
@@ -30,7 +34,7 @@ export default function AgentInformation({
                 ></Image>
               </div>
               <div className="flex flex-col">
-                <h3 className="font-semibold sm:text-lg">
+                <h3 className="group-hover:text-accent-green-100 font-semibold sm:text-lg">
                   {property.agent.firstname} {property.agent.lastname}
                 </h3>
                 <div className="flex items-center gap-2">
@@ -38,7 +42,7 @@ export default function AgentInformation({
                   <p>({reviews.length} Reviews)</p>
                 </div>
               </div>
-            </div>
+            </Link>
             <p className="flex items-center gap-2">
               <svg
                 width={18}
