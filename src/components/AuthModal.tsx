@@ -19,7 +19,7 @@ export default function AuthModal({
   return (
     <ModalContainer open={open} closeModal={closeModal}>
       <div
-        className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-5xl max-h-[95dvh] md:max-h-[90dvh] overflow-hidden md:aspect-[1.5]"
+        className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-5xl max-h-[95dvh] md:max-h-[90dvh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sm:block relative flex-[1_0_50%] hidden rounded-sm overflow-hidden">
@@ -32,7 +32,7 @@ export default function AuthModal({
             Estate Haven
           </div>
         </div>
-        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 md:gap-8 p-4 md:p-8">
+        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 md:gap-8 p-4 md:p-8 overflow-y-scroll">
           <h1 className="font-semibold text-xl sm:text-2xl capitalize">
             {type}
           </h1>

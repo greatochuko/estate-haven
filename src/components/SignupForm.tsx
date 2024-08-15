@@ -56,7 +56,7 @@ export default function SignupForm({
       <div className="flex flex-col gap-2">
         <label htmlFor="confirm-password">Confirm Password</label>
         <input
-          type="confirm-password"
+          type="password"
           name="confirm-password"
           id="confirm-password"
           placeholder="********"
