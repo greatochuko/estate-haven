@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 import Paginator from "./Paginator";
 
@@ -9,6 +10,41 @@ export default function SearchResults({
   showFilter: () => void;
   properties: PropertyType[];
 }) {
+  const [sortBy, setSortBy] = useState("popular");
+  let sortedProperties = properties;
+
+  // Sort Properties
+  if (sortBy === "popular")
+    sortedProperties = sortedProperties
+      .map((_) => _)
+      .sort((a, b) => a.views - b.views);
+  if (sortBy === "oldest")
+    sortedProperties = sortedProperties
+      .map((_) => _)
+      .sort(
+        (a, b) =>
+          new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()
+      );
+  if (sortBy === "newest")
+    sortedProperties = sortedProperties
+      .map((_) => _)
+      .sort(
+        (a, b) =>
+          new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+      );
+  if (sortBy === "least-expensive")
+    sortedProperties = sortedProperties
+      .map((_) => _)
+      .sort(
+        (a, b) => new Date(a.price).getTime() - new Date(b.price).getTime()
+      );
+  if (sortBy === "most-expensive")
+    sortedProperties = sortedProperties
+      .map((_) => _)
+      .sort(
+        (a, b) => new Date(b.price).getTime() - new Date(a.price).getTime()
+      );
+
   return (
     <div className="flex flex-col flex-1 gap-4">
       <div className="flex flex-wrap justify-between items-center gap-2">
@@ -18,6 +54,8 @@ export default function SearchResults({
         <div className="flex items-center gap-2 w-full lg:w-fit text-sm sm:text-base">
           <label htmlFor="sort-by">Sort by</label>
           <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
             name="sort-by"
             id="sort-by"
             className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
@@ -60,7 +98,7 @@ export default function SearchResults({
         </div>
       </div>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
-        {properties.map((property) => (
+        {sortedProperties.map((property) => (
           <Property property={property} key={property.id} />
         ))}
       </div>

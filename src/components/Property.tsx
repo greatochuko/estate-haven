@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { AgentType } from "./AgentPropertyOffers";
 
 export type PropertyType = {
   id: string;
@@ -16,15 +17,8 @@ export type PropertyType = {
     state: string;
   };
   type: string;
-  agent: {
-    id: string;
-    firstname: string;
-    lastname: string;
-    imageUrl: string;
-    companyName: string;
-    phoneNumber: string;
-    workEmail: string;
-  };
+  agent: AgentType;
+  views: number;
   beds: number;
   bath: number;
   area: number;

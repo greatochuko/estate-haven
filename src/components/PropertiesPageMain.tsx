@@ -13,7 +13,7 @@ export default function PropertiesPageMain({
   const [showFilter, setShowFilter] = useState(false);
 
   const searchParams = useSearchParams();
-  const city = searchParams.get("city");
+  const city = searchParams.get("city")?.split("-").join(" ");
   const propertyTypes = searchParams.get("propertyTypes")?.split("-");
   const listingType = searchParams.get("listingType");
   const minPrice = Number(searchParams.get("minPrice"));

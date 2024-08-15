@@ -75,7 +75,10 @@ export default function PropertiesByLocationSection() {
       <div className="gap-x-4 gap-y-8 sm:gap-x-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
         {locations.map((location) => (
           <Link
-            href={`/properties?city=${location.city}`}
+            href={`/properties?city=${location.city
+              .split(" ")
+              .join("-")
+              .toLowerCase()}`}
             className="flex items-center gap-2 group"
             key={location.id}
           >
@@ -84,7 +87,7 @@ export default function PropertiesByLocationSection() {
                 src={location.imageUrl}
                 alt={location.city}
                 fill
-                sizes=""
+                sizes="164px"
                 className="object-cover"
               ></Image>
             </div>

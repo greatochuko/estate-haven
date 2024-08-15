@@ -1,4 +1,6 @@
-const agents = [
+import { AgentType } from "@/components/AgentPropertyOffers";
+
+const agents: AgentType[] = [
   {
     id: "1",
     firstname: "Chidi",
@@ -8,6 +10,10 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
   {
     id: "2",
@@ -18,6 +24,10 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
   {
     id: "3",
@@ -28,6 +38,10 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
   {
     id: "4",
@@ -38,6 +52,10 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
   {
     id: "5",
@@ -48,6 +66,10 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
   {
     id: "6",
@@ -58,9 +80,17 @@ const agents = [
     companyName: "Treasure Estate",
     phoneNumber: "+2341234567890",
     workEmail: "chidi.okeke@gmail.com",
+    facebook: "@chidiokeke",
+    twitter: "@chidiokeke",
+    linkedIn: "@chidiokeke",
+    instagram: "@chidiokeke",
   },
 ];
 
 export async function getAgents() {
   return agents;
+}
+
+export async function getAgent(agentId: string) {
+  return agents.find((agent) => agent.id === agentId);
 }
