@@ -24,7 +24,7 @@ export default async function AgentDetailsPage({
                 src={agent.imageUrl}
                 alt={agent.firstname + " " + agent.lastname}
                 fill
-                sizes=""
+                sizes="256px"
                 className="object-cover"
               ></Image>
             </div>
