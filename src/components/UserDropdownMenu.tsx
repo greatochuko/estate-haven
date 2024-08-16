@@ -38,17 +38,17 @@ export default function UserDropdownMenu({
             <p className="text-sm text-zinc-500">{user.companyName}</p>
           </div>
         </div>
-        <button className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-semibold text-white duration-300">
+        <button
+          className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-semibold text-white duration-300"
+          onClick={closeDropdown}
+        >
           + New Property
         </button>
       </div>
       <hr />
-      <ul className="p-2">
+      <ul className="p-2" onClick={closeDropdown}>
         <li className="p-1.5 font-semibold hover:text-accent-green-100 duration-300">
-          <Link
-            href={"/settings/personal-info"}
-            className="flex items-center gap-2 group"
-          >
+          <Link href={"/settings"} className="flex items-center gap-2 group">
             <svg
               height={20}
               width={20}
@@ -237,7 +237,10 @@ export default function UserDropdownMenu({
       </ul>
       <hr />
       <div className="p-2">
-        <button className="bg-red-500 hover:bg-red-600 p-2 rounded-md w-full text-white duration-300">
+        <button
+          className="bg-red-500 hover:bg-red-600 p-2 rounded-md w-full text-white duration-300"
+          onClick={closeDropdown}
+        >
           Sign out
         </button>
       </div>
