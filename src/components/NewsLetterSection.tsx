@@ -25,7 +25,7 @@ export default function NewsLetterSection() {
       >
         <input
           type="email"
-          className="flex-1 bg-white p-4 pr-28 sm:pr-28 rounded-xl text-zinc-800"
+          className="flex-1 bg-white p-4 pr-28 sm:pr-28 rounded-xl w-full text-zinc-800"
           placeholder="Enter your email"
           name="email"
           value={email}

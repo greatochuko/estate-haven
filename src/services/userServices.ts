@@ -94,3 +94,7 @@ export async function getAgents() {
 export async function getAgent(agentId: string) {
   return agents.find((agent) => agent.id === agentId);
 }
+
+export async function getUserSession() {
+  return agents[0];
+}

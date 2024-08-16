@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import ModalContainer from "./ModalContainer";
 
 export default function MobileNav({
   navLinks,

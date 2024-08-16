@@ -1,5 +1,5 @@
 import Agent from "@/components/Agent";
-import { getAgents } from "@/services/agentServices";
+import { getAgents } from "@/services/userServices";
 import React from "react";
 
 export default async function AgentListPage() {

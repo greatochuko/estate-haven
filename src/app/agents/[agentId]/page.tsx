@@ -1,5 +1,5 @@
 import AgentPropertyOffers from "@/components/AgentPropertyOffers";
-import { getAgent } from "@/services/agentServices";
+import { getAgent } from "@/services/userServices";
 import { getPropertiesByAgent } from "@/services/propertyServices";
 import Image from "next/image";
 import { notFound } from "next/navigation";
