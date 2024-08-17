@@ -14,7 +14,7 @@ export default async function SettingsLayout({
 
   return (
     <div className="flex gap-4 flex-col md:flex-row">
-      <div className="flex-1 p-2 shadow-[0_0_5px_1px_#eee] rounded-md">
+      <div className="flex-1 p-2 shadow-[0_0_5px_1px_#eee] rounded-md h-fit">
         <div className="flex flex-col flex-1 gap-3">
           <div className="flex gap-2 items-center">
             <div className="relative rounded-full w-14 h-14 overflow-hidden">

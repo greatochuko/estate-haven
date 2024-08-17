@@ -27,8 +27,6 @@ export default function Header({ user }: { user: AgentType | null }) {
         dropdownRef.current &&
         !dropdownRef.current.contains(e.target as Node)
       ) {
-        console.log("asf2");
-
         setdropdown(false);
       }
     }
@@ -97,10 +95,7 @@ export default function Header({ user }: { user: AgentType | null }) {
             <div className="relative" ref={dropdownRef}>
               <div
                 className="flex items-center gap-1 cursor-pointer group"
-                onClick={() => {
-                  console.log("asf");
-                  setdropdown((curr) => !curr);
-                }}
+                onClick={() => setdropdown((curr) => !curr)}
               >
                 <div className="relative min-[400px]:mr-1 rounded-full w-10 h-10 overflow-hidden">
                   <Image
