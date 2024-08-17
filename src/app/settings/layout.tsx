@@ -1,7 +1,6 @@
 import SettingsLinks from "@/components/SettingsLinks";
 import { getUserSession } from "@/services/userServices";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -14,8 +13,8 @@ export default async function SettingsLayout({
   if (!user) notFound();
 
   return (
-    <div className="flex gap-4">
-      <div className="flex-1 p-2 shadow-sm">
+    <div className="flex gap-4 flex-col md:flex-row">
+      <div className="flex-1 p-2 shadow-[0_0_5px_1px_#eee] rounded-md">
         <div className="flex flex-col flex-1 gap-3">
           <div className="flex gap-2 items-center">
             <div className="relative rounded-full w-14 h-14 overflow-hidden">
@@ -97,7 +96,7 @@ export default async function SettingsLayout({
           <SettingsLinks />
         </div>
       </div>
-      <div className="flex-[3] ">{children}</div>
+      <div className="flex-[3] border p-2 rounded-md">{children}</div>
     </div>
   );
 }
