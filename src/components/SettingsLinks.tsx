@@ -6,14 +6,14 @@ import React from "react";
 export default function SettingsLinks() {
   const pathname = usePathname();
   return (
-    <ul className="p-2">
-      <li className="border-b font-semibold hover:text-accent-green-100 duration-300">
+    <ul className="">
+      <li className="border-b border-zinc-100 font-semibold hover:text-accent-green-100 duration-300">
         <Link
           href={"/settings"}
-          className={`flex items-center gap-2 p-2 py-3 group ${
+          className={`flex items-center border-l gap-2 p-2 py-3 group  ${
             pathname === "/settings"
-              ? "text-accent-green-100 border-l border-accent-green-100"
-              : ""
+              ? "text-accent-green-100  border-accent-green-100"
+              : "border-transparent"
           }`}
         >
           <svg
@@ -69,10 +69,14 @@ export default function SettingsLinks() {
           Personal Info
         </Link>
       </li>
-      <li className="border-b font-semibold hover:text-accent-green-100 duration-300">
+      <li className="border-b border-zinc-100 font-semibold hover:text-accent-green-100 duration-300">
         <Link
           href={"/settings/password-and-security"}
-          className={`flex items-center gap-2 p-2 py-3 group`}
+          className={`flex items-center border-l gap-2 p-2 py-3 group ${
+            pathname.includes("password-and-security")
+              ? "text-accent-green-100  border-accent-green-100"
+              : "border-transparent"
+          }`}
         >
           <svg
             height={20}
@@ -116,10 +120,14 @@ export default function SettingsLinks() {
           Password and Security
         </Link>
       </li>
-      <li className="border-b font-semibold hover:text-accent-green-100 duration-300">
+      <li className="border-b border-zinc-100 font-semibold hover:text-accent-green-100 duration-300">
         <Link
           href={"/settings/my-properties"}
-          className={`flex items-center gap-2 p-2 py-3 group`}
+          className={`flex items-center border-l gap-2 p-2 py-3 group ${
+            pathname.includes("my-properties")
+              ? "text-accent-green-100  border-accent-green-100"
+              : "border-transparent"
+          }`}
         >
           <svg
             height={22}
@@ -155,10 +163,14 @@ export default function SettingsLinks() {
           My Properties
         </Link>
       </li>
-      <li className="border-b font-semibold hover:text-accent-green-100 duration-300">
+      <li className="border-b border-zinc-100 font-semibold hover:text-accent-green-100 duration-300">
         <Link
           href={"/settings/wishlist"}
-          className={`flex items-center gap-2 p-2 py-3 group`}
+          className={`flex items-center border-l gap-2 p-2 py-3 group ${
+            pathname.includes("wishlist")
+              ? "text-accent-green-100  border-accent-green-100"
+              : "border-transparent"
+          }`}
         >
           <svg
             height={20}
@@ -193,10 +205,14 @@ export default function SettingsLinks() {
           Wishlist
         </Link>
       </li>
-      <li className="border-b font-semibold hover:text-accent-green-100 duration-300">
+      <li className="font-semibold hover:text-accent-green-100 duration-300">
         <Link
           href={"/settings/reviews"}
-          className={`flex items-center gap-2 p-2 py-3 group`}
+          className={`flex items-center border-l gap-2 p-2 py-3 group ${
+            pathname.includes("reviews")
+              ? "text-accent-green-100  border-accent-green-100"
+              : "border-transparent"
+          }`}
         >
           <svg
             height={20}
