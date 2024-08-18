@@ -15,6 +15,7 @@ export type AgentType = {
   twitter: string;
   linkedIn: string;
   instagram: string;
+  wishlist?: PropertyType[];
 };
 
 export default function AgentPropertyOffers({

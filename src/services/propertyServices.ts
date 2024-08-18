@@ -1,6 +1,6 @@
 import { PropertyType } from "@/components/Property";
 
-export const properties: PropertyType[] = [
+const properties: PropertyType[] = [
   {
     id: "1",
     name: "Luxury Apartment in Lagos",
