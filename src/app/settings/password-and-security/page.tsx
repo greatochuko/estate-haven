@@ -8,7 +8,12 @@ export default async function PasswordAndSecurityPage() {
   if (!user) notFound();
   return (
     <div>
-      <h1 className="mb-4 font-bold text-2xl">Password & Security</h1>
+      <div className="flex flex-col gap-1 mb-4">
+        <h1 className="font-bold text-2xl">Password & Security</h1>
+        <p className="text-zinc-500">
+          Update your password settings to keep your account secure.
+        </p>
+      </div>
       <PasswordAndSecurityForm />
     </div>
   );

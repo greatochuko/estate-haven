@@ -36,6 +36,7 @@ export const properties: PropertyType[] = [
     isRent: false,
     petsAllowed: true,
     dateCreated: "2024-06-25T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "2",
@@ -72,6 +73,7 @@ export const properties: PropertyType[] = [
     isRent: true,
     petsAllowed: false,
     dateCreated: "2024-06-24T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "3",
@@ -108,6 +110,7 @@ export const properties: PropertyType[] = [
     isRent: false,
     petsAllowed: true,
     dateCreated: "2024-06-23T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "4",
@@ -144,6 +147,7 @@ export const properties: PropertyType[] = [
     isRent: true,
     petsAllowed: false,
     dateCreated: "2024-06-22T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "5",
@@ -180,6 +184,7 @@ export const properties: PropertyType[] = [
     isRent: false,
     petsAllowed: false,
     dateCreated: "2024-06-21T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "6",
@@ -216,6 +221,7 @@ export const properties: PropertyType[] = [
     isRent: true,
     petsAllowed: false,
     dateCreated: "2024-06-20T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "7",
@@ -252,6 +258,7 @@ export const properties: PropertyType[] = [
     isRent: false,
     petsAllowed: true,
     dateCreated: "2024-06-19T16:34:11.031Z",
+    isPublished: true,
   },
   {
     id: "8",
@@ -288,6 +295,7 @@ export const properties: PropertyType[] = [
     isRent: true,
     petsAllowed: true,
     dateCreated: "2024-06-18T16:34:11.031Z",
+    isPublished: true,
   },
 ];
 

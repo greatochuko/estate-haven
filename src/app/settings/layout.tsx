@@ -96,7 +96,7 @@ export default async function SettingsLayout({
           <SettingsLinks />
         </div>
       </div>
-      <div className="flex-[3] border p-2 rounded-md">{children}</div>
+      <div className="flex-[3] p-2 rounded-md">{children}</div>
     </div>
   );
 }

@@ -8,7 +8,13 @@ export default async function PersonalInfoSettingsPage() {
   if (!user) notFound();
   return (
     <div>
-      <h1 className="mb-4 font-bold text-2xl">Personal Info</h1>
+      <div className="flex flex-col gap-1 mb-4">
+        <h1 className="font-bold text-2xl">Personal Info</h1>
+        <p className="text-zinc-500">
+          Update your personal information to keep your account accurate and
+          up-to-date.
+        </p>
+      </div>
       <PersonalInfoForm user={user} />
     </div>
   );

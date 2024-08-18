@@ -106,7 +106,7 @@ export default function PersonalInfoForm({ user }: { user: AgentType }) {
         />
       </div>
 
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex sm:flex-row flex-col justify-between items-center gap-4 mt-4">
         <SubmitButton />
         <button
           type="button"

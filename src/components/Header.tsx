@@ -166,6 +166,7 @@ export default function Header({ user }: { user: AgentType | null }) {
         </div>
       </header>
       <MobileNav
+        user={user}
         navLinks={navLinks}
         pathname={pathname}
         closeModal={() => setMobileNav(false)}

@@ -25,6 +25,7 @@ export type PropertyType = {
   isRent: boolean;
   petsAllowed: boolean;
   dateCreated: string;
+  isPublished: boolean;
 };
 
 export default function Property({ property }: { property: PropertyType }) {

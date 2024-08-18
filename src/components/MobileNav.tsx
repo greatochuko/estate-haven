@@ -1,12 +1,16 @@
+import { getUserSession } from "@/services/userServices";
 import Link from "next/link";
 import React from "react";
+import { AgentType } from "./AgentPropertyOffers";
 
 export default function MobileNav({
+  user,
   navLinks,
   pathname,
   closeModal,
   mobileNavIsOpen,
 }: {
+  user: AgentType | null;
   navLinks: {
     name: string;
     href: string;
@@ -17,7 +21,7 @@ export default function MobileNav({
 }) {
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full backdrop-blur-sm bg-black/50 duration-300 z-40 ${
+      className={`fixed top-0 left-0 w-full h-full backdrop-blur-sm bg-black/50 duration-200 z-40 ${
         mobileNavIsOpen ? "visible opacity-100" : "invisible opacity-0"
       }`}
       onClick={closeModal}
@@ -46,6 +50,21 @@ export default function MobileNav({
             </Link>
           </li>
         ))}
+        {user ? (
+          <li key="settings">
+            <Link
+              href="/settings"
+              className={`hover:text-accent-green-200 duration-300 w-full block py-1 ${
+                pathname.includes("/settings")
+                  ? "text-accent-green-100 font-semibold"
+                  : ""
+              }`}
+            >
+              Settings
+            </Link>
+          </li>
+        ) : null}
+
         <p className="mt-auto font-semibold text-sm text-zinc-500">
           &copy; 2024 Estate Haven
         </p>
