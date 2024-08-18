@@ -62,7 +62,8 @@ export default function SettingsPagePropertyList({
   if (sortBy === "popular")
     filteredProperties = filteredProperties
       .map((_) => _)
-      .sort((a, b) => a.views - b.views);
+      .sort((a, b) => b.views - a.views);
+
   if (sortBy === "oldest")
     filteredProperties = filteredProperties
       .map((_) => _)

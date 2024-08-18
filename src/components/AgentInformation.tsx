@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { PropertyType } from "./Property";
-import { ReviewType } from "./Review";
+import { ReviewType } from "./Testimonial";
 import Rating from "./Rating";
 import Link from "next/link";
 

@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Review from "./Review";
+import Testimonial from "./Testimonial";
 
-const reviews = [
+const testimonials = [
   {
     id: "1",
     user: {
@@ -78,7 +78,7 @@ export default function CustomerReviews() {
   }, []);
 
   function handleNext() {
-    if (-currentIndex >= reviews.length - reviewPerView) return;
+    if (-currentIndex >= testimonials.length - reviewPerView) return;
     setcurrentIndex((curr) => curr - 1);
   }
 
@@ -103,8 +103,8 @@ export default function CustomerReviews() {
             ).toFixed(1)}% + ${padding}rem)`,
           }}
         >
-          {reviews.map((review) => (
-            <Review review={review} key={review.id} />
+          {testimonials.map((testimonial) => (
+            <Testimonial testimonial={testimonial} key={testimonial.id} />
           ))}
         </div>
       </div>
