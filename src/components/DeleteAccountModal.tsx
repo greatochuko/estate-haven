@@ -1,7 +1,7 @@
 import React from "react";
 import ModalContainer from "./ModalContainer";
 
-export default function SignoutModal({
+export default function DeleteAccountModal({
   closeModal,
   open,
 }: {
@@ -11,10 +11,10 @@ export default function SignoutModal({
   return (
     <ModalContainer closeModal={closeModal} open={open}>
       <div
-        className="flex flex-col bg-white rounded-md overflow-hidden"
+        className="flex flex-col bg-white rounded-md w-96 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex gap-2 p-4">
+        <div className="flex flex-col items-center gap-2 p-4 text-center">
           <div className="bg-red-100 p-2 rounded-full h-fit">
             <svg
               fill="#ef4444"
@@ -42,20 +42,22 @@ export default function SignoutModal({
               </g>
             </svg>
           </div>
-          <div className="flex flex-col gap-1">
-            <h2 className="font-bold text-lg">Signing Out</h2>
-            <p>Are you sure you want to sign out?</p>
-          </div>
+          <h2 className="font-bold text-lg">Delete Account?</h2>
+          <p>
+            We will immediately delete all data related to your account from our
+            database. This action cannot be undone. Are you sure you want to
+            continue?
+          </p>
         </div>
         <div className="flex justify-end items-center gap-2 bg-[#eee] p-2">
           <button
-            className="border-zinc-200 bg-white hover:bg-zinc-100 px-4 p-2 border rounded-md font-bold text-zinc-700 duration-200"
+            className="border-zinc-200 bg-white hover:bg-zinc-100 px-4 p-2 border rounded-md font-bold text-zinc-700 duration-300"
             onClick={closeModal}
           >
             Cancel
           </button>
-          <button className="bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md font-bold text-white duration-200">
-            Confirm
+          <button className="bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md font-bold text-white duration-300">
+            Delete
           </button>
         </div>
       </div>
