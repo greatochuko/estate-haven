@@ -774,5 +774,6 @@ export async function getAgent(agentId: string) {
 }
 
 export async function getUserSession() {
+  return null;
   return agents[0];
 }

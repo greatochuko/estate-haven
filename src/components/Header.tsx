@@ -16,7 +16,7 @@ const navLinks = [
 
 export default function Header({ user }: { user: AgentType | null }) {
   const pathname = usePathname();
-  const [loginModal, setLoginModal] = useState({ open: false, type: "" });
+  const [authModal, setAuthModal] = useState({ open: false, type: "" });
   const [mobileNav, setMobileNav] = useState(false);
   const [dropdown, setdropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -150,13 +150,13 @@ export default function Header({ user }: { user: AgentType | null }) {
           ) : (
             <div className="flex items-center gap-4">
               <button
-                onClick={() => setLoginModal({ open: true, type: "login" })}
+                onClick={() => setAuthModal({ open: true, type: "login" })}
                 className="px-2 py-1 text-accent-green-100 hover:text-accent-green-200"
               >
                 Login
               </button>
               <button
-                onClick={() => setLoginModal({ open: true, type: "signup" })}
+                onClick={() => setAuthModal({ open: true, type: "signup" })}
                 className="bg-accent-green-100 hover:bg-accent-green-200 px-2 py-1 rounded-md text-white duration-300"
               >
                 Sign Up
@@ -171,13 +171,14 @@ export default function Header({ user }: { user: AgentType | null }) {
         pathname={pathname}
         closeModal={() => setMobileNav(false)}
         mobileNavIsOpen={mobileNav}
+        openAuthModal={(type: string) => setAuthModal({ open: true, type })}
       />
 
       <AuthModal
-        type={loginModal.type}
-        open={loginModal.open}
-        switchModal={(type: string) => setLoginModal({ open: true, type })}
-        closeModal={() => setLoginModal((curr) => ({ ...curr, open: false }))}
+        type={authModal.type}
+        open={authModal.open}
+        switchModal={(type: string) => setAuthModal({ open: true, type })}
+        closeModal={() => setAuthModal((curr) => ({ ...curr, open: false }))}
       />
     </>
   );

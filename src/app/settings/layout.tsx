@@ -1,6 +1,8 @@
 import SettingsLinks from "@/components/SettingsLinks";
+import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getUserSession } from "@/services/userServices";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -10,7 +12,7 @@ export default async function SettingsLayout({
   children: React.ReactNode;
 }) {
   const user = await getUserSession();
-  if (!user) notFound();
+  if (!user) return <UserNotAuthenticatedPage />;
 
   return (
     <div className="flex gap-4 flex-col md:flex-row">
@@ -89,9 +91,12 @@ export default async function SettingsLayout({
               {user.workEmail}
             </p>
           </div>
-          <button className="bg-accent-green-100 font-bold p-2 rounded-md w-full text-white">
+          <Link
+            href={"/create-new-property"}
+            className="bg-accent-green-100 font-bold text-center p-2 rounded-md w-full text-white"
+          >
             + New Property
-          </button>
+          </Link>
           <hr className="w-full" />
           <SettingsLinks />
         </div>

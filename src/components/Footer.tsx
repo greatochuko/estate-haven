@@ -11,7 +11,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-100 mt-10 py-16 font-semibold text-sm text-zinc-600 sm:text-base">
+    <footer className="bg-zinc-100 py-16 font-semibold text-sm text-zinc-600 sm:text-base">
       <div className="gap-4 grid grid-cols-2 lg:grid-cols-4 mx-auto px-4 w-[95%] sm:w-[90%] max-w-7xl">
         <div className="flex flex-col gap-2 w-48">
           <h3 className="font-bold text-xl text-zinc-900">Estate Haven</h3>

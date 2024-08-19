@@ -43,12 +43,13 @@ export default function UserDropdownMenu({
               <p className="text-sm text-zinc-500">{user.companyName}</p>
             </div>
           </div>
-          <button
-            className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-semibold text-white duration-300"
+          <Link
+            href={"/create-new-property"}
+            className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-semibold text-center text-white duration-300"
             onClick={closeDropdown}
           >
             + New Property
-          </button>
+          </Link>
         </div>
         <hr />
         <ul className="p-2" onClick={closeDropdown}>

@@ -15,11 +15,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await getUserSession();
+
   return (
     <html lang="en">
       <body className="flex flex-col gap-8 min-h-dvh text-zinc-700">
         <Header user={user} />
-        <main className="flex-1 mx-auto w-[95%] sm:w-[90%] max-w-7xl">
+        <main className="flex flex-col flex-1 mx-auto w-[95%] sm:w-[90%] max-w-7xl">
           {children}
         </main>
         <Footer />

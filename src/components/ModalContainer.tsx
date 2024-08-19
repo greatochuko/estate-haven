@@ -6,18 +6,22 @@ export default function ModalContainer({
   open,
   closeModal,
   elementRef,
+  flexCenter = true,
 }: {
   children: React.ReactNode;
   open: boolean;
   closeModal: () => void;
   background?: string;
   elementRef?: React.MutableRefObject<HTMLDivElement | null>;
+  flexCenter?: boolean;
 }) {
   return (
     <div
       ref={elementRef}
       onClick={closeModal}
-      className={`fixed top-0 left-0 w-full h-full backdrop-blur-sm bg-black/50 flex-center duration-200 z-40 ${
+      className={`fixed top-0 left-0 w-full h-full backdrop-blur-sm bg-black/50 ${
+        flexCenter ? "flex-center" : ""
+      } duration-200 z-40 ${
         open ? "visible opacity-100" : "invisible opacity-0"
       } `}
       style={{ backgroundColor: background }}
