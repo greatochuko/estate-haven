@@ -24,7 +24,7 @@ export default function Footer() {
             <li>
               <Link
                 href={"/about"}
-                className="block p-1 hover:text-accent-green-100"
+                className="block p-1 hover:text-accent-green-100 duration-300"
               >
                 About Us
               </Link>
@@ -32,7 +32,7 @@ export default function Footer() {
             <li>
               <Link
                 href={"/properties"}
-                className="block p-1 hover:text-accent-green-100"
+                className="block p-1 hover:text-accent-green-100 duration-300"
               >
                 Properties
               </Link>
@@ -40,7 +40,7 @@ export default function Footer() {
             <li>
               <Link
                 href={"/agents"}
-                className="block p-1 hover:text-accent-green-100"
+                className="block p-1 hover:text-accent-green-100 duration-300"
               >
                 Agents
               </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
             <li>
               <Link
                 href={"/contact"}
-                className="block p-1 hover:text-accent-green-100"
+                className="block p-1 hover:text-accent-green-100 duration-300"
               >
                 Contact Us
               </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
               <li key={location.id}>
                 <Link
                   href={`/properties?city=${location.city}`}
-                  className="block p-1 hover:text-accent-green-100"
+                  className="block p-1 hover:text-accent-green-100 duration-300"
                 >
                   {location.city}
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
                 <Link
                   target="_blank"
                   href={socialLink.url}
-                  className="block p-1 hover:text-accent-green-100"
+                  className="block p-1 hover:text-accent-green-100 duration-300"
                 >
                   {socialLink.name}
                 </Link>
