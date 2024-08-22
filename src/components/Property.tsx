@@ -8,21 +8,19 @@ export type PropertyType = {
   id: string;
   name: string;
   yearBuilt: string;
-  garageSpace: number;
+  parkingSpots: number;
   description: string;
   images: string[];
   price: number;
-  location: {
-    city: string;
-    state: string;
-  };
+  city: string;
+  state: string;
   type: string;
   agent: AgentType;
   views: number;
   beds: number;
   bath: number;
   area: number;
-  isRent: boolean;
+  category: "rent" | "sale";
   petsAllowed: boolean;
   dateCreated: string;
   isPublished: boolean;
@@ -128,12 +126,12 @@ export default function Property({ property }: { property: PropertyType }) {
           </h4>
         </div>
         <p className="font-semibold text-zinc-500">
-          {property.location.city}, {property.location.state}
+          {property.city}, {property.state}
         </p>
         <p className="font-semibold text-zinc-500">{property.type}</p>
         <h5 className="mt-1 font-bold sm:text-lg">
           ₦{property.price.toLocaleString()}
-          {property.isRent ? "/Mo" : ""}
+          {property.category === "rent" ? "/Mo" : ""}
         </h5>
         <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">
           <p className="flex items-center gap-2 font-semibold">

@@ -27,7 +27,7 @@ export default function PropertiesPageMain({
 
   if (city)
     filteredProperties = filteredProperties.filter(
-      (property) => property.location.city.toLowerCase() === city.toLowerCase()
+      (property) => property.city.toLowerCase() === city.toLowerCase()
     );
   if (propertyTypes)
     filteredProperties = filteredProperties.filter((property) =>

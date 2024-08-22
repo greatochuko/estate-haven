@@ -21,8 +21,8 @@ export default function PropertyInformation({
           </span>
         </h1>
         <p className="font-semibold text-zinc-600">
-          {property.location.city}, {property.location.state}
-          {property.location.state.toLowerCase() !== "fct" && "State"}
+          {property.city}, {property.state}
+          {property.state.toLowerCase() !== "fct" && "State"}
         </p>
         <p>{property.description}</p>
       </div>
@@ -194,8 +194,8 @@ export default function PropertyInformation({
                 ></path>{" "}
               </g>
             </svg>
-            {property.garageSpace
-              ? property.garageSpace + " car garage"
+            {property.parkingSpots
+              ? property.parkingSpots + " car garage"
               : "No Parking"}
           </p>
           <p className="flex items-center gap-2">

@@ -43,7 +43,7 @@ export default function UserWishlist({
                   {property.name}
                 </Link>
                 <p className="text-zinc-600">
-                  {property.location.city} {property.location.state}
+                  {property.city} {property.state}
                 </p>
                 <p className="font-bold text-lg">
                   ₦{property.price.toLocaleString()}

@@ -1,14 +1,14 @@
 import SettingsPagePropertyList from "@/components/SettingsPagePropertyList";
+import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getPropertiesByAgent } from "@/services/propertyServices";
 import { getUserSession } from "@/services/userServices";
-import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function MyPropertiesPage() {
   const user = await getUserSession();
-  const agentProperties = await getPropertiesByAgent(user.id);
+  if (!user) return <UserNotAuthenticatedPage />;
 
-  if (!user) notFound();
+  const agentProperties = await getPropertiesByAgent(user.id);
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default async function MyPropertiesPage() {
           Here, you can view and easily manage your property offers.
         </p>
       </div>
-      <SettingsPagePropertyList properties={agentProperties}/>
+      <SettingsPagePropertyList properties={agentProperties} />
     </div>
   );
 }

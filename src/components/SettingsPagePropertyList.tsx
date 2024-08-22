@@ -196,7 +196,7 @@ export default function SettingsPagePropertyList({
                   {property.name}
                 </Link>
                 <p className="text-zinc-600">
-                  {property.location.city} {property.location.state}
+                  {property.city} {property.state}
                 </p>
                 <p className="font-bold text-lg">
                   ₦{property.price.toLocaleString()}
@@ -395,7 +395,7 @@ export default function SettingsPagePropertyList({
                           d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 22786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13"
                           stroke="#000000"
                           className="group-hover:stroke-blue-500 duration-300 stroke-zinc-700"
-                          strokeWidth="1.5"
+                          strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         ></path>

@@ -1,6 +1,7 @@
 import React from "react";
 import heroImage from "../../public/hero-image.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -15,9 +16,12 @@ export default function Hero() {
               Our platform offers the best opportunity to find the best real
               estate possible. We can make this process easy and comfortable
             </p>
-            <button className="bg-accent-green-100 px-4 p-2 rounded-md w-fit font-bold text-sm text-white sm:text-base">
+            <Link
+              href={"/create-new-listing"}
+              className="bg-accent-green-100 px-4 p-2 rounded-md w-fit font-bold text-sm text-white sm:text-base"
+            >
               Add Listing
-            </button>
+            </Link>
           </div>
         </div>
         <Image
@@ -63,7 +67,7 @@ export default function Hero() {
               name="from-price"
               id="from-price"
               placeholder="0"
-              className="border-2 p-2 rounded-md w-28 focus-visible:ring ring-accent-green-100"
+              className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
             -
             <input
@@ -71,7 +75,7 @@ export default function Hero() {
               type="number"
               name="to-price"
               id="to-price"
-              className="border-2 p-2 rounded-md w-28 focus-visible:ring ring-accent-green-100"
+              className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
           </div>
         </div>

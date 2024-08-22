@@ -1,11 +1,11 @@
 import PasswordAndSecurityForm from "@/components/PasswordAndSecurityForm";
+import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getUserSession } from "@/services/userServices";
-import { notFound } from "next/navigation";
 import React from "react";
 
 export default async function PasswordAndSecurityPage() {
   const user = await getUserSession();
-  if (!user) notFound();
+  if (!user) return <UserNotAuthenticatedPage />;
   return (
     <div>
       <div className="flex flex-col gap-1 mb-4">

@@ -11,7 +11,7 @@ export default function DeleteAccountModal({
   return (
     <ModalContainer closeModal={closeModal} open={open}>
       <div
-        className="flex flex-col bg-white rounded-md w-96 overflow-hidden"
+        className="flex flex-col bg-white rounded-md w-96 max-w-[90%] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col items-center gap-2 p-4 text-center">
