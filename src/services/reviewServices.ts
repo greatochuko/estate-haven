@@ -18,10 +18,7 @@ const reviews: ReviewType[] = [
     rating: 5,
     upvotes: 3,
     downvotes: 2,
-    property: {
-      name: "Luxury Apartment in Lagos",
-      id: "1",
-    },
+    propertyName: "Luxury Apartment in Lagos",
     dateCreated: "2024-06-25T16:34:11.031Z",
     comment:
       "The process of buying my first home was smooth and stress-free, thanks to their professional team!",
@@ -43,10 +40,7 @@ const reviews: ReviewType[] = [
     rating: 4,
     upvotes: 5,
     downvotes: 2,
-    property: {
-      name: "Luxury Apartment in Lagos",
-      id: "1",
-    },
+    propertyName: "Luxury Apartment in Lagos",
     dateCreated: "2024-06-25T16:34:11.031Z",
     comment:
       "Excellent service! They helped me find the perfect apartment in a great neighborhood.",
@@ -68,10 +62,7 @@ const reviews: ReviewType[] = [
     rating: 5,
     upvotes: 3,
     downvotes: 2,
-    property: {
-      name: "Luxury Apartment in Lagos",
-      id: "1",
-    },
+    propertyName: "Luxury Apartment in Lagos",
     dateCreated: "2024-06-25T16:34:11.031Z",
     comment:
       "Very knowledgeable agents who guided me through the entire selling process effortlessly.",
@@ -93,10 +84,7 @@ const reviews: ReviewType[] = [
     rating: 4,
     upvotes: 3,
     downvotes: 2,
-    property: {
-      name: "Luxury Apartment in Lagos",
-      id: "1",
-    },
+    propertyName: "Luxury Apartment in Lagos",
     dateCreated: "2024-06-25T16:34:11.031Z",
     comment:
       "They were incredibly helpful in finding a rental property that met all my needs.",
@@ -118,10 +106,7 @@ const reviews: ReviewType[] = [
     rating: 5,
     upvotes: 3,
     downvotes: 2,
-    property: {
-      name: "Luxury Apartment in Lagos",
-      id: "1",
-    },
+    propertyName: "Luxury Apartment in Lagos",
     dateCreated: "2024-06-25T16:34:11.031Z",
     comment:
       "Fantastic experience! Their team was professional and found the ideal property for my investment.",

@@ -17,7 +17,7 @@ export type ReviewType = {
     lastname: string;
     imageUrl: string;
   };
-  property: { name: string; id: string };
+  propertyName: string;
   rating: number;
   upvotes: number;
   downvotes: number;
@@ -27,7 +27,7 @@ export type ReviewType = {
 
 export default function Review({
   review,
-  showFor = false,
+  showFor = true,
   showUser = true,
 }: {
   review: ReviewType;
@@ -64,14 +64,8 @@ export default function Review({
       ) : null}
       {showFor ? (
         <div className="flex flex-col gap-2">
-          <p className="text-zinc-500">
-            For:{" "}
-            <Link
-              href={`/properties/${review.property.id}`}
-              className="font-bold text-accent-green-100 hover:text-accent-green-200 duration-300"
-            >
-              {review.property.name}
-            </Link>
+          <p className="text-zinc-700">
+            For: <strong>{review.propertyName}</strong>
           </p>
           {!showUser ? <Rating rating={review.rating} /> : null}
         </div>

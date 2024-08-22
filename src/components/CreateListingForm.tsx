@@ -109,8 +109,6 @@ export default function CreateListingForm({
     }
   }
 
-  console.log(images);
-
   return (
     <form action={createListing} className="flex flex-col flex-1 gap-8">
       <div className="flex flex-col gap-4 shadow-[0_2px_10px_2px] shadow-zinc-100 p-4 sm:p-6 rounded-md">

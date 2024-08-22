@@ -4,9 +4,9 @@ import { locations } from "./PropertiesByLocationSection";
 
 const socialLinks = [
   { name: "Facebook", url: "#" },
-  { name: "LinkedIn", url: "#" },
-  { name: "Twitter", url: "#" },
-  { name: "GitHub", url: "#" },
+  { name: "LinkedIn", url: "https://linkedin.com/in/greatochuko" },
+  { name: "Twitter", url: "https://x.com/greatochuko4" },
+  { name: "GitHub", url: "https://github.com/greatochuko" },
 ];
 
 export default function Footer() {
@@ -76,6 +76,7 @@ export default function Footer() {
             {socialLinks.map((socialLink) => (
               <li key={socialLink.name}>
                 <Link
+                  target="_blank"
                   href={socialLink.url}
                   className="block p-1 hover:text-accent-green-100"
                 >

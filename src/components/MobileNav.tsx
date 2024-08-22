@@ -27,6 +27,7 @@ export default function MobileNav({
       closeModal={closeModal}
       open={mobileNavIsOpen}
       flexCenter={false}
+      styles="sm:hidden"
     >
       <div
         className={`flex flex-col gap-4 sm:hidden bg-white w-[80%] max-w-80 h-dvh duration-200 p-8 ${
@@ -54,18 +55,32 @@ export default function MobileNav({
             </li>
           ))}
           {user ? (
-            <li key="settings">
-              <Link
-                href="/settings"
-                className={`hover:text-accent-green-200 duration-300 w-full block py-2 ${
-                  pathname.includes("/settings")
-                    ? "text-accent-green-100 font-semibold"
-                    : ""
-                }`}
-              >
-                Settings
-              </Link>
-            </li>
+            <>
+              <li key="settings">
+                <Link
+                  href="/settings"
+                  className={`hover:text-accent-green-200 duration-300 w-full block py-2 ${
+                    pathname.includes("/settings")
+                      ? "text-accent-green-100 font-semibold"
+                      : ""
+                  }`}
+                >
+                  Settings
+                </Link>
+              </li>
+              <li key="create-new-listing">
+                <Link
+                  href="/create-new-listing"
+                  className={`hover:bg-accent-green-200 border border-accent-green-100 px-4 rounded-md w-fit duration-300 block py-2 ${
+                    pathname.includes("/create-new-listing")
+                      ? "bg-accent-green-100 text-white font-semibold"
+                      : "text-accent-green-100"
+                  }`}
+                >
+                  New Property
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <button

@@ -31,11 +31,11 @@ export default function AgentPropertyOffers({
   // Filter Properties by type
   if (propertyType === "rent")
     filteredProperties = filteredProperties.filter(
-      (property) => property.isRent
+      (property) => property.category === "rent"
     );
   if (propertyType === "sale")
     filteredProperties = filteredProperties.filter(
-      (property) => !property.isRent
+      (property) => property.category === "sale"
     );
 
   // Sort Properties
