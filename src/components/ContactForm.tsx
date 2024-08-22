@@ -13,7 +13,7 @@ export default function ContactForm() {
       className="flex flex-col gap-4 bg-zinc-100 p-4 sm:p-8 rounded-md"
     >
       <div className="flex flex-col gap-1">
-        <label htmlFor="fullName" className="font-bold">
+        <label htmlFor="fullName" className="font-semibold">
           Full Name
         </label>
         <input
@@ -25,7 +25,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="your-email" className="font-bold">
+        <label htmlFor="your-email" className="font-semibold">
           Your Email
         </label>
         <input
@@ -37,7 +37,7 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1">
-        <label htmlFor="message" className="font-bold">
+        <label htmlFor="message" className="font-semibold">
           Message
         </label>
         <textarea

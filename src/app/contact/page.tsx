@@ -12,12 +12,12 @@ export default function ContactPage() {
             Fill out the form and out team will try to get back to you within 24
             hours.
           </p>
-          <div className="relative flex-1 min-h-56">
+          <div className="relative flex-1 rounded-lg min-h-56 overflow-hidden">
             <Image
-              src={"/hero-image.png"}
+              src={"/contact-image.jpg"}
               alt=""
               fill
-              sizes=""
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             ></Image>
           </div>

@@ -14,7 +14,7 @@ export default function Hero() {
             </h2>
             <p className="font-semibold text-sm sm:text-zinc-500 md:text-base lg:text-lg">
               Our platform offers the best opportunity to find the best real
-              estate possible. We can make this process easy and comfortable
+              estate possible. We make this process easy and comfortable
             </p>
             <Link
               href={"/create-new-listing"}
