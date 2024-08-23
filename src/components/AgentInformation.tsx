@@ -14,7 +14,7 @@ export default function AgentInformation({
 }) {
   return (
     <div className="top-16 sticky flex-1 h-fit">
-      <div className="flex flex-col border rounded-md">
+      {/* <div className="flex flex-col border rounded-md">
         <h2 className="p-4 border-b font-bold text-lg sm:text-xl">
           Agent Information
         </h2>
@@ -171,7 +171,7 @@ export default function AgentInformation({
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -11,7 +11,6 @@ export default function CreateListingContainer({
   userId: string;
   property?: PropertyType;
 }) {
-  console.log(property);
   const [propertyName, setPropertyName] = useState(property?.name || "");
   const [category, setCategory] = useState(property?.category || "rent");
   const [streetAddress, setStreetAddress] = useState(
@@ -30,7 +29,13 @@ export default function CreateListingContainer({
   const [price, setPrice] = useState(property?.price || 0);
   const [imageList, setImageList] = useState<
     { id: string; name: string; src: string }[]
-  >([]);
+  >(
+    property?.images.map((img) => ({
+      id: crypto.randomUUID(),
+      name: img,
+      src: img,
+    })) || []
+  );
   const [images, setImages] = useState<string[]>(property?.images || []);
 
   const basicInfoCompleted = !!propertyName.length;

@@ -17,7 +17,7 @@ export default function PropertyInformation({
           {property.name}
           <span className="font-bold">
             ₦{property.price.toLocaleString()}
-            {property.isRent && "/Mo"}
+            {property.category === "rent" && "/Mo"}
           </span>
         </h1>
         <p className="font-semibold text-zinc-600">

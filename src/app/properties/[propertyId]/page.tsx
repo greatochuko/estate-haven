@@ -2,6 +2,7 @@ import AgentInformation from "@/components/AgentInformation";
 import ImageGallery from "@/components/ImageGallery";
 import PropertyInformation from "@/components/PropertyInformation";
 import Rating from "@/components/Rating";
+import { ReviewType } from "@/components/Review";
 import { getProperty } from "@/services/propertyServices";
 import { getReviews } from "@/services/reviewServices";
 import Image from "next/image";
@@ -16,7 +17,8 @@ export default async function PropertyDetailsPage({
   const property = await getProperty(params.propertyId);
   if (!property) notFound();
 
-  const reviews = await getReviews(property.agent.id);
+  // const reviews = await getReviews(property.agent.id);
+  const reviews: ReviewType[] = [];
 
   return (
     <div className="flex flex-col gap-4">

@@ -17,7 +17,7 @@ export async function createListing(formData: FormData) {
       yearBuilt: formData.get("yearBuilt"),
       parkingSpots: formData.get("parkingSpots"),
       description: formData.get("description"),
-      images: formData.get("images"),
+      images: (formData.get("images") as string).split(","),
       price: formData.get("price"),
       city: formData.get("city"),
       state: formData.get("state"),
@@ -52,7 +52,7 @@ export async function editListing(formData: FormData) {
       yearBuilt: formData.get("yearBuilt"),
       parkingSpots: formData.get("parkingSpots"),
       description: formData.get("description"),
-      images: formData.get("images"),
+      images: (formData.get("images") as string).split(","),
       price: formData.get("price"),
       city: formData.get("city"),
       state: formData.get("state"),
@@ -65,6 +65,8 @@ export async function editListing(formData: FormData) {
       category: formData.get("category"),
       petsAllowed: formData.get("petsAllowed"),
     };
+    console.log(propertyToEdit);
+    // return;
     const propertyId = formData.get("propertyId");
     await Property.findByIdAndUpdate(propertyId as string, propertyToEdit);
     redirectUrl = "/settings/my-properties";

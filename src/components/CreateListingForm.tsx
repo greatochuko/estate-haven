@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useFormStatus } from "react-dom";
 import { PropertyType } from "./Property";
+import { uploadImage } from "@/utils/imageUploader";
 
 const amenitiesList = [
   "WiFi",
@@ -90,7 +91,7 @@ export default function CreateListingForm({
     today.getMonth() >= 10 ? today.getMonth : "0" + today.getMonth()
   }-${today.getDate()}`;
 
-  function addImages(files: FileList | null) {
+  async function addImages(files: FileList | null) {
     if (!files) return;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -100,21 +101,14 @@ export default function CreateListingForm({
       ]);
     }
     for (let i = 0; i < files.length; i++) {
-      const fileReader = new FileReader();
       const file = files[i];
-      fileReader.readAsDataURL(file);
-      fileReader.onload = (ev) => {
-        const eventTarget = ev.target;
-        if (!eventTarget) return;
-        setImageList((curr) =>
-          curr.map((img) =>
-            img.name === file.name
-              ? { ...img, src: eventTarget.result as string }
-              : img
-          )
-        );
-        setImages((curr) => [...curr, eventTarget.result as string]);
-      };
+      const { url } = await uploadImage(file);
+      setImageList((curr) =>
+        curr.map((img) =>
+          img.name === file.name ? { ...img, src: url as string } : img
+        )
+      );
+      setImages((curr) => [...curr, url as string]);
     }
   }
 
@@ -291,6 +285,7 @@ export default function CreateListingForm({
           <input
             type="text"
             value={streetAddress}
+            name="streetAddress"
             onChange={(e) => setStreetAddress(e.target.value)}
             placeholder="Where's your property located?"
             className="border-zinc-300 p-2 sm:p-3 border rounded-md"
