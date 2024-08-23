@@ -5,7 +5,7 @@ import React from "react";
 
 export default async function ReviewsPage() {
   const user = await getUserSession();
-  const reviews = await getAllUserReviews(user.id);
+  const reviews = await getAllUserReviews(user._id);
 
   return (
     <div className="flex flex-col h-full">

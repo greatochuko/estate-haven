@@ -18,11 +18,11 @@ export default function SettingsPageReviewsList({
   // Filter reviews
   if (filter === "reviews-about-you")
     filteredReviews = filteredReviews.filter(
-      (review) => review.agent.id === user.id
+      (review) => review.agent.id === user._id
     );
   if (filter === "reviews-by-you")
     filteredReviews = filteredReviews.filter(
-      (review) => review.user.id === user.id
+      (review) => review.user._id === user._id
     );
 
   // Sort reviews

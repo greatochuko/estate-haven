@@ -2,7 +2,7 @@ import { AgentType } from "@/components/AgentPropertyOffers";
 
 const agents: AgentType[] = [
   {
-    id: "1",
+    _id: "1",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -16,7 +16,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -28,7 +28,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -51,7 +51,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -63,7 +63,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -86,7 +86,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -98,7 +98,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -123,7 +123,7 @@ const agents: AgentType[] = [
     ],
   },
   {
-    id: "2",
+    _id: "2",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -137,7 +137,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -149,7 +149,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -172,7 +172,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -184,7 +184,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -207,7 +207,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -219,7 +219,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -244,7 +244,7 @@ const agents: AgentType[] = [
     ],
   },
   {
-    id: "3",
+    _id: "3",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -258,7 +258,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -270,7 +270,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -293,7 +293,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -305,7 +305,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -328,7 +328,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -340,7 +340,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -365,7 +365,7 @@ const agents: AgentType[] = [
     ],
   },
   {
-    id: "4",
+    _id: "4",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -379,7 +379,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -391,7 +391,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -414,7 +414,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -426,7 +426,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -449,7 +449,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -461,7 +461,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -486,7 +486,7 @@ const agents: AgentType[] = [
     ],
   },
   {
-    id: "5",
+    _id: "5",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -500,7 +500,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -512,7 +512,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -535,7 +535,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -547,7 +547,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -570,7 +570,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -582,7 +582,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -607,7 +607,7 @@ const agents: AgentType[] = [
     ],
   },
   {
-    id: "6",
+    _id: "6",
     firstname: "Chidi",
     lastname: "Okeke",
     bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -621,7 +621,7 @@ const agents: AgentType[] = [
     instagram: "@chidiokeke",
     wishlist: [
       {
-        id: "1",
+        _id: "1",
         name: "Luxury Apartment in Lagos",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -633,7 +633,7 @@ const agents: AgentType[] = [
         state: "Lagos",
         type: "Apartment",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -656,7 +656,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "2",
+        _id: "2",
         name: "Spacious House in Abuja",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -668,7 +668,7 @@ const agents: AgentType[] = [
         state: "FCT",
         type: "House",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -691,7 +691,7 @@ const agents: AgentType[] = [
         isPublished: true,
       },
       {
-        id: "3",
+        _id: "3",
         name: "Elegant Duplex in Port Harcourt",
         yearBuilt: "2020",
         parkingSpots: 2,
@@ -703,7 +703,7 @@ const agents: AgentType[] = [
         state: "Rivers",
         type: "Duplex",
         agent: {
-          id: "1",
+          _id: "1",
           firstname: "Chidi",
           lastname: "Okeke",
           bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -734,7 +734,7 @@ export async function getAgents() {
 }
 
 export async function getAgent(agentId: string) {
-  return agents.find((agent) => agent.id === agentId);
+  return agents.find((agent) => agent._id === agentId);
 }
 
 export async function getUserSession() {

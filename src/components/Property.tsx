@@ -5,7 +5,7 @@ import React from "react";
 import { AgentType } from "./AgentPropertyOffers";
 
 export type PropertyType = {
-  id: string;
+  _id: string;
   name: string;
   yearBuilt: string;
   parkingSpots: number;
@@ -119,7 +119,10 @@ export default function Property({ property }: { property: PropertyType }) {
           </svg>
         </button>
       </div>
-      <Link href={`/properties/${property.id}`} className="flex flex-col group">
+      <Link
+        href={`/properties/${property._id}`}
+        className="flex flex-col group"
+      >
         <div className="flex justify-between items-center">
           <h4 className="group-hover:text-accent-green-200 font-bold duration-300">
             {property.name}

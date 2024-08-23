@@ -8,8 +8,8 @@ export default function CreateListingContainer({ userId }: { userId: string }) {
   const [category, setCategory] = useState("rent");
   const [streetAddress, setStreetAddress] = useState("");
   const [area, setArea] = useState(0);
-  const [beds, setBeds] = useState<number | string>("studio");
-  const [bath, setBath] = useState<number | string>(1);
+  const [beds, setBeds] = useState(1);
+  const [bath, setBath] = useState(1);
   const [parkingSpots, setParkingSpots] = useState(0);
   const [amenities, setAmenities] = useState<string[]>([]);
   const [petsAllowed, setPetsAllowed] = useState(false);

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 
 export type AgentType = {
-  id: string;
+  _id: string;
   firstname: string;
   lastname: string;
   bio: string;
@@ -117,7 +117,7 @@ export default function AgentPropertyOffers({
       </div>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
         {filteredProperties.map((property) => (
-          <Property property={property} key={property.id} />
+          <Property property={property} key={property._id} />
         ))}
       </div>
     </div>

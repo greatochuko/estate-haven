@@ -3,7 +3,7 @@ import { Property } from "@/db/models/Property";
 
 const properties: PropertyType[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Luxury Apartment in Lagos",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -15,7 +15,7 @@ const properties: PropertyType[] = [
     state: "Lagos",
     type: "Apartment",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -38,7 +38,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "2",
+    _id: "2",
     name: "Spacious House in Abuja",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -50,7 +50,7 @@ const properties: PropertyType[] = [
     state: "FCT",
     type: "House",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -73,7 +73,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "3",
+    _id: "3",
     name: "Elegant Duplex in Port Harcourt",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -85,7 +85,7 @@ const properties: PropertyType[] = [
     state: "Rivers",
     type: "Duplex",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -108,7 +108,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "4",
+    _id: "4",
     name: "Modern Apartment in Kano",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -120,7 +120,7 @@ const properties: PropertyType[] = [
     state: "Kano",
     type: "Apartment",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -143,7 +143,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "5",
+    _id: "5",
     name: "Family House in Ibadan",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -155,7 +155,7 @@ const properties: PropertyType[] = [
     state: "Oyo",
     type: "House",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -178,7 +178,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "6",
+    _id: "6",
     name: "Cozy Studio in Enugu",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -190,7 +190,7 @@ const properties: PropertyType[] = [
     state: "Enugu",
     type: "Studio",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -213,7 +213,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "7",
+    _id: "7",
     name: "Charming Bungalow in Benin City",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -225,7 +225,7 @@ const properties: PropertyType[] = [
     state: "Edo",
     type: "House",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -248,7 +248,7 @@ const properties: PropertyType[] = [
     isPublished: true,
   },
   {
-    id: "8",
+    _id: "8",
     name: "Affordable Apartment in Kaduna",
     yearBuilt: "2020",
     parkingSpots: 2,
@@ -260,7 +260,7 @@ const properties: PropertyType[] = [
     state: "Kaduna",
     type: "Apartment",
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, eos.",
@@ -286,13 +286,14 @@ const properties: PropertyType[] = [
 
 export async function getProperties() {
   return await Property.find();
-  // return properties;
+  return properties;
 }
 
 export async function getPropertiesByAgent(agentId: string) {
+  return await Property.find({ agentId });
   return properties;
 }
 
 export async function getProperty(propertyId: string) {
-  return properties.find((property) => property.id === propertyId);
+  return properties.find((property) => property._id === propertyId);
 }

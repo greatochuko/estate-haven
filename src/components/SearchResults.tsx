@@ -100,7 +100,7 @@ export default function SearchResults({
       {sortedProperties.length ? (
         <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
           {sortedProperties.map((property) => (
-            <Property property={property} key={property.id} />
+            <Property property={property} key={property._id} />
           ))}
         </div>
       ) : (
@@ -167,7 +167,9 @@ export default function SearchResults({
           </p>
         </div>
       )}
-      <Paginator maxPage={Math.ceil(sortedProperties.length / 9)} />
+      {sortedProperties.length > 0 ? (
+        <Paginator maxPage={Math.ceil(sortedProperties.length / 9)} />
+      ) : null}
     </div>
   );
 }

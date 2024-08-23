@@ -119,6 +119,6 @@ export async function getReviews(agentId: string) {
 
 export async function getAllUserReviews(userId: string) {
   return reviews.filter(
-    (review) => review.agent.id === userId || review.user.id === userId
+    (review) => review.agent.id === userId || review.user._id === userId
   );
 }

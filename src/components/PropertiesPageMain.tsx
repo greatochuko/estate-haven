@@ -67,7 +67,7 @@ export default function PropertiesPageMain({
     );
 
   return (
-    <div className="flex lg:flex-row flex-col gap-8">
+    <div className="flex lg:flex-row flex-col flex-1 gap-8">
       <SearchFilter
         properties={properties}
         closeModal={() => setShowFilter(false)}

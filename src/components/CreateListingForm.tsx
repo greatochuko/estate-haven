@@ -1,6 +1,7 @@
 import { createListing } from "@/actions/propertyActions";
 import Image from "next/image";
 import React, { useState } from "react";
+import { useFormStatus } from "react-dom";
 
 const amenitiesList = [
   "WiFi",
@@ -53,10 +54,10 @@ export default function CreateListingForm({
   setStreetAddress: React.Dispatch<React.SetStateAction<string>>;
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
-  bath: string | number;
-  setBath: React.Dispatch<React.SetStateAction<string | number>>;
-  beds: string | number;
-  setBeds: React.Dispatch<React.SetStateAction<string | number>>;
+  bath: number;
+  setBath: React.Dispatch<React.SetStateAction<number>>;
+  beds: number;
+  setBeds: React.Dispatch<React.SetStateAction<number>>;
   amenities: string[];
   setAmenities: React.Dispatch<React.SetStateAction<string[]>>;
   parkingSpots: number;
@@ -350,7 +351,7 @@ export default function CreateListingForm({
           <div className="flex flex-col gap-2">
             <h3 className="font-bold">Bedrooms</h3>
             <ul className="flex border-zinc-300 border rounded-md w-fit">
-              {["studio", 1, 2, 3, 4, "5+"].map((bed) => (
+              {[1, 2, 3, 4, 5].map((bed) => (
                 <li
                   key={bed}
                   onClick={() => setBeds(bed)}
@@ -367,7 +368,7 @@ export default function CreateListingForm({
           <div className="flex flex-col gap-2">
             <h3 className="font-bold">Bathrooms</h3>
             <ul className="flex border-zinc-300 border rounded-md w-fit">
-              {[1, 2, 3, "4+"].map((b) => (
+              {[1, 2, 3, 4].map((b) => (
                 <li
                   key={b}
                   onClick={() => setBath(b)}
@@ -739,17 +740,25 @@ export default function CreateListingForm({
         >
           Save as draft
         </button>
-        <button
-          // disabled={!canSubmit}
-          type="submit"
-          className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
-        >
-          Publish
-        </button>
+        <SubmitButton canSubmit={canSubmit} />
       </div>
 
-      <input type="hidden" value={userId} name="agent" />
+      <input type="hidden" value={userId} name="agentId" />
       <input type="hidden" value={String(petsAllowed)} name="petsAllowed" />
     </form>
+  );
+}
+
+function SubmitButton({ canSubmit }: { canSubmit: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      // disabled={!canSubmit}
+      disabled={pending}
+      type="submit"
+      className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
+    >
+      {pending ? "Publishing..." : "Publish"}
+    </button>
   );
 }

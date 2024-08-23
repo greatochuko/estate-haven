@@ -6,7 +6,7 @@ import React from "react";
 export default async function PropertiesPage() {
   const properties = await getProperties();
   return (
-    <div className="flex flex-col gap-4 lg:gap-6">
+    <div className="flex flex-col flex-1 gap-4 lg:gap-6">
       <SearchForm />
       <PropertiesPageMain properties={properties} />
     </div>
