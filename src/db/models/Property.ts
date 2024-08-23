@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 type PropertySchemaType = {
   id: string;
   name: string;
+  streetAddress: string;
   yearBuilt: string;
   parkingSpots: number;
   description: string;
@@ -25,6 +26,7 @@ type PropertySchemaType = {
 const propertySchema = new mongoose.Schema<PropertySchemaType>(
   {
     name: { type: String, required: true },
+    streetAddress: { type: String, required: true },
     yearBuilt: { type: String, required: true },
     parkingSpots: { type: Number, default: 0 },
     description: { type: String, required: true },

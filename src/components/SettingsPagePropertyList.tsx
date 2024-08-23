@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { PropertyType } from "./Property";
 import Image from "next/image";
 import Link from "next/link";
+import { deleteListing } from "@/actions/propertyActions";
 
 export default function SettingsPagePropertyList({
   properties,
@@ -10,7 +11,7 @@ export default function SettingsPagePropertyList({
   properties: PropertyType[];
 }) {
   const [filter, setFilter] = useState("all");
-  const [propertyType, setPropertyType] = useState("sale");
+  const [propertyType, setPropertyType] = useState("rent");
   const [sortBy, setSortBy] = useState("popular");
   const [dropdownId, setDropdownId] = useState("");
 
@@ -51,11 +52,11 @@ export default function SettingsPagePropertyList({
   // Filter Properties by property type
   if (propertyType === "rent")
     filteredProperties = filteredProperties.filter(
-      (property) => property.isRent
+      (property) => property.category === "rent"
     );
   if (propertyType === "sale")
     filteredProperties = filteredProperties.filter(
-      (property) => !property.isRent
+      (property) => property.category === "sale"
     );
 
   // Sort Properties
@@ -90,6 +91,10 @@ export default function SettingsPagePropertyList({
       .sort(
         (a, b) => new Date(b.price).getTime() - new Date(a.price).getTime()
       );
+
+  async function handleDeleteProperty(propertyId: string) {
+    await deleteListing(propertyId);
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -181,10 +186,12 @@ export default function SettingsPagePropertyList({
               ></Image>
               <p
                 className={`top-2 left-2 absolute text-sm p-1 px-2 rounded-md text-white ${
-                  property.isRent ? "bg-blue-500" : "bg-accent-green-100"
+                  property.category === "rent"
+                    ? "bg-blue-500"
+                    : "bg-accent-green-100"
                 }`}
               >
-                {property.isRent ? "Rent" : "Sale"}
+                {property.category === "rent" ? "Rent" : "Sale"}
               </p>
             </div>
             <div className="relative flex flex-col flex-[1.5] gap-4 p-3 sm:p-6">
@@ -200,7 +207,7 @@ export default function SettingsPagePropertyList({
                 </p>
                 <p className="font-bold text-lg">
                   ₦{property.price.toLocaleString()}
-                  {property.isRent ? "/Mo" : null}
+                  {property.category === "rent" ? "/Mo" : null}
                 </p>
               </div>
               <hr className="border-zinc-100 mt-auto" />
@@ -365,7 +372,7 @@ export default function SettingsPagePropertyList({
                   }`}
                 >
                   <Link
-                    href={`/edit/${property._id}`}
+                    href={`/properties/edit/${property._id}`}
                     className="flex items-center gap-2 p-2 font-semibold text-sm sm:text-base hover:text-blue-500 duration-300 group"
                   >
                     <svg
@@ -403,7 +410,10 @@ export default function SettingsPagePropertyList({
                     </svg>
                     Edit
                   </Link>
-                  <button className="flex items-center gap-2 p-2 font-semibold text-left text-sm sm:text-base hover:text-red-500 duration-300 group">
+                  <button
+                    onClick={() => handleDeleteProperty(property._id)}
+                    className="flex items-center gap-2 p-2 font-semibold text-left text-sm sm:text-base hover:text-red-500 duration-300 group"
+                  >
                     <svg
                       height={20}
                       width={20}

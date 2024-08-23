@@ -1,7 +1,8 @@
-import { createListing } from "@/actions/propertyActions";
+import { createListing, editListing } from "@/actions/propertyActions";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import { useFormStatus } from "react-dom";
+import { PropertyType } from "./Property";
 
 const amenitiesList = [
   "WiFi",
@@ -18,6 +19,7 @@ const amenitiesList = [
 ];
 
 export default function CreateListingForm({
+  property,
   userId,
   propertyName,
   setPropertyName,
@@ -39,10 +41,13 @@ export default function CreateListingForm({
   setParkingSpots,
   petsAllowed,
   setPetsAllowed,
+  imageList,
+  setImageList,
   images,
   setImages,
   canSubmit,
 }: {
+  property?: PropertyType;
   userId: string;
   propertyName: string;
   setPropertyName: React.Dispatch<React.SetStateAction<string>>;
@@ -52,8 +57,8 @@ export default function CreateListingForm({
   setArea: React.Dispatch<React.SetStateAction<number>>;
   streetAddress: string;
   setStreetAddress: React.Dispatch<React.SetStateAction<string>>;
-  category: string;
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  category: "rent" | "sale";
+  setCategory: React.Dispatch<React.SetStateAction<"rent" | "sale">>;
   bath: number;
   setBath: React.Dispatch<React.SetStateAction<number>>;
   beds: number;
@@ -64,10 +69,12 @@ export default function CreateListingForm({
   setParkingSpots: React.Dispatch<React.SetStateAction<number>>;
   petsAllowed: boolean;
   setPetsAllowed: React.Dispatch<React.SetStateAction<boolean>>;
-  images: { id: string; name: string; src: string }[];
-  setImages: React.Dispatch<
+  imageList: { id: string; name: string; src: string }[];
+  setImageList: React.Dispatch<
     React.SetStateAction<{ id: string; name: string; src: string }[]>
   >;
+  images: string[];
+  setImages: React.Dispatch<React.SetStateAction<string[]>>;
   canSubmit: boolean;
 }) {
   function toggleAmenity(type: string) {
@@ -87,7 +94,7 @@ export default function CreateListingForm({
     if (!files) return;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      setImages((curr) => [
+      setImageList((curr) => [
         ...curr,
         { id: crypto.randomUUID(), name: file.name, src: "" },
       ]);
@@ -99,19 +106,23 @@ export default function CreateListingForm({
       fileReader.onload = (ev) => {
         const eventTarget = ev.target;
         if (!eventTarget) return;
-        setImages((curr) =>
+        setImageList((curr) =>
           curr.map((img) =>
             img.name === file.name
               ? { ...img, src: eventTarget.result as string }
               : img
           )
         );
+        setImages((curr) => [...curr, eventTarget.result as string]);
       };
     }
   }
 
   return (
-    <form action={createListing} className="flex flex-col flex-1 gap-8">
+    <form
+      action={!!property ? editListing : createListing}
+      className="flex flex-col flex-1 gap-8"
+    >
       <div className="flex flex-col gap-4 shadow-[0_2px_10px_2px] shadow-zinc-100 p-4 sm:p-6 rounded-md">
         <h2 className="flex items-center gap-2 font-bold text-2xl">
           <svg
@@ -170,7 +181,7 @@ export default function CreateListingForm({
               name="category"
               id="category"
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value as "rent" | "sale")}
               className="border-zinc-300 p-2 sm:p-3 border rounded-md"
             >
               <option value="rent">For rent</option>
@@ -330,6 +341,7 @@ export default function CreateListingForm({
           <textarea
             name="description"
             id="description"
+            defaultValue={property?.description}
             className="border-zinc-300 p-2 sm:p-3 border rounded-md min-h-28 sm:min-h-36 resize-none"
             placeholder="Write about your property"
           ></textarea>
@@ -639,10 +651,10 @@ export default function CreateListingForm({
         <input
           type="hidden"
           name="images"
-          value={images.map((img) => img.src)}
+          value={imageList.map((img) => img.src)}
         />
         <ul className="gap-2 grid grid-cols-2 lg:grid-cols-3">
-          {images.map((image) => (
+          {imageList.map((image) => (
             <li
               key={image.id}
               className="relative flex flex-col bg-zinc-100 p-1 sm:p-2 border rounded-md"
@@ -667,7 +679,9 @@ export default function CreateListingForm({
               </p>
               <button
                 onClick={() =>
-                  setImages((curr) => curr.filter((img) => img.id !== image.id))
+                  setImageList((curr) =>
+                    curr.filter((img) => img.id !== image.id)
+                  )
                 }
                 className="top-2 sm:top-4 right-2 sm:right-4 absolute bg-white sm:opacity-70 hover:opacity-100 p-0.5 sm:p-1 rounded-full duration-300"
               >
@@ -740,9 +754,16 @@ export default function CreateListingForm({
         >
           Save as draft
         </button>
-        <SubmitButton canSubmit={canSubmit} />
+        {!!property ? (
+          <EditButton canSubmit={canSubmit} />
+        ) : (
+          <SubmitButton canSubmit={canSubmit} />
+        )}
       </div>
 
+      {!!property ? (
+        <input type="hidden" value={property._id} name="propertyId" />
+      ) : null}
       <input type="hidden" value={userId} name="agentId" />
       <input type="hidden" value={String(petsAllowed)} name="petsAllowed" />
     </form>
@@ -759,6 +780,19 @@ function SubmitButton({ canSubmit }: { canSubmit: boolean }) {
       className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
       {pending ? "Publishing..." : "Publish"}
+    </button>
+  );
+}
+function EditButton({ canSubmit }: { canSubmit: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      // disabled={!canSubmit}
+      disabled={pending}
+      type="submit"
+      className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
+    >
+      {pending ? "Editing..." : "Edit"}
     </button>
   );
 }

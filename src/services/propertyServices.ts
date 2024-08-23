@@ -295,5 +295,5 @@ export async function getPropertiesByAgent(agentId: string) {
 }
 
 export async function getProperty(propertyId: string) {
-  return properties.find((property) => property._id === propertyId);
+  return Property.findById(propertyId);
 }

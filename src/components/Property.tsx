@@ -7,6 +7,7 @@ import { AgentType } from "./AgentPropertyOffers";
 export type PropertyType = {
   _id: string;
   name: string;
+  streetAddress: string;
   yearBuilt: string;
   parkingSpots: number;
   description: string;
@@ -20,6 +21,7 @@ export type PropertyType = {
   beds: number;
   bath: number;
   area: number;
+  amenities: string[];
   category: "rent" | "sale";
   petsAllowed: boolean;
   dateCreated: string;

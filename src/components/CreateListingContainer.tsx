@@ -2,21 +2,36 @@
 import React, { useState } from "react";
 import PropertyCompletionStatus from "./PropertyCompletionStatus";
 import CreateListingForm from "./CreateListingForm";
+import { PropertyType } from "./Property";
 
-export default function CreateListingContainer({ userId }: { userId: string }) {
-  const [propertyName, setPropertyName] = useState("");
-  const [category, setCategory] = useState("rent");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [area, setArea] = useState(0);
-  const [beds, setBeds] = useState(1);
-  const [bath, setBath] = useState(1);
-  const [parkingSpots, setParkingSpots] = useState(0);
-  const [amenities, setAmenities] = useState<string[]>([]);
-  const [petsAllowed, setPetsAllowed] = useState(false);
-  const [price, setPrice] = useState(0);
-  const [images, setImages] = useState<
+export default function CreateListingContainer({
+  userId,
+  property,
+}: {
+  userId: string;
+  property?: PropertyType;
+}) {
+  console.log(property);
+  const [propertyName, setPropertyName] = useState(property?.name || "");
+  const [category, setCategory] = useState(property?.category || "rent");
+  const [streetAddress, setStreetAddress] = useState(
+    property?.streetAddress || ""
+  );
+  const [area, setArea] = useState(property?.area || 0);
+  const [beds, setBeds] = useState(property?.beds || 1);
+  const [bath, setBath] = useState(property?.bath || 1);
+  const [parkingSpots, setParkingSpots] = useState(property?.parkingSpots || 0);
+  const [amenities, setAmenities] = useState<string[]>(
+    property?.amenities || []
+  );
+  const [petsAllowed, setPetsAllowed] = useState(
+    property?.petsAllowed || false
+  );
+  const [price, setPrice] = useState(property?.price || 0);
+  const [imageList, setImageList] = useState<
     { id: string; name: string; src: string }[]
   >([]);
+  const [images, setImages] = useState<string[]>(property?.images || []);
 
   const basicInfoCompleted = !!propertyName.length;
   const locationCompleted = !!streetAddress.length;
@@ -40,6 +55,7 @@ export default function CreateListingContainer({ userId }: { userId: string }) {
         photosCompleted={photosCompleted}
       />
       <CreateListingForm
+        property={property}
         userId={userId}
         propertyName={propertyName}
         setPropertyName={setPropertyName}
@@ -61,6 +77,8 @@ export default function CreateListingContainer({ userId }: { userId: string }) {
         setParkingSpots={setParkingSpots}
         petsAllowed={petsAllowed}
         setPetsAllowed={setPetsAllowed}
+        imageList={imageList}
+        setImageList={setImageList}
         images={images}
         setImages={setImages}
         canSubmit={canSubmit}
