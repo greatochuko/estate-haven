@@ -1,4 +1,5 @@
 import { PropertyType } from "@/components/Property";
+import { Property } from "@/db/models/Property";
 
 const properties: PropertyType[] = [
   {
@@ -284,7 +285,8 @@ const properties: PropertyType[] = [
 ];
 
 export async function getProperties() {
-  return properties;
+  return await Property.find();
+  // return properties;
 }
 
 export async function getPropertiesByAgent(agentId: string) {

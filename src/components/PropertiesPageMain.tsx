@@ -35,11 +35,11 @@ export default function PropertiesPageMain({
     );
   if (listingType === "rent")
     filteredProperties = filteredProperties.filter(
-      (property) => property.isRent
+      (property) => property.category === "rent"
     );
   if (listingType === "sale")
     filteredProperties = filteredProperties.filter(
-      (property) => !property.isRent
+      (property) => property.category === "sale"
     );
   if (minPrice)
     filteredProperties = filteredProperties.filter(
