@@ -1,9 +1,15 @@
-import { createListing, editListing } from "@/actions/propertyActions";
+import {
+  createListing,
+  editAsDraft,
+  editListing,
+  saveAsDraft,
+} from "@/actions/propertyActions";
 import Image from "next/image";
 import React from "react";
 import { useFormStatus } from "react-dom";
 import { PropertyType } from "./Property";
 import { uploadImage } from "@/utils/imageUploader";
+import LoadingIndicator from "./LoadingIndicator";
 
 const amenitiesList = [
   "WiFi",
@@ -332,7 +338,9 @@ export default function CreateListingForm({
           Property details
         </h2>
         <div className="flex flex-col gap-2">
-          <label className="font-bold">Description</label>
+          <label className="font-bold" htmlFor="description">
+            Description
+          </label>
           <textarea
             name="description"
             id="description"
@@ -743,12 +751,7 @@ export default function CreateListingForm({
       </div>
 
       <div className="flex justify-between gap-4">
-        <button
-          type="button"
-          className="flex-1 border-zinc-300 bg-white hover:bg-zinc-100 px-4 sm:px-6 p-2 sm:p-3 border rounded-md sm:max-w-40 font-bold duration-300"
-        >
-          Save as draft
-        </button>
+        <SaveAsDraftButton isEdit={!!property} canSubmit={canSubmit} />
         {!!property ? (
           <EditButton canSubmit={canSubmit} />
         ) : (
@@ -765,29 +768,47 @@ export default function CreateListingForm({
   );
 }
 
+function SaveAsDraftButton({
+  isEdit,
+  canSubmit,
+}: {
+  isEdit: boolean;
+  canSubmit: boolean;
+}) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending || !canSubmit}
+      formAction={isEdit ? editAsDraft : saveAsDraft}
+      className="flex-1 flex-center border-zinc-300 bg-white hover:bg-zinc-100 px-4 sm:px-6 p-2 sm:p-3 border rounded-md sm:max-w-40 font-bold duration-300"
+    >
+      {pending ? <LoadingIndicator /> : "Save as draft"}
+    </button>
+  );
+}
+
 function SubmitButton({ canSubmit }: { canSubmit: boolean }) {
   const { pending } = useFormStatus();
   return (
     <button
-      // disabled={!canSubmit}
-      disabled={pending}
+      disabled={pending || !canSubmit}
       type="submit"
-      className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
+      className="flex-1 flex-center bg-accent-green-100 hover:bg-accent-green-200 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
-      {pending ? "Publishing..." : "Publish"}
+      {pending ? <LoadingIndicator color="white" /> : "Publish"}
     </button>
   );
 }
+
 function EditButton({ canSubmit }: { canSubmit: boolean }) {
   const { pending } = useFormStatus();
   return (
     <button
-      // disabled={!canSubmit}
-      disabled={pending}
+      disabled={pending || !canSubmit}
       type="submit"
-      className="flex-1 bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
+      className="flex-1 flex-center bg-accent-green-100 hover:bg-accent-green-200 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
-      {pending ? "Editing..." : "Edit"}
+      {pending ? <LoadingIndicator color="white" /> : "Edit"}
     </button>
   );
 }

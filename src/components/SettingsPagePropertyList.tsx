@@ -193,6 +193,11 @@ export default function SettingsPagePropertyList({
               >
                 {property.category === "rent" ? "Rent" : "Sale"}
               </p>
+              {!property.isPublished ? (
+                <p className="top-2 right-2 absolute bg-zinc-400 px-2 p-1 rounded-md text-white">
+                  draft
+                </p>
+              ) : null}
             </div>
             <div className="relative flex flex-col flex-[1.5] gap-4 p-3 sm:p-6">
               <div className="flex flex-col justify-between gap-1">

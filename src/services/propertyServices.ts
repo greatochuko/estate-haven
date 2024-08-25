@@ -285,7 +285,7 @@ import { Property } from "@/db/models/Property";
 // ];
 
 export async function getProperties() {
-  const properties = await Property.find();
+  const properties = await Property.find({ isPublished: true });
   return JSON.parse(JSON.stringify(properties));
 }
 
