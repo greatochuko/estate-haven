@@ -17,7 +17,7 @@ export default function Hero() {
               estate possible. We make this process easy and comfortable
             </p>
             <Link
-              href={"/create-new-listing"}
+              href={"/properties/new"}
               className="bg-accent-green-100 px-4 p-2 rounded-md w-fit font-bold text-sm text-white sm:text-base"
             >
               Add Listing

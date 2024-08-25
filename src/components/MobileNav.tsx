@@ -70,9 +70,9 @@ export default function MobileNav({
               </li>
               <li key="create-new-listing">
                 <Link
-                  href="/create-new-listing"
+                  href="/properties/new"
                   className={`hover:bg-accent-green-200 border border-accent-green-100 px-4 rounded-md w-fit duration-300 block py-2 ${
-                    pathname.includes("/create-new-listing")
+                    pathname.includes("/properties/new")
                       ? "bg-accent-green-100 text-white font-semibold"
                       : "text-accent-green-100"
                   }`}

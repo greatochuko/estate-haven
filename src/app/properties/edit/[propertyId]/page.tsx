@@ -1,6 +1,6 @@
-import CreateNewListingPage from "@/app/create-new-listing/page";
 import { getProperty } from "@/services/propertyServices";
 import React from "react";
+import CreateNewListingPage from "../../new/page";
 
 export default async function EditPropertyPage({
   params: { propertyId },

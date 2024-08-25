@@ -92,7 +92,7 @@ export default async function SettingsLayout({
             </p>
           </div>
           <Link
-            href={"/create-new-listing"}
+            href={"/properties/new"}
             className="bg-accent-green-100 font-bold text-center p-2 rounded-md w-full text-white"
           >
             + New Property

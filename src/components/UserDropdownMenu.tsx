@@ -44,7 +44,7 @@ export default function UserDropdownMenu({
             </div>
           </div>
           <Link
-            href={"/create-new-listing"}
+            href={"/properties/new"}
             className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-semibold text-center text-white duration-300"
             onClick={closeDropdown}
           >
