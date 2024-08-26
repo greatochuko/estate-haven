@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LoadingIndicator({ color = "#2eb57e", size = 30 }) {
+export default function LoadingIndicator({ color = "#2eb57e", size = 25 }) {
   return (
     <div className="w-fit animate-spin">
       <svg
@@ -18,7 +18,7 @@ export default function LoadingIndicator({ color = "#2eb57e", size = 30 }) {
         ></g>
         <g id="SVGRepo_iconCarrier">
           {" "}
-          <g fill={color} fill-rule="evenodd" clipRule="evenodd">
+          <g fill={color} fillRule="evenodd" clipRule="evenodd">
             {" "}
             <path
               d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"

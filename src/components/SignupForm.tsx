@@ -1,30 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignupForm({
   switchModal,
+  emailError,
+  signupAction,
 }: {
   switchModal: (type: string) => void;
+  emailError: string;
+  signupAction: (payload: FormData) => void;
 }) {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const confirmPasswordError = confirmPassword && password !== confirmPassword;
+  const passwordError =
+    password && password.length < 8
+      ? "Password must be at least 8 characters long"
+      : "";
+  const cannotSubmit =
+    !firstname ||
+    !lastname ||
+    !email ||
+    !password ||
+    !confirmPassword ||
+    !!passwordError ||
+    !!confirmPasswordError;
+
   return (
-    <form className="flex flex-col gap-3">
+    <form action={signupAction} className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
         <div className="flex flex-col flex-1 gap-2">
-          <label htmlFor="first-name">Firstname</label>
+          <label htmlFor="firstname">Firstname</label>
           <input
             type="text"
-            name="first-name"
-            id="first-name"
+            name="firstname"
+            id="firstname"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
             placeholder="John"
             required
             className="p-2 sm:p-3 border rounded-md w-full"
           />
         </div>
         <div className="flex flex-col flex-1 gap-2">
-          <label htmlFor="last-name">Lastname</label>
+          <label htmlFor="lastname">Lastname</label>
           <input
             type="text"
-            name="last-name"
-            id="last-name"
+            name="lastname"
+            id="lastname"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
             placeholder="Doe"
             required
             className="p-2 sm:p-3 border rounded-md w-full"
@@ -37,10 +67,15 @@ export default function SignupForm({
           type="email"
           name="email"
           id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="name@example.com"
           required
           className="p-2 sm:p-3 border rounded-md"
         />
+        {emailError ? (
+          <p className="mt-[-2px] text-red-500 text-sm">{emailError}</p>
+        ) : null}
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="password">Password</label>
@@ -48,10 +83,15 @@ export default function SignupForm({
           type="password"
           name="password"
           id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="********"
           required
           className="p-2 sm:p-3 border rounded-md"
         />
+        {passwordError ? (
+          <p className="mt-[-2px] text-red-500 text-sm">{passwordError}</p>
+        ) : null}
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="confirm-password">Confirm Password</label>
@@ -59,18 +99,20 @@ export default function SignupForm({
           type="password"
           name="confirm-password"
           id="confirm-password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           placeholder="********"
           required
           className="p-2 sm:p-3 border rounded-md"
         />
+        {confirmPasswordError ? (
+          <p className="mt-[-2px] text-red-500 text-sm">
+            Passwords do not match
+          </p>
+        ) : null}
       </div>
       <div className="flex flex-col gap-2">
-        <button
-          type="submit"
-          className="bg-accent-green-100 hover:bg-accent-green-200 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
-        >
-          Signup
-        </button>
+        <SubmitButton cannotSubmit={cannotSubmit} />
         <p className="font-semibold text-sm">
           Already have and account?{" "}
           <button
@@ -83,5 +125,18 @@ export default function SignupForm({
         </p>
       </div>
     </form>
+  );
+}
+
+function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={cannotSubmit || pending}
+      type="submit"
+      className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
+    >
+      {pending ? <LoadingIndicator color="white" /> : "Signup"}
+    </button>
   );
 }

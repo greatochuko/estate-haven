@@ -15,7 +15,7 @@ export default function ModalContainer({
   background?: string;
   elementRef?: React.MutableRefObject<HTMLDivElement | null>;
   flexCenter?: boolean;
-  styles: string;
+  styles?: string;
 }) {
   return (
     <div

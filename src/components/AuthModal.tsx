@@ -1,9 +1,12 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import ModalContainer from "./ModalContainer";
 import Image from "next/image";
 import loginBackground from "../../public/login-bg.jpg";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import { useFormState } from "react-dom";
+import { signup } from "@/actions/userActions";
 
 export default function AuthModal({
   type,
@@ -16,6 +19,17 @@ export default function AuthModal({
   switchModal: (type: string) => void;
   closeModal: () => void;
 }) {
+  const [signupState, signupAction] = useFormState(signup, {
+    done: null,
+    error: "",
+  });
+
+  const { done, error: emailError } = signupState;
+
+  useEffect(() => {
+    if (done) closeModal();
+  }, [done]);
+
   return (
     <ModalContainer open={open} closeModal={closeModal}>
       <div
@@ -39,7 +53,11 @@ export default function AuthModal({
           {type === "login" ? (
             <LoginForm switchModal={switchModal} />
           ) : (
-            <SignupForm switchModal={switchModal} />
+            <SignupForm
+              switchModal={switchModal}
+              signupAction={signupAction}
+              emailError={emailError}
+            />
           )}
           <div className="flex flex-col gap-4">
             <div className="relative">
