@@ -8,7 +8,7 @@ import React from "react";
 export default async function CreateNewListingPage({
   property,
 }: {
-  property?: PropertyType;
+  property: PropertyType | null;
 }) {
   const user = await getUserSession();
 

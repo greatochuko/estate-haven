@@ -7,7 +7,7 @@ export default async function AgentListPage() {
   return (
     <div className="gap-4 gap-y-8 sm:gap-6 lg:gap-8 grid grid-cols-[repeat(auto-fill,_minmax(15rem,_1fr))]">
       {agents.map((agent) => (
-        <Agent key={agent.id} agent={agent} />
+        <Agent key={agent._id} agent={agent} />
       ))}
     </div>
   );

@@ -1,10 +1,13 @@
 import SettingsPageReviewsList from "@/components/SettingsPageReviewsList";
+import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getAllUserReviews } from "@/services/reviewServices";
 import { getUserSession } from "@/services/userServices";
 import React from "react";
 
 export default async function ReviewsPage() {
   const user = await getUserSession();
+  if (!user) return <UserNotAuthenticatedPage />;
+
   const reviews = await getAllUserReviews(user._id);
 
   return (

@@ -1,11 +1,16 @@
-import { useSearchParams } from "next/navigation";
+import { PropertySearchParams } from "@/app/properties/page";
 import { useRouter } from "next/navigation";
 import React, { Fragment } from "react";
 
-export default function Paginator({ maxPage }: { maxPage: number }) {
-  const searchParams = useSearchParams();
+export default function Paginator({
+  maxPage,
+  searchParams,
+}: {
+  maxPage: number;
+  searchParams: PropertySearchParams;
+}) {
   const router = useRouter();
-  const currentPage = Number(searchParams.get("page")) || 1;
+  const currentPage = Number(searchParams.page) || 1;
 
   const arrayFromPages = Array.from(Array(maxPage), (_, i) => i + 1);
 

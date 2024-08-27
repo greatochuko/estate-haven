@@ -4,15 +4,15 @@ import Rating from "./Rating";
 import Link from "next/link";
 
 export type ReviewType = {
-  id: string;
+  _id: string;
   user: {
-    id: string;
+    _id: string;
     firstname: string;
     lastname: string;
     imageUrl: string;
   };
   agent: {
-    id: string;
+    _id: string;
     firstname: string;
     lastname: string;
     imageUrl: string;
@@ -39,7 +39,7 @@ export default function Review({
 
   return (
     <li
-      key={review.id}
+      key={review._id}
       className="flex flex-col gap-4 border-[#eee] pb-4 border-b"
     >
       {showUser ? (

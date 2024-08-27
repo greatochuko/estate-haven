@@ -33,7 +33,6 @@ export async function createListing(formData: FormData) {
     await Property.create(newPropertyData);
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    console.log((error as Error).message);
   } finally {
     revalidatePath("/", "layout");
     if (redirectUrl) redirect(redirectUrl);
@@ -69,7 +68,6 @@ export async function saveAsDraft(formData: FormData) {
     await Property.create(newPropertyData);
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    console.log((error as Error).message);
   } finally {
     revalidatePath("/", "layout");
     if (redirectUrl) redirect(redirectUrl);
@@ -107,7 +105,6 @@ export async function editListing(formData: FormData) {
     await Property.findByIdAndUpdate(propertyId as string, propertyToEdit);
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    console.log((error as Error).message);
   } finally {
     revalidatePath("/", "layout");
     if (redirectUrl) redirect(redirectUrl);
@@ -145,7 +142,6 @@ export async function editAsDraft(formData: FormData) {
     await Property.findByIdAndUpdate(propertyId as string, propertyToEdit);
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    console.log((error as Error).message);
   } finally {
     revalidatePath("/", "layout");
     if (redirectUrl) redirect(redirectUrl);
@@ -155,8 +151,6 @@ export async function editAsDraft(formData: FormData) {
 export async function deleteListing(propertyId: string) {
   try {
     await Property.findByIdAndDelete(propertyId);
-  } catch (error) {
-    console.log((error as Error).message);
-  }
+  } catch (error) {}
   revalidatePath("/", "layout");
 }

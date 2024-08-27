@@ -1,10 +1,13 @@
 import { PropertyType } from "@/components/Property";
+import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import UserWishlist from "@/components/UserWishlist";
 import { getUserSession } from "@/services/userServices";
 import React from "react";
 
 export default async function WishlistPage() {
   const user = await getUserSession();
+  if (!user) return <UserNotAuthenticatedPage />;
+
   return (
     <div className="flex flex-col h-full">
       <div className="flex flex-col gap-1 mb-4">

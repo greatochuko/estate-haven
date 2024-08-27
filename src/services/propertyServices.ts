@@ -284,17 +284,21 @@ import { Property } from "@/db/models/Property";
 //   },
 // ];
 
-export async function getProperties() {
+export async function getProperties(): Promise<PropertyType[]> {
   const properties = await Property.find({ isPublished: true });
   return JSON.parse(JSON.stringify(properties));
 }
 
-export async function getPropertiesByAgent(agentId: string) {
+export async function getPropertiesByAgent(
+  agentId: string
+): Promise<PropertyType[]> {
   const agentProperties = await Property.find({ agentId });
   return JSON.parse(JSON.stringify(agentProperties));
 }
 
-export async function getProperty(propertyId: string) {
+export async function getProperty(
+  propertyId: string
+): Promise<PropertyType | null> {
   const property = await Property.findById(propertyId);
   return JSON.parse(JSON.stringify(property));
 }

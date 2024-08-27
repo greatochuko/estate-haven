@@ -2,15 +2,15 @@ import { ReviewType } from "@/components/Review";
 
 const reviews: ReviewType[] = [
   {
-    id: "1",
+    _id: "1",
     user: {
-      id: "4",
+      _id: "4",
       firstname: "Funmi",
       lastname: "Adeyemi",
       imageUrl: "/profile-pic-4.jpg",
     },
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -24,15 +24,15 @@ const reviews: ReviewType[] = [
       "The process of buying my first home was smooth and stress-free, thanks to their professional team!",
   },
   {
-    id: "2",
+    _id: "2",
     user: {
-      id: "2",
+      _id: "2",
       firstname: "Amina",
       lastname: "Bello",
       imageUrl: "/profile-pic-2.jpg",
     },
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -46,15 +46,15 @@ const reviews: ReviewType[] = [
       "Excellent service! They helped me find the perfect apartment in a great neighborhood.",
   },
   {
-    id: "3",
+    _id: "3",
     user: {
-      id: "3",
+      _id: "3",
       firstname: "Emeka",
       lastname: "Ibe",
       imageUrl: "/profile-pic-3.jpg",
     },
     agent: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -68,15 +68,15 @@ const reviews: ReviewType[] = [
       "Very knowledgeable agents who guided me through the entire selling process effortlessly.",
   },
   {
-    id: "4",
+    _id: "4",
     user: {
-      id: "1",
+      _id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
     },
     agent: {
-      id: "4",
+      _id: "4",
       firstname: "Funmi",
       lastname: "Adeyemi",
       imageUrl: "/profile-pic-4.jpg",
@@ -90,15 +90,15 @@ const reviews: ReviewType[] = [
       "They were incredibly helpful in finding a rental property that met all my needs.",
   },
   {
-    id: "5",
+    _id: "5",
     user: {
-      id: "5",
+      _id: "5",
       firstname: "Tunde",
       lastname: "Olawale",
       imageUrl: "/profile-pic-5.jpg",
     },
     agent: {
-      id: "5",
+      _id: "5",
       firstname: "Tunde",
       lastname: "Olawale",
       imageUrl: "/profile-pic-5.jpg",
@@ -114,11 +114,11 @@ const reviews: ReviewType[] = [
 ];
 
 export async function getReviews(agentId: string) {
-  return reviews.filter((review) => review.agent.id === agentId);
+  return reviews.filter((review) => review.agent._id === agentId);
 }
 
 export async function getAllUserReviews(userId: string) {
   return reviews.filter(
-    (review) => review.agent.id === userId || review.user._id === userId
+    (review) => review.agent._id === userId || review.user._id === userId
   );
 }

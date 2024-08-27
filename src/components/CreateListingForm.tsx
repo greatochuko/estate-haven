@@ -54,7 +54,7 @@ export default function CreateListingForm({
   setImages,
   canSubmit,
 }: {
-  property?: PropertyType;
+  property: PropertyType | null;
   userId: string;
   propertyName: string;
   setPropertyName: React.Dispatch<React.SetStateAction<string>>;

@@ -18,23 +18,25 @@ export default function ImageViewModal({
 }) {
   const [zoom, setZoom] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
-  const [domLoaded, setDomLoaded] = useState(false);
 
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     function toggleFullscreen() {
-      if (!modalRef.current || !domLoaded) return;
-      if (document.fullscreenElement === modalRef.current) {
+      if (fullscreen) {
+        modalRef.current?.requestFullscreen();
+        return;
+      } else if (document.fullscreenElement === modalRef.current) {
         document.exitFullscreen();
-      } else {
-        modalRef.current.requestFullscreen();
       }
     }
-
     toggleFullscreen();
-    setDomLoaded(true);
   }, [fullscreen]);
+
+  function closeImageView() {
+    document.exitFullscreen();
+    closeModal();
+  }
 
   return (
     <ModalContainer
@@ -172,7 +174,7 @@ export default function ImageViewModal({
                 </svg>
               )}
             </button>
-            <button onClick={closeModal} className="p-1 group">
+            <button onClick={closeImageView} className="p-1 group">
               <svg
                 height={24}
                 width={24}

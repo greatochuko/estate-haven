@@ -3,12 +3,12 @@ import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { User } from "@/db/models/User";
 
-export async function getAgents() {
-  return await User.find();
+export async function getAgents(): Promise<AgentType[]> {
+  return JSON.parse(JSON.stringify(await User.find()));
 }
 
-export async function getAgent(agentId: string) {
-  return await User.findById(agentId);
+export async function getAgent(agentId: string): Promise<AgentType | null> {
+  return JSON.parse(JSON.stringify(await User.findById(agentId)));
 }
 
 export async function getUserSession(): Promise<AgentType | null> {
@@ -22,7 +22,9 @@ export async function getUserSession(): Promise<AgentType | null> {
     const payload = jwt.verify(token, jwtSecret);
     if (typeof payload === "string") throw new Error("Invalid payload");
 
-    const user = await User.findById(payload.userId);
+    const user = JSON.parse(
+      JSON.stringify(await User.findById(payload.userId))
+    );
     return JSON.parse(JSON.stringify(user));
   } catch (err) {
     return null;

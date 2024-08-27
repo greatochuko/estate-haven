@@ -3,25 +3,26 @@ import React, { useState } from "react";
 import SearchFilter from "./SearchFilter";
 import SearchResults from "./SearchResults";
 import { PropertyType } from "./Property";
-import { useSearchParams } from "next/navigation";
+import { PropertySearchParams } from "@/app/properties/page";
 
 export default function PropertiesPageMain({
   properties,
+  searchParams,
 }: {
   properties: PropertyType[];
+  searchParams: PropertySearchParams;
 }) {
   const [showFilter, setShowFilter] = useState(false);
 
-  const searchParams = useSearchParams();
-  const city = searchParams.get("city")?.split("-").join(" ");
-  const propertyTypes = searchParams.get("propertyTypes")?.split("-");
-  const listingType = searchParams.get("listingType");
-  const minPrice = Number(searchParams.get("minPrice"));
-  const maxPrice = Number(searchParams.get("maxPrice"));
-  const minBedroom = Number(searchParams.get("minBedroom"));
-  const maxBedroom = Number(searchParams.get("maxBedroom"));
-  const minBathroom = Number(searchParams.get("minBathroom"));
-  const maxBathroom = Number(searchParams.get("maxBathroom"));
+  const city = searchParams.city?.split("-").join(" ");
+  const propertyTypes = searchParams.propertyTypes?.split("-");
+  const category = searchParams.category;
+  const minPrice = Number(searchParams.minPrice);
+  const maxPrice = Number(searchParams.maxPrice);
+  const minBedroom = Number(searchParams.minBedroom);
+  const maxBedroom = Number(searchParams.maxBedroom);
+  const minBathroom = Number(searchParams.minBathroom);
+  const maxBathroom = Number(searchParams.maxBathroom);
 
   let filteredProperties = properties;
 
@@ -33,11 +34,11 @@ export default function PropertiesPageMain({
     filteredProperties = filteredProperties.filter((property) =>
       propertyTypes.some((p) => property.type.toLowerCase() === p.toLowerCase())
     );
-  if (listingType === "rent")
+  if (category === "rent")
     filteredProperties = filteredProperties.filter(
       (property) => property.category === "rent"
     );
-  if (listingType === "sale")
+  if (category === "sale")
     filteredProperties = filteredProperties.filter(
       (property) => property.category === "sale"
     );
@@ -72,10 +73,12 @@ export default function PropertiesPageMain({
         properties={properties}
         closeModal={() => setShowFilter(false)}
         showFilter={showFilter}
+        searchParams={searchParams}
       />
       <SearchResults
         properties={filteredProperties}
         showFilter={() => setShowFilter(true)}
+        searchParams={searchParams}
       />
     </div>
   );

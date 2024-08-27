@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 import Paginator from "./Paginator";
+import { PropertySearchParams } from "@/app/properties/page";
 
 export default function SearchResults({
   showFilter,
   properties,
+  searchParams,
 }: {
   showFilter: () => void;
   properties: PropertyType[];
+  searchParams: PropertySearchParams;
 }) {
   const [sortBy, setSortBy] = useState("popular");
   let sortedProperties = properties;
@@ -162,13 +165,16 @@ export default function SearchResults({
             </g>
           </svg>
           <p className="max-w-xl text-center">
-            Sorry, we couldn't find any results matching your search. Try
+            Sorry, we couldn&apos;t find any results matching your search. Try
             adjusting your keywords or explore related topics below.
           </p>
         </div>
       )}
       {sortedProperties.length > 0 ? (
-        <Paginator maxPage={Math.ceil(sortedProperties.length / 9)} />
+        <Paginator
+          maxPage={Math.ceil(sortedProperties.length / 9)}
+          searchParams={searchParams}
+        />
       ) : null}
     </div>
   );

@@ -9,7 +9,7 @@ export default function CreateListingContainer({
   property,
 }: {
   userId: string;
-  property?: PropertyType;
+  property: PropertyType | null;
 }) {
   const [propertyName, setPropertyName] = useState(property?.name || "");
   const [category, setCategory] = useState(property?.category || "rent");

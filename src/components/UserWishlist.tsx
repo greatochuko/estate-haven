@@ -28,10 +28,12 @@ export default function UserWishlist({
               ></Image>
               <p
                 className={`top-2 left-2 absolute text-sm p-1 px-2 rounded-md text-white ${
-                  property.isRent ? "bg-blue-500" : "bg-accent-green-100"
+                  property.category === "rent"
+                    ? "bg-blue-500"
+                    : "bg-accent-green-100"
                 }`}
               >
-                {property.isRent ? "Rent" : "Sale"}
+                {property.category === "rent" ? "Rent" : "Sale"}
               </p>
             </div>
             <div className="relative flex flex-col flex-[1.5] gap-4 p-3 sm:p-6">
@@ -47,7 +49,7 @@ export default function UserWishlist({
                 </p>
                 <p className="font-bold text-lg">
                   ₦{property.price.toLocaleString()}
-                  {property.isRent ? "/Mo" : null}
+                  {property.category === "rent" ? "/Mo" : null}
                 </p>
               </div>
               <hr className="border-zinc-100 mt-auto" />
@@ -166,7 +168,7 @@ export default function UserWishlist({
                 title="Remove from wishlist"
                 onClick={() =>
                   setWishlistProperties((curr) =>
-                    curr.filter((pro) => pro.id !== property._id)
+                    curr.filter((pro) => pro._id !== property._id)
                   )
                 }
               >

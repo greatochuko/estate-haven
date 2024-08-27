@@ -1,50 +1,48 @@
 import React, { useState } from "react";
 import { locations } from "./PropertiesByLocationSection";
 import { PropertyType } from "./Property";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { PropertySearchParams } from "@/app/properties/page";
 
 export default function SearchFilter({
   properties,
   showFilter,
   closeModal,
+  searchParams,
 }: {
   properties: PropertyType[];
   showFilter: boolean;
   closeModal: () => void;
+  searchParams: PropertySearchParams;
 }) {
-  const searchParams = useSearchParams();
   const router = useRouter();
-  const [city, setCity] = useState(
-    searchParams.get("city")?.toLowerCase() || "all"
-  );
+  const [city, setCity] = useState(searchParams.city?.toLowerCase() || "all");
   const [propertyTypes, setPropertyTypes] = useState<string[]>(
-    searchParams.get("propertyTypes")?.split("-") || [
+    searchParams.propertyTypes?.split("-") || [
       "house",
       "apartment",
       "duplex",
       "studio",
     ]
   );
-  const [listingType, setListingType] = useState(
-    searchParams.get("listingType") || "rent"
-  );
-  const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "");
-  const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") || "");
+  const [category, setCategory] = useState(searchParams.category || "all");
+  const [minPrice, setMinPrice] = useState(searchParams.minPrice || "");
+  const [maxPrice, setMaxPrice] = useState(searchParams.maxPrice || "");
 
   const maxBeds = Math.max(...properties.map((property) => property.beds));
   const [minBedroom, setMinBedroom] = useState(
-    Number(searchParams.get("minBedroom")) || 0
+    Number(searchParams.minBedroom) || 0
   );
   const [maxBedroom, setMaxBedroom] = useState(
-    Number(searchParams.get("maxBedroom")) || maxBeds
+    Number(searchParams.maxBedroom) || maxBeds
   );
 
   const maxBath = Math.max(...properties.map((property) => property.bath));
   const [minBathroom, setMinBathroom] = useState(
-    Number(searchParams.get("minBathroom")) || 0
+    Number(searchParams.minBathroom) || 0
   );
   const [maxBathroom, setMaxBathroom] = useState(
-    Number(searchParams.get("maxBathroom")) || maxBath
+    Number(searchParams.maxBathroom) || maxBath
   );
 
   function toggleAddType(type: string) {
@@ -58,23 +56,26 @@ export default function SearchFilter({
   function resetFilters() {
     setCity("all");
     setPropertyTypes(["house", "apartment", "duplex", "studio"]);
-    setListingType("rent");
+    setCategory("all");
     setMinPrice("");
     setMaxPrice("");
     setMinBedroom(0);
     setMaxBedroom(maxBeds);
     setMinBathroom(0);
     setMaxBathroom(maxBath);
-    applyFilters();
+    router.push("/properties");
   }
 
   function applyFilters() {
     const newSearchParams = new URLSearchParams(searchParams);
 
     city !== "all" && newSearchParams.set("city", city);
-    propertyTypes.length !== 4 &&
-      newSearchParams.set("propertyTypes", propertyTypes.join("-"));
-    listingType && newSearchParams.set("listingType", listingType);
+    propertyTypes.length < 4
+      ? newSearchParams.set("propertyTypes", propertyTypes.join("-"))
+      : newSearchParams.delete("propertyTypes");
+    category !== "all"
+      ? newSearchParams.set("category", category)
+      : newSearchParams.delete("category");
     minPrice && newSearchParams.set("minPrice", minPrice);
     maxPrice && newSearchParams.set("maxPrice", maxPrice);
     minBedroom && newSearchParams.set("minBedroom", minBedroom.toString());
@@ -312,9 +313,9 @@ export default function SearchFilter({
           <div className="flex items-center gap-4">
             <p className="font-semibold">For</p>
             <button
-              onClick={() => setListingType("sale")}
+              onClick={() => setCategory("sale")}
               className={`${
-                listingType === "sale"
+                category === "sale"
                   ? "bg-accent-green-100 text-white"
                   : "bg-white text-accent-green-100"
               } border border-accent-green-100 px-2 p-1 rounded-md font-semibold duration-100`}
@@ -322,20 +323,30 @@ export default function SearchFilter({
               Sale
             </button>
             <button
-              onClick={() => setListingType("rent")}
+              onClick={() => setCategory("rent")}
               className={`${
-                listingType === "rent"
+                category === "rent"
                   ? "bg-accent-green-100 text-white"
                   : "bg-white text-accent-green-100"
               } border border-accent-green-100 px-2 p-1 rounded-md font-semibold duration-100`}
             >
               Rent
             </button>
+            <button
+              onClick={() => setCategory("all")}
+              className={`${
+                category === "all"
+                  ? "bg-accent-green-100 text-white"
+                  : "bg-white text-accent-green-100"
+              } border border-accent-green-100 px-2 p-1 rounded-md font-semibold duration-100`}
+            >
+              All
+            </button>
           </div>
           <div className="flex gap-4">
             <div className="flex flex-col flex-1 gap-1">
               <label htmlFor="min-price" className="font-semibold">
-                Min {listingType === "rent" ? "Rent" : "Price"}
+                Min {category === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
                 <span className="top-[50%] left-2 absolute -translate-y-[50%]">
@@ -358,7 +369,7 @@ export default function SearchFilter({
             </div>
             <div className="flex flex-col flex-1 gap-1">
               <label htmlFor="max-price" className="font-semibold">
-                Max {listingType === "rent" ? "Rent" : "Price"}
+                Max {category === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
                 <span className="top-[50%] left-2 absolute -translate-y-[50%]">

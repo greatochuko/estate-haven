@@ -59,7 +59,7 @@ export default function Agent({ agent }: { agent: AgentType }) {
         12 Listings
       </p>
       <Link
-        href={`/agents/${agent.id}`}
+        href={`/agents/${agent._id}`}
         className="block bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-bold text-center text-white duration-300"
       >
         View Profile
