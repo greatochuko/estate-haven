@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
+import { signup } from "@/actions/userActions";
 
 export default function SignupForm({
   switchModal,
-  emailError,
-  signupAction,
+  closeModal,
 }: {
   switchModal: (type: string) => void;
-  emailError: string;
-  signupAction: (payload: FormData) => void;
+  closeModal: () => void;
 }) {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [pending, setPending] = useState(false);
 
   const confirmPasswordError = confirmPassword && password !== confirmPassword;
   const passwordError =
@@ -31,8 +31,28 @@ export default function SignupForm({
     !!passwordError ||
     !!confirmPasswordError;
 
+  function clearInputs() {
+    setFirstname("");
+    setLastname("");
+    setEmail("");
+    setPassword("");
+  }
+
+  async function handleSignup(e: React.FormEvent) {
+    e.preventDefault();
+    setPending(true);
+    const { done, error } = await signup(firstname, lastname, email, password);
+    if (!done && error) {
+      setEmailError(error);
+    } else {
+      clearInputs();
+      closeModal();
+    }
+    setPending(false);
+  }
+
   return (
-    <form action={signupAction} className="flex flex-col gap-3">
+    <form onSubmit={handleSignup} className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
         <div className="flex flex-col flex-1 gap-2">
           <label htmlFor="firstname">Firstname</label>
@@ -112,7 +132,13 @@ export default function SignupForm({
         ) : null}
       </div>
       <div className="flex flex-col gap-2">
-        <SubmitButton cannotSubmit={cannotSubmit} />
+        <button
+          disabled={cannotSubmit || pending}
+          type="submit"
+          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
+        >
+          {pending ? <LoadingIndicator color="white" /> : "Signup"}
+        </button>
         <p className="font-semibold text-sm">
           Already have and account?{" "}
           <button
@@ -125,18 +151,5 @@ export default function SignupForm({
         </p>
       </div>
     </form>
-  );
-}
-
-function SubmitButton({ cannotSubmit }: { cannotSubmit: boolean }) {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      disabled={cannotSubmit || pending}
-      type="submit"
-      className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
-    >
-      {pending ? <LoadingIndicator color="white" /> : "Signup"}
-    </button>
   );
 }

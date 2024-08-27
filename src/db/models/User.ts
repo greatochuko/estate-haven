@@ -26,7 +26,7 @@ const UserSchema = new Schema<UserSchemaType>(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     bio: { type: String },
-    imageUrl: { type: String },
+    imageUrl: { type: String, default: "/placeholder-profile-image.png" },
     companyName: { type: String },
     phoneNumber: { type: String },
     workEmail: { type: String },
@@ -34,7 +34,11 @@ const UserSchema = new Schema<UserSchemaType>(
     twitter: { type: String },
     linkedIn: { type: String },
     instagram: { type: String },
-    wishlist: { type: [mongoose.SchemaTypes.ObjectId], default: [] },
+    wishlist: {
+      type: [mongoose.SchemaTypes.ObjectId],
+      default: [],
+      ref: "property",
+    },
   },
   { timestamps: true }
 );

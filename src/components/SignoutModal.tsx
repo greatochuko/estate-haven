@@ -1,5 +1,8 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ModalContainer from "./ModalContainer";
+import { signout } from "@/actions/userActions";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignoutModal({
   closeModal,
@@ -8,6 +11,13 @@ export default function SignoutModal({
   closeModal: () => void;
   open: boolean;
 }) {
+  const [pending, setPending] = useState(false);
+  async function handleSignout() {
+    setPending(true);
+    await signout();
+    closeModal();
+    setPending(false);
+  }
   return (
     <ModalContainer closeModal={closeModal} open={open}>
       <div
@@ -54,8 +64,11 @@ export default function SignoutModal({
           >
             Cancel
           </button>
-          <button className="bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md font-bold text-white duration-200">
-            Confirm
+          <button
+            onClick={handleSignout}
+            className="flex-center bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md w-24 font-bold text-white duration-200"
+          >
+            {pending ? <LoadingIndicator color="white" /> : "Confirm"}
           </button>
         </div>
       </div>

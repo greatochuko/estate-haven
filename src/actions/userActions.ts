@@ -2,38 +2,44 @@
 import { User } from "@/db/models/User";
 import { revalidatePath } from "next/cache";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
-export async function signup(initialState: any, formData: FormData) {
-  let state = initialState;
+export async function signup(
+  firstname: string,
+  lastname: string,
+  email: string,
+  password: string
+) {
   try {
-    const plainPassword = formData.get("password");
-    const encryptedPassword = await bcrypt.hash(plainPassword as string, 10);
+    const encryptedPassword = await bcrypt.hash(password as string, 10);
     const newUserData = {
-      firstname: formData.get("firstname"),
-      lastname: formData.get("lastname"),
-      email: formData.get("email"),
+      firstname,
+      lastname,
+      email,
       password: encryptedPassword,
     };
-    await User.create(newUserData);
-    state = { done: crypto.randomUUID(), error: "" };
+    const newUser = await User.create(newUserData);
+    const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET!);
+    cookies().set("token", token, {
+      expires: Date.now() + 1000 * 1000,
+      httpOnly: true,
+    });
+    revalidatePath("/", "layout");
+    return { done: true, error: "" };
   } catch (error) {
     const err = error as Error;
     if (err.message.includes("E11000") && err.message.includes("email")) {
-      state = { done: null, error: "Email already in use" };
+      return { done: null, error: "Email already in use" };
     }
-  } finally {
-    revalidatePath("/", "layout");
-    return state;
+    return { done: false, error: "Something went wrong" };
   }
 }
 
-export async function login(initialState: any, formData: FormData) {
-  let state = initialState;
+export async function login(email: string, password: string) {
   try {
-    const email = formData.get("email");
-    const password = formData.get("password");
     const user = await User.findOne({ email });
-    if (!user) throw new Error("User does not exist");
+    if (!user) throw new Error("Invalid email and password combination");
     const passwordIsCorrect = await bcrypt.compare(
       password as string,
       user.password
@@ -41,14 +47,22 @@ export async function login(initialState: any, formData: FormData) {
 
     if (!passwordIsCorrect)
       throw new Error("Invalid email and password combination");
-    state = { done: crypto.randomUUID(), error: null };
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!);
+    cookies().set("token", token, {
+      expires: Date.now() + 100 * 1000,
+      httpOnly: true,
+    });
+    revalidatePath("/", "layout");
+    return { done: true, error: null };
   } catch (error) {
     const err = error as Error;
-    state = { done: null, error: err.message };
-  } finally {
-    revalidatePath("/", "layout");
-    return state;
+    return { done: false, error: err.message };
   }
+}
+
+export async function signout() {
+  cookies().delete("token");
+  revalidatePath("/", "layout");
 }
 
 export async function updatePersonalInfo(formData: FormData) {
