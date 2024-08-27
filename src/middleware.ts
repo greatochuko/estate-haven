@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
   const session = request.cookies.get("token");
   if (!session) return;
   res.cookies.set("token", session.value, {
-    expires: Date.now() + 100 * 1000,
+    expires: Date.now() + 60 * 60 * 1000,
     httpOnly: true,
   });
   return res;

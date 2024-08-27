@@ -49,7 +49,7 @@ export async function login(email: string, password: string) {
       throw new Error("Invalid email and password combination");
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!);
     cookies().set("token", token, {
-      expires: Date.now() + 100 * 1000,
+      expires: Date.now() + 60 * 60 * 1000,
       httpOnly: true,
     });
     revalidatePath("/", "layout");
