@@ -94,9 +94,36 @@ export async function updatePersonalInfo(userInfo: {
   revalidatePath("/", "layout");
 }
 
-export async function updatePassword(initialState: any, formData: FormData) {
-  const currentPassword = formData.get("current-password");
-  const newPassword = formData.get("new-password");
+export async function updatePassword(
+  oldPassword: string,
+  newPassword: string
+): Promise<{ done: boolean; error: string }> {
+  try {
+    const cookie = cookies().get("token");
+
+    const token = cookie?.value;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
+
+    const payload = jwt.verify(token, jwtSecret);
+    if (typeof payload === "string") throw new Error("Invalid payload");
+    const userId = payload.userId;
+
+    const user = await User.findById(userId);
+    const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
+    if (!passwordIsCorrect) throw new Error("Old password is incorrect");
+    const encryptedNewPassword = await bcrypt.hash(newPassword, 10);
+    user.password = encryptedNewPassword;
+    await user.save();
+    return { done: true, error: "" };
+  } catch (err) {
+    const errorMessage = (err as Error).message;
+    console.log(errorMessage);
+    if (errorMessage === "Old password is incorrect") {
+      return { done: false, error: "Old password is incorrect" };
+    } else {
+      return { done: false, error: "Something went wrong" };
+    }
+  }
   revalidatePath("/", "layout");
-  return crypto.randomUUID();
 }
