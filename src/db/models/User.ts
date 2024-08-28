@@ -2,7 +2,6 @@ import { PropertyType } from "@/components/Property";
 import mongoose, { Schema } from "mongoose";
 
 type UserSchemaType = {
-  _id: string;
   firstname: string;
   lastname: string;
   email: string;

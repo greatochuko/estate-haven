@@ -27,7 +27,7 @@ export default function UserDropdownMenu({
       >
         <div className="flex flex-col gap-3 p-2">
           <div className="flex items-center gap-2 group">
-            <div className="relative rounded-full w-12 h-12 overflow-hidden">
+            <div className="relative bg-zinc-100 rounded-full w-12 h-12 overflow-hidden">
               <Image
                 src={user.imageUrl}
                 alt={user.firstname + " " + user.lastname}

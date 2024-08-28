@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { AgentType } from "@/components/AgentPropertyOffers";
 
 export async function signup(
   firstname: string,
@@ -65,17 +66,31 @@ export async function signout() {
   revalidatePath("/", "layout");
 }
 
-export async function updatePersonalInfo(formData: FormData) {
-  const personalInfo = {
-    firstname: formData.get("firstname"),
-    lastname: formData.get("lastname"),
-    workEmail: formData.get("workEmail"),
-    companyName: formData.get("companyName"),
-    phoneNumber: formData.get("phoneNumber"),
-    facebook: formData.get("facebook"),
-    linkedIn: formData.get("linkedIn"),
-    instagram: formData.get("instagram"),
-  };
+export async function updatePersonalInfo(userInfo: {
+  firstname: string;
+  lastname: string;
+  bio: string;
+  imageUrl: string;
+  companyName: string;
+  workEmail: string;
+  phoneNumber: string;
+  facebook: string;
+  linkedIn: string;
+  instagram: string;
+  twitter: string;
+}) {
+  try {
+    const cookie = cookies().get("token");
+
+    const token = cookie?.value;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
+
+    const payload = jwt.verify(token, jwtSecret);
+    if (typeof payload === "string") throw new Error("Invalid payload");
+    const userId = payload.userId;
+    await User.findByIdAndUpdate(userId, userInfo);
+  } catch (error) {}
   revalidatePath("/", "layout");
 }
 

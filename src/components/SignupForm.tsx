@@ -131,7 +131,7 @@ export default function SignupForm({
           </p>
         ) : null}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <button
           disabled={cannotSubmit || pending}
           type="submit"
@@ -139,7 +139,7 @@ export default function SignupForm({
         >
           {pending ? <LoadingIndicator color="white" /> : "Signup"}
         </button>
-        <p className="font-semibold text-sm">
+        <p className="font-semibold">
           Already have and account?{" "}
           <button
             type="button"

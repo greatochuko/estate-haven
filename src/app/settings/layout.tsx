@@ -19,7 +19,7 @@ export default async function SettingsLayout({
       <div className="flex-1 min-w-60 p-2 shadow-[0_0_5px_1px_#eee] rounded-md h-fit">
         <div className="flex flex-col flex-1 gap-3">
           <div className="flex gap-2 items-center">
-            <div className="relative rounded-full w-14 h-14 overflow-hidden">
+            <div className="relative rounded-full w-14 bg-zinc-100 h-14 overflow-hidden">
               <Image
                 src={user.imageUrl}
                 alt={user.firstname + " " + user.lastname}

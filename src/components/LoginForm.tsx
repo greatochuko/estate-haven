@@ -63,7 +63,7 @@ export default function LoginForm({
       {loginError ? (
         <p className="mt-[-2px] text-red-500 text-sm">{loginError}</p>
       ) : null}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <button
           disabled={pending}
           type="submit"
@@ -71,7 +71,7 @@ export default function LoginForm({
         >
           {pending ? <LoadingIndicator color="white" /> : "Login"}
         </button>
-        <p className="font-semibold text-sm">
+        <p className="font-semibold">
           Don&apos;t have and account?{" "}
           <button
             type="button"

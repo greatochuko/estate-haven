@@ -20,7 +20,7 @@ export default function Testimonial({
 }) {
   return (
     <div className="flex flex-col flex-[0_0_100%] sm:flex-[0_0_calc(100%/2_-_.5rem)] lg:flex-[0_0_calc(100%/3_-_.67rem)] items-center gap-2 border-2 p-6 rounded-xl text-center">
-      <div className="relative rounded-full w-20 overflow-hidden aspect-square">
+      <div className="relative bg-zinc-100 rounded-full w-20 overflow-hidden aspect-square">
         <Image
           src={testimonial.user.imageUrl}
           alt={testimonial.user.firstname + " " + testimonial.user.lastname}
