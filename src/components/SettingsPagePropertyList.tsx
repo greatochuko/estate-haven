@@ -11,7 +11,7 @@ export default function SettingsPagePropertyList({
   properties: PropertyType[];
 }) {
   const [filter, setFilter] = useState("all");
-  const [propertyType, setPropertyType] = useState("rent");
+  const [category, setCategory] = useState("all");
   const [sortBy, setSortBy] = useState("popular");
   const [dropdownId, setDropdownId] = useState("");
 
@@ -50,11 +50,11 @@ export default function SettingsPagePropertyList({
     );
 
   // Filter Properties by property type
-  if (propertyType === "rent")
+  if (category === "rent")
     filteredProperties = filteredProperties.filter(
       (property) => property.category === "rent"
     );
-  if (propertyType === "sale")
+  if (category === "sale")
     filteredProperties = filteredProperties.filter(
       (property) => property.category === "sale"
     );
@@ -98,7 +98,7 @@ export default function SettingsPagePropertyList({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex min-[424px]:flex-row flex-col flex-wrap justify-between items-center gap-4">
+      <div className="flex min-[440px]:flex-row flex-col flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-2 group">
           <button
             onClick={() => setFilter("all")}
@@ -132,26 +132,18 @@ export default function SettingsPagePropertyList({
           </button>
         </div>
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setPropertyType("rent")}
-            className={` p-2 rounded-md font-semibold duration-300 ${
-              propertyType === "rent"
-                ? "bg-white shadow-[0_1px_6px_1px_#e0e0e0] text-accent-green-100 "
-                : "bg-[#f6f6f6] hover:shadow-[0_1px_6px_1px_#e0e0e0] text-zinc-500"
-            }`}
+          <label htmlFor="property-type">Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            name="property-type"
+            id="property-type"
+            className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
           >
-            For rent
-          </button>
-          <button
-            onClick={() => setPropertyType("sale")}
-            className={` p-2 rounded-md font-semibold duration-300 ${
-              propertyType === "sale"
-                ? "bg-white shadow-[0_1px_6px_1px_#e0e0e0] text-accent-green-100 "
-                : "bg-[#f6f6f6] hover:shadow-[0_1px_6px_1px_#e0e0e0] text-zinc-500"
-            }`}
-          >
-            For sale
-          </button>
+            <option value="all">All</option>
+            <option value="rent">For rent</option>
+            <option value="sale">For sale</option>
+          </select>
         </div>
         <div className="flex items-center gap-2">
           <label htmlFor="sort-by">Sort by</label>

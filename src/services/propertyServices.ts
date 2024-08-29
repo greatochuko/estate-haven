@@ -289,6 +289,16 @@ export async function getProperties(): Promise<PropertyType[]> {
   return JSON.parse(JSON.stringify(properties));
 }
 
+export async function getAgentProperties(
+  agentId: string
+): Promise<PropertyType[]> {
+  const agentProperties = await Property.find({
+    agent: agentId,
+  });
+
+  return JSON.parse(JSON.stringify(agentProperties));
+}
+
 export async function getPropertiesByAgent(
   agentId: string
 ): Promise<PropertyType[]> {

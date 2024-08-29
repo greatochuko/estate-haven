@@ -1,6 +1,6 @@
 import SettingsPagePropertyList from "@/components/SettingsPagePropertyList";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
-import { getPropertiesByAgent } from "@/services/propertyServices";
+import { getAgentProperties } from "@/services/propertyServices";
 import { getUserSession } from "@/services/userServices";
 import React from "react";
 
@@ -8,7 +8,7 @@ export default async function MyPropertiesPage() {
   const user = await getUserSession();
   if (!user) return <UserNotAuthenticatedPage />;
 
-  const agentProperties = await getPropertiesByAgent(user._id);
+  const agentProperties = await getAgentProperties(user._id);
 
   return (
     <div>
