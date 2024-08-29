@@ -2,6 +2,7 @@ import React from "react";
 import heroImage from "../../public/hero-image.png";
 import Image from "next/image";
 import Link from "next/link";
+import { searchProperties } from "@/actions/propertyActions";
 
 export default function Hero() {
   return (
@@ -30,21 +31,47 @@ export default function Hero() {
           className="ml-auto w-[50%] object-cover"
         ></Image>
       </div>
-      <form className="bottom-0 left-[50%] absolute flex justify-between items-center gap-4 bg-white shadow-[0_0_5px] shadow-zinc-200 mx-auto p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl w-[90%] max-w-4xl -translate-x-[50%] translate-y-[50%]">
+      <form
+        action={searchProperties}
+        className="bottom-0 left-[50%] absolute flex justify-between items-center gap-4 bg-white shadow-[0_0_5px] shadow-zinc-200 mx-auto p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl w-[90%] max-w-5xl text-zinc-600 -translate-x-[50%] translate-y-[50%]"
+      >
+        <div className="sm:flex flex-col flex-1 gap-2 hidden">
+          <label className="font-semibold" htmlFor="category">
+            Category
+          </label>
+          <select
+            name="category"
+            id="category"
+            className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
+          >
+            <option value="all">All</option>
+            <option value="rent">For rent</option>
+            <option value="sale">For sale</option>
+          </select>
+        </div>
+
         <div className="flex flex-col flex-1 gap-2">
-          <label className="sm:block hidden font-bold" htmlFor="location">
+          <label className="font-semibold" htmlFor="location">
             Location
           </label>
-          <input
-            type="text"
-            id="location"
+          <select
             name="location"
-            placeholder="Enter your city name"
+            id="location"
             className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
-          />
+          >
+            <option value="all">All</option>
+            <option value="lagos">Lagos</option>
+            <option value="abuja">Abuja</option>
+            <option value="kano">Kano</option>
+            <option value="benin">Benin</option>
+            <option value="port-harcourt">Port Harcourt</option>
+            <option value="ibadan">Ibadan</option>
+            <option value="enugu">Enugu</option>
+          </select>
         </div>
+
         <div className="sm:flex flex-col flex-1 gap-2 hidden">
-          <label className="font-bold" htmlFor="property-type">
+          <label className="font-semibold" htmlFor="property-type">
             Property Type
           </label>
           <select
@@ -59,8 +86,9 @@ export default function Hero() {
             <option value="town house">Town house</option>
           </select>
         </div>
+
         <div className="lg:flex flex-col flex-1 gap-2 hidden">
-          <label className="font-bold">Price Range</label>
+          <label className="font-semibold">Price Range</label>
           <div className="flex items-center gap-2">
             <input
               type="number"
@@ -79,6 +107,7 @@ export default function Hero() {
             />
           </div>
         </div>
+
         <button className="bg-accent-green-100 hover:bg-accent-green-200 p-2 sm:p-4 rounded-full duration-300">
           <svg
             width={30}

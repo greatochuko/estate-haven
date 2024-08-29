@@ -152,3 +152,37 @@ export async function deleteListing(propertyId: string) {
   } catch (error) {}
   revalidatePath("/", "layout");
 }
+
+export async function searchProperties(formData: FormData) {
+  const category = formData.get("category");
+  const location = formData.get("location");
+  const propertyType = formData.get("property-type");
+  const fromPrice = formData.get("from-price");
+  const toPrice = formData.get("to-price");
+
+  const searchParams = new URLSearchParams();
+
+  typeof category === "string" &&
+    category !== "all" &&
+    searchParams.set("category", category);
+  typeof location === "string" &&
+    location !== "all" &&
+    searchParams.set("city", location);
+  typeof propertyType === "string" &&
+    propertyType !== "all" &&
+    searchParams.set("propertyTypes", propertyType);
+  fromPrice &&
+    typeof fromPrice === "string" &&
+    searchParams.set("minPrice", fromPrice);
+  toPrice &&
+    typeof toPrice === "string" &&
+    searchParams.set("maxPrice", toPrice);
+
+  let url = "/properties";
+  if (searchParams.toString().length) {
+    url = `/properties?${searchParams.toString()}`;
+  }
+
+  console.log(url);
+  redirect(`/properties?${searchParams.toString()}`);
+}
