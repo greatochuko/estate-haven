@@ -28,11 +28,18 @@ export default function PasswordAndSecurityForm() {
     !!newPasswordError ||
     !!confirmNewPasswordError;
 
+  function resetInputs() {
+    setOldPassword("");
+    setNewPassword("");
+    setConfirmNewPassword("");
+  }
+
   async function handleUpdatePassword(e: React.FormEvent) {
     e.preventDefault();
     setPending(true);
     const { done, error } = await updatePassword(oldPassword, newPassword);
     setOldPasswordError(error);
+    resetInputs();
     setPending(false);
   }
 

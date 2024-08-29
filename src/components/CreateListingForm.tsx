@@ -656,6 +656,7 @@ export default function CreateListingForm({
           name="images"
           value={imageList.map((img) => img.src)}
         />
+        <input type="hidden" name="amenities" value={amenities} />
         <ul className="gap-2 grid grid-cols-2 lg:grid-cols-3">
           {imageList.map((image) => (
             <li

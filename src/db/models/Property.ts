@@ -1,3 +1,4 @@
+import { AgentType } from "@/components/AgentPropertyOffers";
 import mongoose from "mongoose";
 
 type PropertySchemaType = {
@@ -12,12 +13,13 @@ type PropertySchemaType = {
   city: string;
   state: string;
   type: string;
-  agentId: string;
+  agent: AgentType;
   views: number;
   beds: number;
   bath: number;
   area: number;
   category: "rent" | "sale";
+  amenities: string[];
   petsAllowed: boolean;
   dateCreated: string;
   isPublished: boolean;
@@ -35,12 +37,13 @@ const propertySchema = new mongoose.Schema<PropertySchemaType>(
     city: { type: String, required: true },
     state: { type: String, required: true },
     type: { type: String, required: true },
-    agentId: { type: String, required: true },
+    agent: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: "user" },
     views: { type: Number, default: 0 },
     beds: { type: Number, required: true },
     bath: { type: Number, required: true },
     area: { type: Number, required: true },
     category: { type: String, required: true },
+    amenities: { type: [String], default: [] },
     petsAllowed: { type: Boolean, required: true },
     isPublished: { type: Boolean, default: true },
   },

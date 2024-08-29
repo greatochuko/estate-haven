@@ -22,11 +22,11 @@ export async function createListing(formData: FormData) {
       city: formData.get("city"),
       state: formData.get("state"),
       type: formData.get("propertyType"),
-      agentId: formData.get("agentId"),
+      agent: user._id,
       beds: formData.get("beds"),
       bath: formData.get("bath"),
       area: formData.get("area"),
-      amenities: formData.get("amenities"),
+      amenities: (formData.get("amenities") as string).split(","),
       category: formData.get("category"),
       petsAllowed: formData.get("petsAllowed"),
     };
@@ -56,11 +56,11 @@ export async function saveAsDraft(formData: FormData) {
       city: formData.get("city"),
       state: formData.get("state"),
       type: formData.get("propertyType"),
-      agentId: formData.get("agentId"),
+      agent: user._id,
       beds: formData.get("beds"),
       bath: formData.get("bath"),
       area: formData.get("area"),
-      amenities: formData.get("amenities"),
+      amenities: (formData.get("amenities") as string).split(","),
       category: formData.get("category"),
       petsAllowed: formData.get("petsAllowed"),
       isPublished: false,
@@ -91,16 +91,15 @@ export async function editListing(formData: FormData) {
       city: formData.get("city"),
       state: formData.get("state"),
       type: formData.get("propertyType"),
-      agentId: formData.get("agentId"),
+      agent: user._id,
       beds: formData.get("beds"),
       bath: formData.get("bath"),
       area: formData.get("area"),
-      amenities: formData.get("amenities"),
+      amenities: (formData.get("amenities") as string).split(","),
       category: formData.get("category"),
       petsAllowed: formData.get("petsAllowed"),
       isPublished: true,
     };
-    // return;
     const propertyId = formData.get("propertyId");
     await Property.findByIdAndUpdate(propertyId as string, propertyToEdit);
     redirectUrl = "/settings/my-properties";
@@ -128,16 +127,15 @@ export async function editAsDraft(formData: FormData) {
       city: formData.get("city"),
       state: formData.get("state"),
       type: formData.get("propertyType"),
-      agentId: formData.get("agentId"),
+      agent: user._id,
       beds: formData.get("beds"),
       bath: formData.get("bath"),
       area: formData.get("area"),
-      amenities: formData.get("amenities"),
+      amenities: (formData.get("amenities") as string).split(","),
       category: formData.get("category"),
       petsAllowed: formData.get("petsAllowed"),
       isPublished: false,
     };
-    // return;
     const propertyId = formData.get("propertyId");
     await Property.findByIdAndUpdate(propertyId as string, propertyToEdit);
     redirectUrl = "/settings/my-properties";

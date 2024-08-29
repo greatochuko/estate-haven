@@ -292,11 +292,23 @@ export async function getProperties(): Promise<PropertyType[]> {
 export async function getPropertiesByAgent(
   agentId: string
 ): Promise<PropertyType[]> {
-  const agentProperties = await Property.find({ agentId });
+  const agentProperties = await Property.find({
+    isPublished: true,
+    agent: agentId,
+  });
+
   return JSON.parse(JSON.stringify(agentProperties));
 }
 
 export async function getProperty(
+  propertyId: string
+): Promise<PropertyType | null> {
+  const property = await Property.findById(propertyId);
+  if (!property.isPublished) return null;
+  return JSON.parse(JSON.stringify(property));
+}
+
+export async function getPropertyToEdit(
   propertyId: string
 ): Promise<PropertyType | null> {
   const property = await Property.findById(propertyId);

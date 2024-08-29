@@ -118,7 +118,6 @@ export async function updatePassword(
     return { done: true, error: "" };
   } catch (err) {
     const errorMessage = (err as Error).message;
-    console.log(errorMessage);
     if (errorMessage === "Old password is incorrect") {
       return { done: false, error: "Old password is incorrect" };
     } else {
