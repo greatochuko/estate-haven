@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { AgentType } from "./AgentPropertyOffers";
 
 export type PropertyType = {
@@ -29,36 +29,15 @@ export type PropertyType = {
 };
 
 export default function Property({ property }: { property: PropertyType }) {
-  function handleLike() {}
+  const [isLiked, setIsLiked] = useState(false);
+
+  function handleLike() {
+    setIsLiked((curr) => !curr);
+  }
 
   return (
     <div className="flex flex-col gap-2 shadow-lg p-2 rounded-xl duration-300 overflow-hidden">
-      <div className="relative rounded-lg overflow-hidden aspect-[1.5] group">
-        <button className="top-[50%] left-2 z-10 absolute bg-white/40 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-x-[150%] -translate-y-[50%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
-          <svg
-            height={20}
-            width={20}
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            transform="matrix(-1, 0, 0, 1, 0, 0)"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M8.79289 6.29289C9.18342 5.90237 9.81658 5.90237 10.2071 6.29289L15.2071 11.2929C15.5976 11.6834 15.5976 12.3166 15.2071 12.7071L10.2071 17.7071C9.81658 18.0976 9.18342 18.0976 8.79289 17.7071C8.40237 17.3166 8.40237 16.6834 8.79289 16.2929L13.0858 12L8.79289 7.70711C8.40237 7.31658 8.40237 6.68342 8.79289 6.29289Z"
-                fill="#000000"
-              ></path>
-            </g>
-          </svg>
-        </button>
+      <div className="relative rounded-lg overflow-hidden aspect-[1.5]">
         <Image
           src={property.images[0]}
           alt="property image"
@@ -66,32 +45,8 @@ export default function Property({ property }: { property: PropertyType }) {
           sizes="600px"
           className="object-cover"
         ></Image>
-        <button className="top-[50%] right-2 absolute bg-white/40 hover:bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-full -translate-y-[50%] translate-x-[150%] [@media(pointer:_coarse)]:translate-x-0 group-hover:translate-x-0 duration-300">
-          <svg
-            height={20}
-            width={20}
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            ></g>
-            <g id="SVGRepo_iconCarrier">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M8.79289 6.29289C9.18342 5.90237 9.81658 5.90237 10.2071 6.29289L15.2071 11.2929C15.5976 11.6834 15.5976 12.3166 15.2071 12.7071L10.2071 17.7071C9.81658 18.0976 9.18342 18.0976 8.79289 17.7071C8.40237 17.3166 8.40237 16.6834 8.79289 16.2929L13.0858 12L8.79289 7.70711C8.40237 7.31658 8.40237 6.68342 8.79289 6.29289Z"
-                fill="#000000"
-              ></path>
-            </g>
-          </svg>
-        </button>
         <button
-          className="top-2 right-2 absolute flex-center bg-white p-1 rounded-full"
+          className="top-2 right-2 absolute flex-center bg-white p-1 rounded-full focus-visible:ring ring-accent-green-100 duration-200 active:scale-90"
           onClick={handleLike}
         >
           <svg
@@ -112,7 +67,8 @@ export default function Property({ property }: { property: PropertyType }) {
                 fillRule="evenodd"
                 clipRule="evenodd"
                 d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
-                stroke="#3b9152"
+                stroke="#2eb57e"
+                className={isLiked ? "fill-accent-green-100" : "fill-white"}
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -121,15 +77,13 @@ export default function Property({ property }: { property: PropertyType }) {
           </svg>
         </button>
       </div>
-      <Link
-        href={`/properties/${property._id}`}
-        className="flex flex-col group"
-      >
-        <div className="flex justify-between items-center">
-          <h4 className="group-hover:text-accent-green-200 font-bold duration-300">
-            {property.name}
-          </h4>
-        </div>
+      <div className="flex flex-col rounded-md">
+        <Link
+          href={`/properties/${property._id}`}
+          className="flex flex-col rounded-md focus-visible:ring ring-accent-green-100 font-bold hover:text-accent-green-200 duration-200"
+        >
+          {property.name}
+        </Link>
         <p className="font-semibold text-zinc-500">
           {property.city}, {property.state}
         </p>
@@ -254,7 +208,7 @@ export default function Property({ property }: { property: PropertyType }) {
             {property.area.toLocaleString()}sqft
           </p>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }
