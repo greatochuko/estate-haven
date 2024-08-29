@@ -4,13 +4,16 @@ import SearchFilter from "./SearchFilter";
 import SearchResults from "./SearchResults";
 import { PropertyType } from "./Property";
 import { PropertySearchParams } from "@/app/properties/page";
+import { AgentType } from "./AgentPropertyOffers";
 
 export default function PropertiesPageMain({
   properties,
   searchParams,
+  user,
 }: {
   properties: PropertyType[];
   searchParams: PropertySearchParams;
+  user: AgentType | null;
 }) {
   const [showFilter, setShowFilter] = useState(false);
 
@@ -79,6 +82,7 @@ export default function PropertiesPageMain({
         properties={filteredProperties}
         showFilter={() => setShowFilter(true)}
         searchParams={searchParams}
+        user={user}
       />
     </div>
   );

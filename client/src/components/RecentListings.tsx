@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Property, { PropertyType } from "./Property";
 import Link from "next/link";
+import { AgentType } from "./AgentPropertyOffers";
 
 export default function RecentListings({
   properties,
+  user,
 }: {
   properties: PropertyType[];
+  user: AgentType | null;
 }) {
   return (
     <div className="flex flex-col gap-4">
@@ -14,7 +17,7 @@ export default function RecentListings({
       </h3>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]">
         {properties.map((property) => (
-          <Property property={property} key={property._id} />
+          <Property property={property} key={property._id} user={user} />
         ))}
       </div>
       <Link

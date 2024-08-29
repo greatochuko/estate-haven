@@ -335,3 +335,7 @@ export async function getPropertyToEdit(
   const property = await Property.findById(propertyId);
   return JSON.parse(JSON.stringify(property));
 }
+
+export async function toggleLikeProperty() {
+  return true;
+}

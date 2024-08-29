@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { AgentType } from "./AgentPropertyOffers";
+import { toggleLikeProperty } from "@/services/propertyServices";
 
 export type PropertyType = {
   _id: string;
@@ -28,11 +29,20 @@ export type PropertyType = {
   isPublished: boolean;
 };
 
-export default function Property({ property }: { property: PropertyType }) {
+export default function Property({
+  property,
+  user,
+}: {
+  property: PropertyType;
+  user: AgentType | null;
+}) {
   const [isLiked, setIsLiked] = useState(false);
 
-  function handleLike() {
-    setIsLiked((curr) => !curr);
+  // console.log(user);
+
+  async function handleLike() {
+    const success = await toggleLikeProperty();
+    if (success) setIsLiked((curr) => !curr);
   }
 
   return (

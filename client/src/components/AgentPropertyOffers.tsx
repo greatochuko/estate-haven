@@ -20,8 +20,10 @@ export type AgentType = {
 
 export default function AgentPropertyOffers({
   properties,
+  user,
 }: {
   properties: PropertyType[];
+  user: AgentType | null;
 }) {
   const [propertyType, setPropertyType] = useState("sale");
   const [sortBy, setSortBy] = useState("popular");
@@ -117,7 +119,7 @@ export default function AgentPropertyOffers({
       </div>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
         {filteredProperties.map((property) => (
-          <Property property={property} key={property._id} />
+          <Property property={property} key={property._id} user={user} />
         ))}
       </div>
     </div>

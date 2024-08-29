@@ -1,5 +1,5 @@
 import AgentPropertyOffers from "@/components/AgentPropertyOffers";
-import { getAgent } from "@/services/userServices";
+import { getAgent, getUserSession } from "@/services/userServices";
 import { getPropertiesByAgent } from "@/services/propertyServices";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -10,6 +10,7 @@ export default async function AgentDetailsPage({
 }: {
   params: { agentId: string };
 }) {
+  const user = await getUserSession();
   const agent = await getAgent(agentId);
   const agentProperties = await getPropertiesByAgent(agentId);
   if (!agent) notFound();
@@ -94,7 +95,7 @@ export default async function AgentDetailsPage({
             </p>
           </div>
         </div>
-        <AgentPropertyOffers properties={agentProperties} />
+        <AgentPropertyOffers properties={agentProperties} user={user} />
       </div>
     </div>
   );
