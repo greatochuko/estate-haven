@@ -1,18 +1,25 @@
 import { AgentType } from "@/components/AgentPropertyOffers";
 import { cookies } from "next/headers";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { User } from "@/db/models/User";
+import { connectDB } from "@/db/connectDB";
 
 export async function getAgents(): Promise<AgentType[]> {
+  await connectDB();
+
   return JSON.parse(JSON.stringify(await User.find()));
 }
 
 export async function getAgent(agentId: string): Promise<AgentType | null> {
+  await connectDB();
+
   return JSON.parse(JSON.stringify(await User.findById(agentId)));
 }
 
 export async function getUserSession(): Promise<AgentType | null> {
   try {
+    await connectDB();
+
     const cookie = cookies().get("token");
 
     const token = cookie?.value;

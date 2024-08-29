@@ -1,5 +1,6 @@
 "use server";
 
+import { connectDB } from "@/db/connectDB";
 import { Property } from "@/db/models/Property";
 import { getUserSession } from "@/services/userServices";
 import { revalidatePath } from "next/cache";
@@ -8,6 +9,8 @@ import { redirect } from "next/navigation";
 export async function createListing(formData: FormData) {
   let redirectUrl;
   try {
+    await connectDB();
+
     const user = await getUserSession();
     if (!user) throw new Error("user not authenticated");
 
@@ -42,6 +45,8 @@ export async function createListing(formData: FormData) {
 export async function saveAsDraft(formData: FormData) {
   let redirectUrl;
   try {
+    await connectDB();
+
     const user = await getUserSession();
     if (!user) throw new Error("user not authenticated");
 
@@ -77,6 +82,8 @@ export async function saveAsDraft(formData: FormData) {
 export async function editListing(formData: FormData) {
   let redirectUrl;
   try {
+    await connectDB();
+
     const user = await getUserSession();
     if (!user) throw new Error("user not authenticated");
 
@@ -113,6 +120,8 @@ export async function editListing(formData: FormData) {
 export async function editAsDraft(formData: FormData) {
   let redirectUrl;
   try {
+    await connectDB();
+
     const user = await getUserSession();
     if (!user) throw new Error("user not authenticated");
 
@@ -148,6 +157,8 @@ export async function editAsDraft(formData: FormData) {
 
 export async function deleteListing(propertyId: string) {
   try {
+    await connectDB();
+
     await Property.findByIdAndDelete(propertyId);
   } catch (error) {}
   revalidatePath("/", "layout");

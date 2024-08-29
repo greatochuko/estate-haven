@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { AgentType } from "@/components/AgentPropertyOffers";
+import { connectDB } from "@/db/connectDB";
 
 export async function signup(
   firstname: string,
@@ -13,6 +13,8 @@ export async function signup(
   password: string
 ) {
   try {
+    await connectDB();
+
     const encryptedPassword = await bcrypt.hash(password as string, 10);
     const newUserData = {
       firstname,
@@ -39,6 +41,8 @@ export async function signup(
 
 export async function login(email: string, password: string) {
   try {
+    await connectDB();
+
     const user = await User.findOne({ email });
     if (!user) throw new Error("Invalid email and password combination");
     const passwordIsCorrect = await bcrypt.compare(
@@ -80,6 +84,8 @@ export async function updatePersonalInfo(userInfo: {
   twitter: string;
 }) {
   try {
+    await connectDB();
+
     const cookie = cookies().get("token");
 
     const token = cookie?.value;
@@ -99,6 +105,8 @@ export async function updatePassword(
   newPassword: string
 ): Promise<{ done: boolean; error: string }> {
   try {
+    await connectDB();
+
     const cookie = cookies().get("token");
 
     const token = cookie?.value;

@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { getUserSession } from "@/services/userServices";
-import { connectDB } from "@/db/connectDB";
 
 export const metadata: Metadata = {
   title: "Estate Haven",
@@ -16,7 +15,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await connectDB();
   const user = await getUserSession();
 
   return (
