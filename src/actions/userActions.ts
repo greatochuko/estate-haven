@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { UserType } from "@/components/AgentPropertyOffers";
+import { link } from "fs";
 
 export async function signup(
   firstname: string,
@@ -69,35 +70,51 @@ export async function signout() {
   revalidatePath("/", "layout");
 }
 
-// export async function updatePersonalInfo(userInfo: {
-//   firstname: string;
-//   lastname: string;
-//   bio: string;
-//   imageUrl: string;
-//   companyName: string;
-//   workEmail: string;
-//   phoneNumber: string;
-//   facebook: string;
-//   linkedIn: string;
-//   instagram: string;
-//   twitter: string;
-// }) {
-//   try {
-//     await connectDB();
+export async function updatePersonalInfo(formData: FormData) {
+  const firstname = formData.get("first-name");
+  const lastname = formData.get("last-name");
+  const bio = formData.get("bio");
+  const imageUrl = formData.get("imageUrl");
+  const companyName = formData.get("companyName");
+  const workEmail = formData.get("workEmail");
+  const phoneNumber = formData.get("phoneNumber");
+  const facebook = formData.get("facebook");
+  const linkedIn = formData.get("linkedIn");
+  const instagram = formData.get("instagram");
 
-//     const cookie = cookies().get("token");
+  try {
+    // get token from cookies
+    const cookie = cookies().get("token");
+    const token = cookie?.value;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
 
-//     const token = cookie?.value;
-//     const jwtSecret = process.env.JWT_SECRET;
-//     if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
+    // verify token
+    const payload = jwt.verify(token, jwtSecret);
+    if (typeof payload === "string") throw new Error("Invalid payload");
+    const userId = payload.userId;
 
-//     const payload = jwt.verify(token, jwtSecret);
-//     if (typeof payload === "string") throw new Error("Invalid payload");
-//     const userId = payload.userId;
-//     await User.findByIdAndUpdate(userId, userInfo);
-//   } catch (error) {}
-//   revalidatePath("/", "layout");
-// }
+    // update user
+    const supabase = createClient();
+    const { error } = await supabase
+      .from("profiles")
+      .update({
+        firstname,
+        lastname,
+        bio,
+        imageUrl,
+        companyName,
+        workEmail,
+        phoneNumber,
+        facebook,
+        linkedIn,
+        instagram,
+      })
+      .eq("id", userId);
+    if (error) throw error;
+  } catch (error) {}
+  revalidatePath("/", "layout");
+}
 
 // export async function updatePassword(
 //   oldPassword: string,

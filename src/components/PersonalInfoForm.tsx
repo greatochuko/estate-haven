@@ -20,29 +20,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
   const [facebook, setFacebook] = useState(user.facebook);
   const [linkedIn, setLinkedIn] = useState(user.linkedIn);
   const [instagram, setInstagram] = useState(user.instagram);
-  const [twitter, setTwitter] = useState(user.twitter);
-  const [pending, setPending] = useState(false);
   const [imagePending, setImagePending] = useState(false);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const userInfo = {
-      firstname,
-      lastname,
-      bio,
-      imageUrl,
-      companyName,
-      workEmail,
-      phoneNumber,
-      facebook,
-      linkedIn,
-      instagram,
-      twitter,
-    };
-    setPending(true);
-    await updatePersonalInfo(userInfo);
-    setPending(false);
-  }
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files && e.target.files[0];
@@ -55,7 +33,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form action={updatePersonalInfo}>
         <div className="flex flex-col gap-1 border-zinc-100 py-2">
           <label htmlFor="first-name" className="font-bold">
             First Name
@@ -215,12 +193,12 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
               <input
                 hidden
                 type="file"
-                name="profileImage"
                 id="profileImage"
                 accept="image/*"
                 onChange={handleImageUpload}
               />
             </div>
+            <input type="hidden" name="imageUrl" value={imageUrl} />
           </div>
         </div>
 
@@ -243,7 +221,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             workEmail
           </label>
           <input
-            type="workEmail"
+            type="email"
             id="workEmail"
             name="workEmail"
             className="p-2 border rounded-md"
@@ -257,7 +235,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             Phone Number
           </label>
           <input
-            type="text"
+            type="tel"
             id="phoneNumber"
             name="phoneNumber"
             className="p-2 border rounded-md"
@@ -306,28 +284,9 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             onChange={(e) => setInstagram(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-1 border-zinc-100 py-2">
-          <label htmlFor="twitter" className="font-bold">
-            Twitter
-          </label>
-          <input
-            type="text"
-            id="twitter"
-            name="twitter"
-            className="p-2 border rounded-md"
-            value={twitter}
-            onChange={(e) => setTwitter(e.target.value)}
-          />
-        </div>
 
         <div className="flex sm:flex-row flex-col justify-between items-center gap-4 mt-4">
-          <button
-            type="submit"
-            disabled={pending || imagePending}
-            className="bg-accent-green-100 hover:bg-accent-green-200 px-8 p-2 rounded-md w-full sm:w-fit font-bold text-white duration-300"
-          >
-            {pending ? <LoadingIndicator color="white" /> : "Save Changes"}
-          </button>
+          <SubmitButton imagePending={imagePending} />
           <button
             type="button"
             className="flex items-center gap-1 p-2 font-semibold text-red-400 hover:text-red-500 duration-300 group"
@@ -398,5 +357,18 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
         open={deleteAccountModal}
       />
     </>
+  );
+}
+
+function SubmitButton({ imagePending }: { imagePending: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending || imagePending}
+      className="bg-accent-green-100 hover:bg-accent-green-200 px-8 p-2 rounded-md w-full sm:w-fit font-bold text-white duration-300"
+    >
+      {pending ? <LoadingIndicator color="white" /> : "Save Changes"}
+    </button>
   );
 }
