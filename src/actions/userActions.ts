@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { UserType } from "@/components/AgentPropertyOffers";
 import { link } from "fs";
+import { getUserIdFromCookies } from "@/utils/getUserId";
 
 export async function signup(
   firstname: string,
@@ -83,16 +84,8 @@ export async function updatePersonalInfo(formData: FormData) {
   const instagram = formData.get("instagram");
 
   try {
-    // get token from cookies
-    const cookie = cookies().get("token");
-    const token = cookie?.value;
-    const jwtSecret = process.env.JWT_SECRET;
-    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
-
-    // verify token
-    const payload = jwt.verify(token, jwtSecret);
-    if (typeof payload === "string") throw new Error("Invalid payload");
-    const userId = payload.userId;
+    const { userId, error: cookiesError } = getUserIdFromCookies();
+    if (cookiesError) throw cookiesError;
 
     // update user
     const supabase = createClient();
@@ -121,15 +114,8 @@ export async function updatePassword(
   newPassword: string
 ): Promise<{ done: boolean; error: string }> {
   try {
-    const cookie = cookies().get("token");
-
-    const token = cookie?.value;
-    const jwtSecret = process.env.JWT_SECRET;
-    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
-
-    const payload = jwt.verify(token, jwtSecret);
-    if (typeof payload === "string") throw new Error("Invalid payload");
-    const userId = payload.userId;
+    const { userId, error: cookiesError } = getUserIdFromCookies();
+    if (cookiesError) throw cookiesError;
 
     const supabase = createClient();
     const { data, error } = await supabase
@@ -155,6 +141,21 @@ export async function updatePassword(
     } else {
       return { done: false, error: "Something went wrong" };
     }
+  } finally {
+    revalidatePath("/", "layout");
+  }
+}
+
+export async function deleteAccount() {
+  try {
+    const { userId, error: cookiesError } = getUserIdFromCookies();
+    if (cookiesError) throw cookiesError;
+
+    const supabase = createClient();
+    const {} = await supabase.from("profiles").delete().eq("id", userId);
+    return { success: true, error: null };
+  } catch (error) {
+    return { success: false, error: "Something went wrong" };
   } finally {
     revalidatePath("/", "layout");
   }

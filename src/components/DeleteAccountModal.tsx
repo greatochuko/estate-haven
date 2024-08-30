@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalContainer from "./ModalContainer";
+import { deleteAccount } from "@/actions/userActions";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function DeleteAccountModal({
   closeModal,
@@ -8,6 +10,17 @@ export default function DeleteAccountModal({
   closeModal: () => void;
   open: boolean;
 }) {
+  const [pending, setPending] = useState(false);
+
+  async function handleDeleteAccount() {
+    setPending(true);
+    const { success, error } = await deleteAccount();
+    if (success) {
+      closeModal();
+    }
+    setPending(false);
+  }
+
   return (
     <ModalContainer closeModal={closeModal} open={open}>
       <div
@@ -51,12 +64,16 @@ export default function DeleteAccountModal({
         </div>
         <div className="flex justify-end items-center gap-2 bg-[#eee] p-2">
           <button
+            disabled={pending}
             className="border-zinc-200 bg-white hover:bg-zinc-100 px-4 p-2 border rounded-md font-bold text-zinc-700 duration-300"
             onClick={closeModal}
           >
-            Cancel
+            {pending ? <LoadingIndicator color="white" /> : "Cancel"}
           </button>
-          <button className="bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md font-bold text-white duration-300">
+          <button
+            onClick={handleDeleteAccount}
+            className="bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md font-bold text-white duration-300"
+          >
             Delete
           </button>
         </div>
