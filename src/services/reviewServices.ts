@@ -114,11 +114,11 @@ const reviews: ReviewType[] = [
 ];
 
 export async function getReviews(agentId: string) {
-  return reviews.filter((review) => review.agent._id === agentId);
+  return reviews.filter((review) => review.agent.id === agentId);
 }
 
 export async function getAllUserReviews(userId: string) {
   return reviews.filter(
-    (review) => review.agent._id === userId || review.user._id === userId
+    (review) => review.agent.id === userId || review.user._id === userId
   );
 }

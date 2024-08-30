@@ -21,7 +21,7 @@ export default function AgentInformation({
         <div className="flex flex-col">
           <div className="flex flex-col gap-2 p-4 border-b">
             <Link
-              href={`/agents/${property.agent._id}`}
+              href={`/agents/${property.agent.id}`}
               className="flex items-center gap-2 group"
             >
               <div className="relative rounded-full w-16 h-16 overflow-hidden">

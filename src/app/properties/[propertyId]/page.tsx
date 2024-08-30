@@ -17,7 +17,7 @@ export default async function PropertyDetailsPage({
   const property = await getProperty(params.propertyId);
   if (!property || !property.isPublished) notFound();
 
-  // const reviews = await getReviews(property.agent._id);
+  // const reviews = await getReviews(property.agent.id);
   const reviews: ReviewType[] = [];
 
   return (

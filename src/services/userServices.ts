@@ -2,14 +2,34 @@ import { UserType } from "@/components/AgentPropertyOffers";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 import { createClient } from "@/utils/supabase/server";
-import { signout } from "@/actions/userActions";
 
 export async function getAgents(): Promise<UserType[]> {
-  return [];
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select(
+      "id, firstname, lastname, email, bio, imageUrl, companyName, phoneNumber, workEmail, facebook, linkedIn, instagram"
+    );
+  if (data && !error) {
+    return data as UserType[];
+  } else {
+    return [];
+  }
 }
 
-export async function getAgent(agentId: string) {
-  return null;
+export async function getAgent(userId: string) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select(
+      "id, firstname, lastname, email, bio, imageUrl, companyName, phoneNumber, workEmail, facebook, linkedIn, instagram"
+    )
+    .eq("id", userId);
+  if (data && !error) {
+    return data[0] as UserType;
+  } else {
+    return null;
+  }
 }
 
 export async function getUserSession() {
@@ -21,7 +41,9 @@ export async function getUserSession() {
     const supabase = createClient();
     const { data, error } = await supabase
       .from("profiles")
-      .select()
+      .select(
+        "id, firstname, lastname, email, bio, imageUrl, companyName, phoneNumber, workEmail, facebook, linkedIn, instagram"
+      )
       .eq("id", payload.userId);
 
     if (!data?.at(0)) {

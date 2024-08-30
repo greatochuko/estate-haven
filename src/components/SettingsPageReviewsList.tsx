@@ -18,7 +18,7 @@ export default function SettingsPageReviewsList({
   // Filter reviews
   if (filter === "reviews-about-you")
     filteredReviews = filteredReviews.filter(
-      (review) => review.agent._id === user._id
+      (review) => review.agent.id === user._id
     );
   if (filter === "reviews-by-you")
     filteredReviews = filteredReviews.filter(

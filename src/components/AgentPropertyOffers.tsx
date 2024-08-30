@@ -14,10 +14,9 @@ export type UserType = {
   phoneNumber: string;
   workEmail: string;
   facebook: string;
-  twitter: string;
   linkedIn: string;
   instagram: string;
-  wishlist?: PropertyType[];
+  wishlist: PropertyType[];
 };
 
 export default function AgentPropertyOffers({
@@ -83,20 +82,20 @@ export default function AgentPropertyOffers({
         <div className="flex items-center gap-2">
           <button
             onClick={() => setPropertyType("rent")}
-            className={` p-2 rounded-md font-semibold duration-300 ${
+            className={` p-2 px-3 rounded-md font-bold duration-300 ${
               propertyType === "rent"
-                ? "bg-white shadow-md text-accent-green-100 "
-                : "bg-[#f6f6f6] hover:shadow-md text-zinc-500"
+                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 "
+                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500"
             }`}
           >
             For rent
           </button>
           <button
             onClick={() => setPropertyType("sale")}
-            className={` p-2 rounded-md font-semibold duration-300 ${
+            className={` p-2 px-3 rounded-md font-bold duration-300 ${
               propertyType === "sale"
-                ? "bg-white shadow-md text-accent-green-100 "
-                : "bg-[#f6f6f6] hover:shadow-md text-zinc-500"
+                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 "
+                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500"
             }`}
           >
             For sale
