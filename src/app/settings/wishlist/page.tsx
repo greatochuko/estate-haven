@@ -19,7 +19,6 @@ export default async function WishlistPage() {
   const wishlist = await getUserWishlist();
 
   const wishlistProperties = wishlist.map((wl) => wl.property);
-  console.log(wishlistProperties);
 
   return (
     <div className="flex flex-col h-full">

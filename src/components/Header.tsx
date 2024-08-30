@@ -151,13 +151,13 @@ export default function Header({ user }: { user: UserType | null }) {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setAuthModal({ open: true, type: "login" })}
-                className="px-2 py-1 text-accent-green-100 hover:text-accent-green-200"
+                className="px-2 py-1 font-semibold text-accent-green-100 hover:text-accent-green-200"
               >
                 Login
               </button>
               <button
                 onClick={() => setAuthModal({ open: true, type: "signup" })}
-                className="bg-accent-green-100 hover:bg-accent-green-200 px-2 py-1 rounded-md text-white duration-300"
+                className="bg-accent-green-100 hover:bg-accent-green-200 px-2 py-1 rounded-md font-semibold text-white duration-300"
               >
                 Sign Up
               </button>
@@ -174,12 +174,15 @@ export default function Header({ user }: { user: UserType | null }) {
         openAuthModal={(type: string) => setAuthModal({ open: true, type })}
       />
 
-      <AuthModal
-        type={authModal.type}
-        open={authModal.open}
-        switchModal={(type: string) => setAuthModal({ open: true, type })}
-        closeModal={() => setAuthModal((curr) => ({ ...curr, open: false }))}
-      />
+      {!user && (
+        <AuthModal
+          key={"not-authenticated"}
+          type={authModal.type}
+          open={authModal.open}
+          switchModal={(type: string) => setAuthModal({ open: true, type })}
+          closeModal={() => setAuthModal((curr) => ({ ...curr, open: false }))}
+        />
+      )}
     </>
   );
 }

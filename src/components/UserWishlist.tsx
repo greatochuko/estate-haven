@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { PropertyType } from "./Property";
 import Image from "next/image";
 import Link from "next/link";
+import { removeFromWishlist } from "@/actions/wishlistActions";
 
 export default function UserWishlist({
   properties,
@@ -10,6 +11,16 @@ export default function UserWishlist({
   properties: PropertyType[];
 }) {
   const [wishlistProperties, setWishlistProperties] = useState(properties);
+
+  async function handleRemoveFromWishlist(propertyId: string) {
+    const oldState = wishlistProperties;
+    setWishlistProperties((curr) =>
+      curr.filter((property) => property.id !== propertyId)
+    );
+    const { success } = await removeFromWishlist(propertyId);
+    if (!success) setWishlistProperties(oldState);
+  }
+
   if (wishlistProperties.length) {
     return (
       <ul className="flex flex-col gap-6">
@@ -166,11 +177,7 @@ export default function UserWishlist({
               <button
                 className="top-2 right-2 absolute p-2 rounded-full duration-300 group active:scale-90"
                 title="Remove from wishlist"
-                onClick={() =>
-                  setWishlistProperties((curr) =>
-                    curr.filter((pro) => pro._id !== property.id)
-                  )
-                }
+                onClick={() => handleRemoveFromWishlist(property.id)}
               >
                 <svg
                   height={20}
