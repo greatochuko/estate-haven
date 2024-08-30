@@ -39,7 +39,9 @@ export default function PasswordAndSecurityForm() {
     setPending(true);
     const { done, error } = await updatePassword(oldPassword, newPassword);
     setOldPasswordError(error);
-    resetInputs();
+    if (done) {
+      resetInputs();
+    }
     setPending(false);
   }
 

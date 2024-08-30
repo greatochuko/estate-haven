@@ -116,37 +116,46 @@ export async function updatePersonalInfo(formData: FormData) {
   revalidatePath("/", "layout");
 }
 
-// export async function updatePassword(
-//   oldPassword: string,
-//   newPassword: string
-// ): Promise<{ done: boolean; error: string }> {
-//   try {
-//     await connectDB();
+export async function updatePassword(
+  oldPassword: string,
+  newPassword: string
+): Promise<{ done: boolean; error: string }> {
+  try {
+    const cookie = cookies().get("token");
 
-//     const cookie = cookies().get("token");
+    const token = cookie?.value;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
 
-//     const token = cookie?.value;
-//     const jwtSecret = process.env.JWT_SECRET;
-//     if (!token || !jwtSecret) throw new Error("invalid token or JWT secret");
+    const payload = jwt.verify(token, jwtSecret);
+    if (typeof payload === "string") throw new Error("Invalid payload");
+    const userId = payload.userId;
 
-//     const payload = jwt.verify(token, jwtSecret);
-//     if (typeof payload === "string") throw new Error("Invalid payload");
-//     const userId = payload.userId;
+    const supabase = createClient();
+    const { data, error } = await supabase
+      .from("profiles")
+      .select()
+      .eq("id", userId);
+    if (error) throw error;
 
-//     const user = await User.findById(userId);
-//     const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
-//     if (!passwordIsCorrect) throw new Error("Old password is incorrect");
-//     const encryptedNewPassword = await bcrypt.hash(newPassword, 10);
-//     user.password = encryptedNewPassword;
-//     await user.save();
-//     return { done: true, error: "" };
-//   } catch (err) {
-//     const errorMessage = (err as Error).message;
-//     if (errorMessage === "Old password is incorrect") {
-//       return { done: false, error: "Old password is incorrect" };
-//     } else {
-//       return { done: false, error: "Something went wrong" };
-//     }
-//   }
-//   revalidatePath("/", "layout");
-// }
+    const user = data[0];
+    const passwordIsCorrect = await bcrypt.compare(oldPassword, user.password);
+    if (!passwordIsCorrect) throw new Error("Old password is incorrect");
+
+    const encryptedNewPassword = await bcrypt.hash(newPassword, 10);
+    await supabase
+      .from("profiles")
+      .update({ password: encryptedNewPassword })
+      .eq("id", userId);
+    return { done: true, error: "" };
+  } catch (err) {
+    const errorMessage = (err as Error).message;
+    if (errorMessage === "Old password is incorrect") {
+      return { done: false, error: "Old password is incorrect" };
+    } else {
+      return { done: false, error: "Something went wrong" };
+    }
+  } finally {
+    revalidatePath("/", "layout");
+  }
+}
