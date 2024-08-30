@@ -6,6 +6,7 @@ import { getPropertiesByAgent } from "@/services/propertyServices";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
+import { getUserWishlist } from "@/services/wishlistServices";
 
 export default async function AgentDetailsPage({
   params: { agentId },
@@ -15,6 +16,7 @@ export default async function AgentDetailsPage({
   const user = await getUserSession();
   const agent = await getAgent(agentId);
   const agentProperties = await getPropertiesByAgent(agentId);
+  const wishlist = await getUserWishlist();
   if (!agent) notFound();
 
   return (
@@ -108,6 +110,7 @@ export default async function AgentDetailsPage({
         <AgentPropertyOffers
           properties={agentProperties}
           user={user as UserType | null}
+          wishlist={wishlist}
         />
       </div>
     </div>

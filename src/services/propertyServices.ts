@@ -309,7 +309,15 @@ export async function getAgentProperties(
 export async function getPropertiesByAgent(
   agentId: string
 ): Promise<PropertyType[]> {
-  return [];
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("agent", agentId)
+    .eq("isPublished", true);
+
+  if (error) console.log(error);
+  return data || [];
 }
 
 export async function getProperty(
@@ -331,8 +339,4 @@ export async function getPropertyToEdit(
   const { data, error } = await supabase.from("properties").select();
   if (error) return null;
   return data[0];
-}
-
-export async function toggleLikeProperty() {
-  return true;
 }
