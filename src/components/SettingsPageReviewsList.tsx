@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Review, { ReviewType } from "./Review";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 
 export default function SettingsPageReviewsList({
   reviews,
   user,
 }: {
   reviews: ReviewType[];
-  user: AgentType;
+  user: UserType;
 }) {
   const [filter, setFilter] = useState("reviews-about-you");
   const [sortBy, setSortBy] = useState("popular");

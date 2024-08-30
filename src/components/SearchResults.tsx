@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 import Paginator from "./Paginator";
 import { PropertySearchParams } from "@/app/properties/page";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 
 export default function SearchResults({
   showFilter,
@@ -14,7 +14,7 @@ export default function SearchResults({
   showFilter: () => void;
   properties: PropertyType[];
   searchParams: PropertySearchParams;
-  user: AgentType | null;
+  user: UserType | null;
 }) {
   const [sortBy, setSortBy] = useState("popular");
   let sortedProperties = properties;
@@ -106,7 +106,7 @@ export default function SearchResults({
       {sortedProperties.length ? (
         <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
           {sortedProperties.map((property) => (
-            <Property property={property} key={property._id} user={user}/>
+            <Property property={property} key={property._id} user={user} />
           ))}
         </div>
       ) : (

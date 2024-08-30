@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 
-export type AgentType = {
+export type UserType = {
   _id: string;
   firstname: string;
   lastname: string;
@@ -23,7 +23,7 @@ export default function AgentPropertyOffers({
   user,
 }: {
   properties: PropertyType[];
-  user: AgentType | null;
+  user: UserType | null;
 }) {
   const [propertyType, setPropertyType] = useState("sale");
   const [sortBy, setSortBy] = useState("popular");

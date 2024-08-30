@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import AuthModal from "./AuthModal";
 import MobileNav from "./MobileNav";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 import Image from "next/image";
 import UserDropdownMenu from "./UserDropdownMenu";
 
@@ -14,7 +14,7 @@ const navLinks = [
   { name: "Agents", href: "/agents" },
 ];
 
-export default function Header({ user }: { user: AgentType | null }) {
+export default function Header({ user }: { user: UserType | null }) {
   const pathname = usePathname();
   const [authModal, setAuthModal] = useState({ open: false, type: "" });
   const [mobileNav, setMobileNav] = useState(false);

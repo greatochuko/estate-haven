@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 
-export default function Agent({ agent }: { agent: AgentType }) {
+export default function Agent({ agent }: { agent: UserType }) {
   return (
     <div className="flex flex-col gap-4 shadow-[#eee] shadow-[0_0_10px_1px] p-4 rounded-md">
       <div className="flex gap-2">

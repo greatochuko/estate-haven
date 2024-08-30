@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 import { toggleLikeProperty } from "@/services/propertyServices";
 
 export type PropertyType = {
@@ -17,7 +17,7 @@ export type PropertyType = {
   city: string;
   state: string;
   type: string;
-  agent: AgentType;
+  agent: UserType;
   views: number;
   beds: number;
   bath: number;
@@ -34,7 +34,7 @@ export default function Property({
   user,
 }: {
   property: PropertyType;
-  user: AgentType | null;
+  user: UserType | null;
 }) {
   const [isLiked, setIsLiked] = useState(false);
 

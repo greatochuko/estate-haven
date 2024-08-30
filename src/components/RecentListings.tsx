@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Property, { PropertyType } from "./Property";
 import Link from "next/link";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 
 export default function RecentListings({
   properties,
   user,
 }: {
   properties: PropertyType[];
-  user: AgentType | null;
+  user: UserType | null;
 }) {
   return (
     <div className="flex flex-col gap-4">

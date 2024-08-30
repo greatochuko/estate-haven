@@ -1,7 +1,7 @@
 import { getUserSession } from "@/services/userServices";
 import Link from "next/link";
 import React from "react";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 import ModalContainer from "./ModalContainer";
 
 export default function MobileNav({
@@ -12,7 +12,7 @@ export default function MobileNav({
   mobileNavIsOpen,
   openAuthModal,
 }: {
-  user: AgentType | null;
+  user: UserType | null;
   navLinks: {
     name: string;
     href: string;

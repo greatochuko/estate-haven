@@ -1,6 +1,4 @@
 import { PropertyType } from "@/components/Property";
-import { connectDB } from "@/db/connectDB";
-import { Property } from "@/db/models/Property";
 
 // const properties: PropertyType[] = [
 //   {
@@ -286,54 +284,31 @@ import { Property } from "@/db/models/Property";
 // ];
 
 export async function getProperties(): Promise<PropertyType[]> {
-  await connectDB();
-
-  const properties = await Property.find({ isPublished: true });
-  return JSON.parse(JSON.stringify(properties));
+  return [];
 }
 
 export async function getAgentProperties(
   agentId: string
 ): Promise<PropertyType[]> {
-  await connectDB();
-
-  const agentProperties = await Property.find({
-    agent: agentId,
-  });
-
-  return JSON.parse(JSON.stringify(agentProperties));
+  return [];
 }
 
 export async function getPropertiesByAgent(
   agentId: string
 ): Promise<PropertyType[]> {
-  await connectDB();
-
-  const agentProperties = await Property.find({
-    isPublished: true,
-    agent: agentId,
-  });
-
-  return JSON.parse(JSON.stringify(agentProperties));
+  return [];
 }
 
 export async function getProperty(
   propertyId: string
 ): Promise<PropertyType | null> {
-  await connectDB();
-
-  const property = await Property.findById(propertyId);
-  if (!property.isPublished) return null;
-  return JSON.parse(JSON.stringify(property));
+  return null;
 }
 
 export async function getPropertyToEdit(
   propertyId: string
 ): Promise<PropertyType | null> {
-  await connectDB();
-
-  const property = await Property.findById(propertyId);
-  return JSON.parse(JSON.stringify(property));
+  return null;
 }
 
 export async function toggleLikeProperty() {

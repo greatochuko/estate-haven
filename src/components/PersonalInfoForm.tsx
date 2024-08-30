@@ -1,6 +1,6 @@
 "use client";
 import React, { useActionState, useState } from "react";
-import { AgentType } from "./AgentPropertyOffers";
+import { UserType } from "./AgentPropertyOffers";
 import { updatePersonalInfo } from "@/actions/userActions";
 import { useFormStatus } from "react-dom";
 import DeleteAccountModal from "./DeleteAccountModal";
@@ -8,7 +8,7 @@ import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import Image from "next/image";
 
-export default function PersonalInfoForm({ user }: { user: AgentType }) {
+export default function PersonalInfoForm({ user }: { user: UserType }) {
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
   const [firstname, setFirstname] = useState(user.firstname);
   const [lastname, setLastname] = useState(user.lastname);
