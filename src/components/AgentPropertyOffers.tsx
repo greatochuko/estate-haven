@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 
 export type UserType = {
-  _id: string;
+  id: string;
   firstname: string;
   lastname: string;
+  email: string;
+  password: string;
   bio: string;
   imageUrl: string;
   companyName: string;

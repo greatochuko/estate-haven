@@ -18,6 +18,7 @@ export default function SignoutModal({
     closeModal();
     setPending(false);
   }
+
   return (
     <ModalContainer closeModal={closeModal} open={open}>
       <div

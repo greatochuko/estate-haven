@@ -36,6 +36,7 @@ export default function SignupForm({
     setLastname("");
     setEmail("");
     setPassword("");
+    setConfirmPassword("");
   }
 
   async function handleSignup(e: React.FormEvent) {

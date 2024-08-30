@@ -17,15 +17,15 @@ export default function LoginForm({
   function clearInputs() {
     setEmail("");
     setPassword("");
+    setLoginError("");
   }
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
     setPending(true);
     const { done, error } = await login(email, password);
-    if (!done && error) {
-      setLoginError(error);
-    } else {
+    setLoginError(error);
+    if (done) {
       clearInputs();
       closeModal();
     }

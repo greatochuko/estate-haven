@@ -24,53 +24,50 @@ export async function signup(
 
   const { data, error } = await supabase
     .from("profiles")
-    .insert([{ some_column: "someValue", other_column: "otherValue" }])
+    .insert(newUserData)
     .select();
 
-  if (error) return { done: null, error: "Email already in use" };
+  if (error && !data) return { done: null, error: "Email already in use" };
 
-  console.log(data);
+  const newUser: UserType = data[0];
+  const token = jwt.sign({ userId: newUser.id }, process.env.JWT_SECRET!);
+  cookies().set("token", token, {
+    expires: Date.now() + 1000 * 1000,
+    httpOnly: true,
+  });
+  revalidatePath("/", "layout");
 
-  // const newUser = await User.create(newUserData);
-  // const token = jwt.sign({ userId: newUser.id }, process.env.JWT_SECRET!);
-  // cookies().set("token", token, {
-  //   expires: Date.now() + 1000 * 1000,
-  //   httpOnly: true,
-  // });
-  // revalidatePath("/", "layout");
-  // return { done: true, error: "" };
+  return { done: true, error: "" };
 }
 
-// export async function login(email: string, password: string) {
-//   try {
-//     await connectDB();
+export async function login(email: string, password: string) {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select()
+    .eq("email", email);
 
-//     const user = await User.findOne({ email });
-//     if (!user) throw new Error("Invalid email and password combination");
-//     const passwordIsCorrect = await bcrypt.compare(
-//       password as string,
-//       user.password
-//     );
+  if (!data?.length || error)
+    return { done: false, error: "Invalid email and password combination" };
 
-//     if (!passwordIsCorrect)
-//       throw new Error("Invalid email and password combination");
-//     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET!);
-//     cookies().set("token", token, {
-//       expires: Date.now() + 60 * 60 * 1000,
-//       httpOnly: true,
-//     });
-//     revalidatePath("/", "layout");
-//     return { done: true, error: null };
-//   } catch (error) {
-//     const err = error as Error;
-//     return { done: false, error: err.message };
-//   }
-// }
+  const user: UserType = data[0];
+  const passwordIsCorrect = await bcrypt.compare(password, user.password);
+  if (!passwordIsCorrect)
+    return { done: false, error: "Invalid email and password combination" };
 
-// export async function signout() {
-//   cookies().delete("token");
-//   revalidatePath("/", "layout");
-// }
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!);
+  cookies().set("token", token, {
+    expires: Date.now() + 1000 * 1000,
+    httpOnly: true,
+  });
+  revalidatePath("/", "layout");
+  return { done: true, error: "" };
+}
+
+export async function signout() {
+  cookies().delete("token");
+  revalidatePath("/", "layout");
+}
 
 // export async function updatePersonalInfo(userInfo: {
 //   firstname: string;
