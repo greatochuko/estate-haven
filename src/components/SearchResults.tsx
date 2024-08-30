@@ -106,7 +106,7 @@ export default function SearchResults({
       {sortedProperties.length ? (
         <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
           {sortedProperties.map((property) => (
-            <Property property={property} key={property._id} user={user} />
+            <Property property={property} key={property.id} user={user} />
           ))}
         </div>
       ) : (

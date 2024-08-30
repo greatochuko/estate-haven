@@ -6,7 +6,7 @@ import { UserType } from "./AgentPropertyOffers";
 import { toggleLikeProperty } from "@/services/propertyServices";
 
 export type PropertyType = {
-  _id: string;
+  id: string;
   name: string;
   streetAddress: string;
   yearBuilt: string;
@@ -90,7 +90,7 @@ export default function Property({
       </div>
       <div className="flex flex-col rounded-md">
         <Link
-          href={`/properties/${property._id}`}
+          href={`/properties/${property.id}`}
           className="flex flex-col rounded-md focus-visible:ring ring-accent-green-100 font-bold hover:text-accent-green-200 duration-200"
         >
           {property.name}

@@ -790,7 +790,7 @@ export default function CreateListingForm({
       </div>
 
       {!!property ? (
-        <input type="hidden" value={property._id} name="propertyId" />
+        <input type="hidden" value={property.id} name="propertyId" />
       ) : null}
       <input type="hidden" value={String(petsAllowed)} name="petsAllowed" />
     </form>

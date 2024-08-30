@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { PropertyType } from "./Property";
 import Image from "next/image";
 import Link from "next/link";
-import { deleteListing } from "@/actions/propertyActions";
 import DeletePropertyModal from "./DeletePropertyModal";
 
 export default function SettingsPagePropertyList({
@@ -167,7 +166,7 @@ export default function SettingsPagePropertyList({
         <ul className="flex flex-col gap-6">
           {filteredProperties.map((property) => (
             <li
-              key={property._id}
+              key={property.id}
               className="flex sm:flex-row flex-col shadow-[0_0_5px_1px] shadow-zinc-200 rounded-lg aspect-[5]"
             >
               <div className="relative sm:flex-1 rounded-t-lg sm:rounded-[.5rem_0_0_.5rem] h-48 sm:h-full overflow-hidden">
@@ -196,7 +195,7 @@ export default function SettingsPagePropertyList({
               <div className="relative flex flex-col flex-[1.5] gap-4 p-3 sm:p-6">
                 <div className="flex flex-col justify-between gap-1">
                   <Link
-                    href={`/properties/${property._id}`}
+                    href={`/properties/${property.id}`}
                     className="font-semibold text-lg hover:text-accent-green-100 duration-300"
                   >
                     {property.name}
@@ -324,10 +323,10 @@ export default function SettingsPagePropertyList({
                   <button
                     className="shadow-[0_2px_6px_0px] shadow-zinc-200 hover:shadow-[0_2px_6px_3px] hover:shadow-zinc-200 p-2 rounded-full duration-300 group"
                     onClick={() => {
-                      if (dropdownId === property._id) {
+                      if (dropdownId === property.id) {
                         setDropdownId("");
                       } else {
-                        setDropdownId(property._id);
+                        setDropdownId(property.id);
                       }
                     }}
                   >
@@ -365,13 +364,13 @@ export default function SettingsPagePropertyList({
                   </button>
                   <div
                     className={`flex flex-col bg-white shadow-[0_0_6px_1px] shadow-zinc-200 p-1 rounded-md w-36${
-                      dropdownId === property._id
+                      dropdownId === property.id
                         ? "visible opacity-100 duration-300"
                         : "invisible opacity-0"
                     }`}
                   >
                     <Link
-                      href={`/properties/edit/${property._id}`}
+                      href={`/properties/edit/${property.id}`}
                       className="flex items-center gap-2 p-2 font-semibold text-sm sm:text-base hover:text-blue-500 duration-300 group"
                     >
                       <svg
@@ -413,7 +412,7 @@ export default function SettingsPagePropertyList({
                       onClick={() =>
                         setDeletePropertyModal({
                           open: true,
-                          propertyId: property._id,
+                          propertyId: property.id,
                         })
                       }
                       className="flex items-center gap-2 p-2 font-semibold text-left text-sm sm:text-base hover:text-red-500 duration-300 group"

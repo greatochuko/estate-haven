@@ -17,7 +17,7 @@ export default function RecentListings({
       </h3>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]">
         {properties.map((property) => (
-          <Property property={property} key={property._id} user={user} />
+          <Property property={property} key={property.id} user={user} />
         ))}
       </div>
       <Link

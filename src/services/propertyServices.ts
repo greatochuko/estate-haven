@@ -1,4 +1,5 @@
 import { PropertyType } from "@/components/Property";
+import { createClient } from "@/utils/supabase/client";
 
 // const properties: PropertyType[] = [
 //   {
@@ -290,7 +291,10 @@ export async function getProperties(): Promise<PropertyType[]> {
 export async function getAgentProperties(
   agentId: string
 ): Promise<PropertyType[]> {
-  return [];
+  const supabase = createClient();
+  const { data, error } = await supabase.from("properties").select();
+  if (error) console.log(error);
+  return data || [];
 }
 
 export async function getPropertiesByAgent(

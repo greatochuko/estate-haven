@@ -15,7 +15,7 @@ export default function UserWishlist({
       <ul className="flex flex-col gap-6">
         {wishlistProperties.map((property) => (
           <li
-            key={property._id}
+            key={property.id}
             className="flex sm:flex-row flex-col shadow-[0_0_5px_1px] shadow-zinc-200 rounded-lg aspect-[5]"
           >
             <div className="relative sm:flex-1 rounded-t-lg sm:rounded-[.5rem_0_0_.5rem] h-48 sm:h-full overflow-hidden">
@@ -39,7 +39,7 @@ export default function UserWishlist({
             <div className="relative flex flex-col flex-[1.5] gap-4 p-3 sm:p-6">
               <div className="flex flex-col justify-between gap-1">
                 <Link
-                  href={`/properties/${property._id}`}
+                  href={`/properties/${property.id}`}
                   className="font-semibold text-lg hover:text-accent-green-100 duration-300"
                 >
                   {property.name}
@@ -168,7 +168,7 @@ export default function UserWishlist({
                 title="Remove from wishlist"
                 onClick={() =>
                   setWishlistProperties((curr) =>
-                    curr.filter((pro) => pro._id !== property._id)
+                    curr.filter((pro) => pro._id !== property.id)
                   )
                 }
               >

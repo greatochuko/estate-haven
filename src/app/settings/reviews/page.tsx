@@ -8,7 +8,7 @@ export default async function ReviewsPage() {
   const user = await getUserSession();
   if (!user) return <UserNotAuthenticatedPage />;
 
-  const reviews = await getAllUserReviews(user._id);
+  const reviews = await getAllUserReviews(user.id);
 
   return (
     <div className="flex flex-col h-full">

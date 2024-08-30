@@ -8,7 +8,7 @@ export default async function MyPropertiesPage() {
   const user = await getUserSession();
   if (!user) return <UserNotAuthenticatedPage />;
 
-  const agentProperties = await getAgentProperties(user._id);
+  const agentProperties = await getAgentProperties(user.id);
 
   return (
     <div>

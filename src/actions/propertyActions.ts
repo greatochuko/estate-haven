@@ -11,6 +11,10 @@ export async function createListing(formData: FormData) {
   try {
     const { userId, error: cookiesError } = getUserIdFromCookies();
     if (cookiesError) throw new Error("User is unauthenticated");
+
+    const imageList = formData.get("images");
+    const amenitiesList = formData.get("amenities");
+
     const newPropertyData = {
       name: formData.get("name"),
       category: formData.get("category"),
@@ -24,16 +28,16 @@ export async function createListing(formData: FormData) {
       beds: formData.get("beds"),
       bath: formData.get("bath"),
       parkingSpots: formData.get("parkingSpots"),
-      amenities: formData.get("amenities"),
+      amenities: amenitiesList?.toString().split(","),
       price: formData.get("price"),
       frequency: formData.get("frequency"),
-      images: formData.get("images"),
+      images: imageList?.toString().split(","),
       petsAllowed: !!formData.get("petsAllowed"),
       isPublished: true,
       agent: userId,
     };
 
-    //   console.log(newPropertyData);
+    // console.log(newPropertyData);
     const supabase = createClient();
     const { error } = await supabase.from("properties").insert(newPropertyData);
     if (error) {
@@ -41,7 +45,7 @@ export async function createListing(formData: FormData) {
     }
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   } finally {
     revalidatePath("/", "layout");
     redirectUrl && redirect(redirectUrl);
@@ -54,6 +58,14 @@ export async function editListing(formData: FormData) {}
 
 export async function editAsDraft(formData: FormData) {}
 
-export async function deleteListing(propertyId: string) {}
+export async function deleteListing(propertyId: string) {
+  const supabase = createClient();
+  const { error } = await supabase
+    .from("properties")
+    .delete()
+    .eq("id", propertyId);
+  if (error) return;
+  revalidatePath("/", "layout");
+}
 
 export async function searchProperties(formData: FormData) {}
