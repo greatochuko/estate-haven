@@ -17,7 +17,7 @@ export default async function CreateNewListingPage({
   return (
     <div>
       <h1 className="mb-4 font-bold text-3xl">Create New Listing</h1>
-      <CreateListingContainer userId={user._id} property={property} />
+      <CreateListingContainer property={property} />
     </div>
   );
 }

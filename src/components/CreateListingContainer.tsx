@@ -5,10 +5,8 @@ import CreateListingForm from "./CreateListingForm";
 import { PropertyType } from "./Property";
 
 export default function CreateListingContainer({
-  userId,
   property,
 }: {
-  userId: string;
   property: PropertyType | null;
 }) {
   const [propertyName, setPropertyName] = useState(property?.name || "");
@@ -61,7 +59,6 @@ export default function CreateListingContainer({
       />
       <CreateListingForm
         property={property}
-        userId={userId}
         propertyName={propertyName}
         setPropertyName={setPropertyName}
         area={area}

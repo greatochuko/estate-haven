@@ -27,7 +27,6 @@ const amenitiesList = [
 
 export default function CreateListingForm({
   property,
-  userId,
   propertyName,
   setPropertyName,
   category,
@@ -55,7 +54,6 @@ export default function CreateListingForm({
   canSubmit,
 }: {
   property: PropertyType | null;
-  userId: string;
   propertyName: string;
   setPropertyName: React.Dispatch<React.SetStateAction<string>>;
   price: number;
@@ -91,11 +89,6 @@ export default function CreateListingForm({
       setAmenities((curr) => [...curr, type]);
     }
   }
-
-  const today = new Date(Date.now());
-  const todaysDate = `${today.getFullYear()}-${
-    today.getMonth() >= 10 ? today.getMonth : "0" + today.getMonth()
-  }-${today.getDate()}`;
 
   async function addImages(files: FileList | null) {
     if (!files) return;
@@ -164,7 +157,7 @@ export default function CreateListingForm({
               }
             }}
             placeholder="Enter a name for your property"
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             id="name"
             name="name"
           />
@@ -182,7 +175,7 @@ export default function CreateListingForm({
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value as "rent" | "sale")}
-              className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+              className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
               <option value="rent">For rent</option>
               <option value="sale">For sale</option>
@@ -195,7 +188,7 @@ export default function CreateListingForm({
             <select
               name="propertyType"
               id="propertyType"
-              className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+              className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
               <option value="apartment">Apartment</option>
               <option value="house">House</option>
@@ -211,7 +204,7 @@ export default function CreateListingForm({
             name="yearBuilt"
             defaultValue={1999}
             id="yearBuilt"
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md w-fit"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 w-fit"
           />
         </div>
       </div>
@@ -261,7 +254,7 @@ export default function CreateListingForm({
             <select
               name="state"
               id="state"
-              className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+              className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
               <option value="lagos">Lagos</option>
               <option value="abuja">Abuja</option>
@@ -277,7 +270,7 @@ export default function CreateListingForm({
             <select
               name="city"
               id="city"
-              className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+              className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
               <option value="lagos">Lagos</option>
               <option value="kano">Kano</option>
@@ -294,7 +287,7 @@ export default function CreateListingForm({
             name="streetAddress"
             onChange={(e) => setStreetAddress(e.target.value)}
             placeholder="Where's your property located?"
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             id="street-address"
           />
         </div>
@@ -345,7 +338,7 @@ export default function CreateListingForm({
             name="description"
             id="description"
             defaultValue={property?.description}
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md min-h-28 sm:min-h-36 resize-none"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 min-h-28 sm:min-h-36 resize-none"
             placeholder="Write about your property"
           ></textarea>
         </div>
@@ -360,7 +353,7 @@ export default function CreateListingForm({
               id="area"
               value={area}
               onChange={(e) => setArea(Number(e.target.value))}
-              className="border-zinc-300 p-2 sm:p-3 border rounded-md max-w-40"
+              className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 max-w-40"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -369,8 +362,15 @@ export default function CreateListingForm({
               {[1, 2, 3, 4, 5].map((bed) => (
                 <li
                   key={bed}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      setBeds(bed);
+                    }
+                  }}
                   onClick={() => setBeds(bed)}
-                  className={`border-zinc-300 hover:bg-zinc-100 px-4 p-2 border-r cursor-pointer duration-200 ${
+                  className={`border-zinc-300 hover:bg-zinc-100 focus-visible:z-10 px-4 p-2 border-r focus-visible:ring ring-accent-green-100 cursor-pointer duration-200 ${
                     beds === bed ? "bg-zinc-200" : ""
                   }`}
                 >
@@ -385,9 +385,16 @@ export default function CreateListingForm({
             <ul className="flex border-zinc-300 border rounded-md w-fit">
               {[1, 2, 3, 4].map((b) => (
                 <li
+                  tabIndex={0}
                   key={b}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      setBath(b);
+                    }
+                  }}
                   onClick={() => setBath(b)}
-                  className={`border-zinc-300 hover:bg-zinc-100 p-2 px-4 border-r cursor-pointer duration-200 ${
+                  className={`border-zinc-300 hover:bg-zinc-100 focus-visible:z-10 focus-visible:ring ring-accent-green-100 p-2 px-4 border-r cursor-pointer duration-200 ${
                     bath === b ? "bg-zinc-200" : ""
                   }`}
                 >
@@ -402,9 +409,16 @@ export default function CreateListingForm({
             <ul className="flex border-zinc-300 border rounded-md w-fit">
               {[0, 1, 2, 3, 4, 5].map((num) => (
                 <li
+                  tabIndex={0}
                   key={num}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      setParkingSpots(num);
+                    }
+                  }}
                   onClick={() => setParkingSpots(num)}
-                  className={`border-zinc-300 hover:bg-zinc-100 p-2 px-4 border-r cursor-pointer duration-200 ${
+                  className={`border-zinc-300 hover:bg-zinc-100 focus-visible:z-10 p-2 px-4 focus-visible:ring ring-accent-green-100 border-r cursor-pointer duration-200 ${
                     parkingSpots === num ? "bg-zinc-200" : ""
                   }`}
                 >
@@ -432,9 +446,19 @@ export default function CreateListingForm({
                     checked={amenities.includes(am)}
                     onChange={() => toggleAmenity(am)}
                   />
-                  <label htmlFor={am} className="flex items-center gap-2">
+                  <label
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        toggleAmenity(am);
+                      }
+                    }}
+                    htmlFor={am}
+                    className="flex items-center gap-2 group"
+                  >
                     <span
-                      className={`flex-center border-accent-green-100 ${
+                      className={`flex-center border-accent-green-100 group-focus-visible:ring ring-offset-1 ring-accent-green-100 ${
                         amenities.includes(am)
                           ? "bg-accent-green-100"
                           : "bg-white"
@@ -478,11 +502,18 @@ export default function CreateListingForm({
                   onChange={() => setPetsAllowed((curr) => !curr)}
                 />
                 <label
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      setPetsAllowed((curr) => !curr);
+                    }
+                  }}
                   htmlFor="pets-allowed"
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 group"
                 >
                   <span
-                    className={`flex-center border-accent-green-100 ${
+                    className={`flex-center border-accent-green-100 group-focus-visible:ring ring-offset-1 ring-accent-green-100 ${
                       petsAllowed ? "bg-accent-green-100" : "bg-white"
                     } border rounded-[4px] w-4 h-4`}
                   >
@@ -514,6 +545,7 @@ export default function CreateListingForm({
                 </label>
               </li>
             </ul>
+            <input type="hidden" name="amenities" value={amenities} />
           </div>
         </div>
       </div>
@@ -557,16 +589,16 @@ export default function CreateListingForm({
             name="price"
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md w-full sm:w-fit"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 w-full sm:w-fit"
           />
           <select
             name="frequency"
-            className="border-zinc-300 p-2 sm:p-3 border rounded-md"
+            className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
           >
             {category === "rent" ? (
               <>
-                <option value="per-month">Per month</option>
-                <option value="per-month">Per year</option>
+                <option value="per month">Per month</option>
+                <option value="per year">Per year</option>
               </>
             ) : (
               <option value="per-month">Outright</option>
@@ -611,10 +643,11 @@ export default function CreateListingForm({
           Note: Put the main picture first
         </p>
         <label
+          tabIndex={0}
           htmlFor="imageInput"
-          className="flex-center border-zinc-300 border border-dashed rounded-md min-h-40 cursor-pointer group"
+          className="flex-center border-zinc-300 border border-dashed rounded-md min-h-40 cursor-pointer group group"
         >
-          <p className="group-hover:bg-accent-green-200 flex items-center gap-2 bg-accent-green-100 px-6 p-2 rounded-md font-bold text-white duration-300">
+          <p className="group-hover:bg-accent-green-200 group-focus-visible:ring flex items-center gap-2 bg-accent-green-100 px-6 p-2 rounded-md ring-accent-green-100 ring-offset-2 font-bold text-white duration-300">
             <svg
               height={20}
               width={20}
@@ -651,12 +684,7 @@ export default function CreateListingForm({
           onChange={(e) => addImages(e.target.files)}
           multiple
         />
-        <input
-          type="hidden"
-          name="images"
-          value={imageList.map((img) => img.src)}
-        />
-        <input type="hidden" name="amenities" value={amenities} />
+        <input type="hidden" name="images" value={images} />
         <ul className="gap-2 grid grid-cols-2 lg:grid-cols-3">
           {imageList.map((image) => (
             <li
@@ -664,7 +692,7 @@ export default function CreateListingForm({
               className="relative flex flex-col bg-zinc-100 p-1 sm:p-2 border rounded-md"
             >
               <div
-                className={`relative rounded-md ${
+                className={`relative rounded-sm ${
                   image.src ? "" : "animate-pulse bg-zinc-300"
                 } overflow-hidden aspect-[1.5]`}
               >
@@ -682,12 +710,13 @@ export default function CreateListingForm({
                 {image.name}
               </p>
               <button
-                onClick={() =>
+                onClick={() => {
                   setImageList((curr) =>
                     curr.filter((img) => img.id !== image.id)
-                  )
-                }
-                className="top-2 sm:top-4 right-2 sm:right-4 absolute bg-white sm:opacity-70 hover:opacity-100 p-0.5 sm:p-1 rounded-full duration-300"
+                  );
+                  setImages((curr) => curr.filter((img) => img !== image.src));
+                }}
+                className="top-2 sm:top-4 right-2 sm:right-4 absolute bg-white sm:opacity-70 hover:opacity-100 focus-visible:opacity-100 p-0.5 sm:p-1 rounded-full focus-visible:ring ring-accent-green-100 ring-offset-1 duration-300"
               >
                 <svg
                   height={24}
@@ -763,7 +792,6 @@ export default function CreateListingForm({
       {!!property ? (
         <input type="hidden" value={property._id} name="propertyId" />
       ) : null}
-      <input type="hidden" value={userId} name="agentId" />
       <input type="hidden" value={String(petsAllowed)} name="petsAllowed" />
     </form>
   );
@@ -779,9 +807,10 @@ function SaveAsDraftButton({
   const { pending } = useFormStatus();
   return (
     <button
+      tabIndex={0}
       disabled={pending || !canSubmit}
       formAction={isEdit ? editAsDraft : saveAsDraft}
-      className="flex-1 flex-center border-zinc-300 bg-white hover:bg-zinc-100 px-4 sm:px-6 p-2 sm:p-3 border rounded-md sm:max-w-40 font-bold duration-300"
+      className="flex-1 flex-center border-zinc-300 bg-white hover:bg-zinc-100 px-4 sm:px-6 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 sm:max-w-40 font-bold duration-300"
     >
       {pending ? <LoadingIndicator /> : "Save as draft"}
     </button>

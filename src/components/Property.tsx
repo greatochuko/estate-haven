@@ -14,6 +14,7 @@ export type PropertyType = {
   description: string;
   images: string[];
   price: number;
+  frequency: string;
   city: string;
   state: string;
   type: string;
