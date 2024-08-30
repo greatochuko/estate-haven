@@ -285,14 +285,23 @@ import { createClient } from "@/utils/supabase/client";
 // ];
 
 export async function getProperties(): Promise<PropertyType[]> {
-  return [];
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("isPublished", true);
+  if (error) console.log(error);
+  return data || [];
 }
 
 export async function getAgentProperties(
   agentId: string
 ): Promise<PropertyType[]> {
   const supabase = createClient();
-  const { data, error } = await supabase.from("properties").select();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("agent", agentId);
   if (error) console.log(error);
   return data || [];
 }
@@ -306,13 +315,22 @@ export async function getPropertiesByAgent(
 export async function getProperty(
   propertyId: string
 ): Promise<PropertyType | null> {
-  return null;
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("isPublished", true);
+  if (error) return null;
+  return data[0];
 }
 
 export async function getPropertyToEdit(
   propertyId: string
 ): Promise<PropertyType | null> {
-  return null;
+  const supabase = createClient();
+  const { data, error } = await supabase.from("properties").select();
+  if (error) return null;
+  return data[0];
 }
 
 export async function toggleLikeProperty() {
