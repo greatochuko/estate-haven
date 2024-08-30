@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
+import { WishlistType } from "@/app/settings/wishlist/page";
 
 export type UserType = {
   id: string;
@@ -26,12 +27,7 @@ export default function AgentPropertyOffers({
 }: {
   properties: PropertyType[];
   user: UserType | null;
-  wishlist: {
-    id: string;
-    user: string;
-    property: PropertyType;
-    dateCreated: string;
-  }[];
+  wishlist: WishlistType[];
 }) {
   const [propertyType, setPropertyType] = useState("all");
   const [sortBy, setSortBy] = useState("popular");

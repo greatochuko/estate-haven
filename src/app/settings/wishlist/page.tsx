@@ -2,11 +2,24 @@ import { PropertyType } from "@/components/Property";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import UserWishlist from "@/components/UserWishlist";
 import { getUserSession } from "@/services/userServices";
+import { getUserWishlist } from "@/services/wishlistServices";
 import React from "react";
+
+export type WishlistType = {
+  id: string;
+  user: string;
+  property: PropertyType;
+  dateCreated: string;
+};
 
 export default async function WishlistPage() {
   const user = await getUserSession();
   if (!user) return <UserNotAuthenticatedPage />;
+
+  const wishlist = await getUserWishlist();
+
+  const wishlistProperties = wishlist.map((wl) => wl.property);
+  console.log(wishlistProperties);
 
   return (
     <div className="flex flex-col h-full">
@@ -16,7 +29,7 @@ export default async function WishlistPage() {
           Here, you can view and easily manage your wishlist items.
         </p>
       </div>
-      <UserWishlist properties={user.wishlist as PropertyType[]} />
+      <UserWishlist properties={wishlistProperties as PropertyType[]} />
     </div>
   );
 }
