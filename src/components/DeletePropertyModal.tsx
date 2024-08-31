@@ -58,7 +58,8 @@ export default function DeletePropertyModal({
           <div className="flex flex-col gap-1">
             <h2 className="font-bold text-lg">Delete property</h2>
             <p>
-              Are you sure you want to delete property with id "{propertyId}"
+              Are you sure you want to delete property with id &ldquo;
+              {propertyId}&rdquo;
             </p>
           </div>
         </div>

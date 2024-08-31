@@ -65,7 +65,7 @@ export const locations = [
   {
     id: "lagos",
     state: "Lagos",
-    cities: ["Ikeja", "Victoria Island", "Lekki", "Ikoyi", "Surulere"],
+    cities: ["Lekki", "Ikeja", "Victoria Island", "Ikoyi", "Surulere"],
     imageUrl: "/lagos.jpg",
   },
   {
@@ -75,16 +75,22 @@ export const locations = [
     imageUrl: "/abuja.jpg",
   },
   {
-    id: "ogun",
-    state: "Ogun",
-    cities: ["Abeokuta", "Ota", "Ijebu-Ode", "Sagamu", "Ilaro"],
-    imageUrl: "/ogun.jpg",
+    id: "anambra",
+    state: "Anambra",
+    cities: ["Onitsha", "Awka", "Nnewi", "Ekwulobia", "Ihiala"],
+    imageUrl: "/anambra.jpg",
   },
   {
     id: "rivers",
     state: "Rivers",
     cities: ["Port Harcourt", "Bonny", "Eleme", "Omoku", "Oyigbo"],
     imageUrl: "/rivers.jpg",
+  },
+  {
+    id: "ogun",
+    state: "Ogun",
+    cities: ["Abeokuta", "Ota", "Ijebu-Ode", "Sagamu", "Ilaro"],
+    imageUrl: "/ogun.jpg",
   },
   {
     id: "enugu",
@@ -97,12 +103,6 @@ export const locations = [
     state: "Oyo",
     cities: ["Ibadan", "Oyo", "Ogbomoso", "Iseyin", "Saki"],
     imageUrl: "/oyo.jpg",
-  },
-  {
-    id: "anambra",
-    state: "Anambra",
-    cities: ["Awka", "Onitsha", "Nnewi", "Ekwulobia", "Ihiala"],
-    imageUrl: "/anambra.jpg",
   },
   {
     id: "kano",

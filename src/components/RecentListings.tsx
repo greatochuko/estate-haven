@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Property, { PropertyType } from "./Property";
 import Link from "next/link";
 import { UserType } from "./AgentPropertyOffers";
+import { getUserWishlist } from "@/services/wishlistServices";
 
-export default function RecentListings({
+export default async function RecentListings({
   properties,
   user,
 }: {
   properties: PropertyType[];
   user: UserType | null;
 }) {
+  const wishlist = await getUserWishlist();
   return (
     <div className="flex flex-col gap-4">
       <h3 className="font-bold text-xl sm:text-2xl">
@@ -17,7 +19,12 @@ export default function RecentListings({
       </h3>
       <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]">
         {properties.map((property) => (
-          <Property property={property} key={property.id} user={user} />
+          <Property
+            property={property}
+            key={property.id}
+            user={user}
+            isLiked={wishlist.some((prop) => prop.property.id === property.id)}
+          />
         ))}
       </div>
       <Link

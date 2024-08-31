@@ -2,15 +2,15 @@ import { ReviewType } from "@/components/Review";
 
 const reviews: ReviewType[] = [
   {
-    _id: "1",
+    id: "1",
     user: {
-      _id: "4",
+      id: "4",
       firstname: "Funmi",
       lastname: "Adeyemi",
       imageUrl: "/profile-pic-4.jpg",
     },
     agent: {
-      _id: "1",
+      id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -24,15 +24,15 @@ const reviews: ReviewType[] = [
       "The process of buying my first home was smooth and stress-free, thanks to their professional team!",
   },
   {
-    _id: "2",
+    id: "2",
     user: {
-      _id: "2",
+      id: "2",
       firstname: "Amina",
       lastname: "Bello",
       imageUrl: "/profile-pic-2.jpg",
     },
     agent: {
-      _id: "1",
+      id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -46,15 +46,15 @@ const reviews: ReviewType[] = [
       "Excellent service! They helped me find the perfect apartment in a great neighborhood.",
   },
   {
-    _id: "3",
+    id: "3",
     user: {
-      _id: "3",
+      id: "3",
       firstname: "Emeka",
       lastname: "Ibe",
       imageUrl: "/profile-pic-3.jpg",
     },
     agent: {
-      _id: "1",
+      id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
@@ -68,15 +68,15 @@ const reviews: ReviewType[] = [
       "Very knowledgeable agents who guided me through the entire selling process effortlessly.",
   },
   {
-    _id: "4",
+    id: "4",
     user: {
-      _id: "1",
+      id: "1",
       firstname: "Chidi",
       lastname: "Okeke",
       imageUrl: "/profile-pic.jpg",
     },
     agent: {
-      _id: "4",
+      id: "4",
       firstname: "Funmi",
       lastname: "Adeyemi",
       imageUrl: "/profile-pic-4.jpg",
@@ -90,15 +90,15 @@ const reviews: ReviewType[] = [
       "They were incredibly helpful in finding a rental property that met all my needs.",
   },
   {
-    _id: "5",
+    id: "5",
     user: {
-      _id: "5",
+      id: "5",
       firstname: "Tunde",
       lastname: "Olawale",
       imageUrl: "/profile-pic-5.jpg",
     },
     agent: {
-      _id: "5",
+      id: "5",
       firstname: "Tunde",
       lastname: "Olawale",
       imageUrl: "/profile-pic-5.jpg",

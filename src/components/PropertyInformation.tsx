@@ -310,7 +310,7 @@ export default function PropertyInformation({
         </div>
         <ul className="flex flex-col gap-4">
           {reviews.map((review) => (
-            <Review review={review} key={review._id} />
+            <Review review={review} key={review.id} />
           ))}
         </ul>
       </div>

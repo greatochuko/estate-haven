@@ -12,7 +12,6 @@ import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import { locations } from "./PropertiesByLocationSection";
 
-
 const amenitiesList = [
   "WiFi",
   "Air Conditioning",
@@ -89,10 +88,11 @@ export default function CreateListingForm({
     (location) => location.state.toLowerCase() === locationState.toLowerCase()
   )!.cities;
   const [locationCity, setLocationCity] = useState(cities[0]);
+  const firstCity = cities[0];
 
   useEffect(() => {
-    setLocationCity(cities[0]);
-  }, [locationState]);
+    setLocationCity(firstCity);
+  }, [locationState, firstCity]);
 
   function toggleAmenity(type: string) {
     if (amenities.includes(type)) {

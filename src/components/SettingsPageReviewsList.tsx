@@ -97,7 +97,7 @@ export default function SettingsPageReviewsList({
           {filteredReviews.map((review) => (
             <Review
               review={review}
-              key={review._id}
+              key={review.id}
               showFor
               showUser={filter === "reviews-by-you" ? false : true}
             />

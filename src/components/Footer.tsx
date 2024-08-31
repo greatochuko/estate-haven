@@ -10,6 +10,11 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const cities: string[] = [];
+  locations.slice(0, 4).forEach((location) => {
+    cities.push(location.cities[0]);
+  });
+
   return (
     <footer className="bg-zinc-100 py-16 font-semibold text-sm text-zinc-600 sm:text-base">
       <div className="gap-4 grid grid-cols-2 lg:grid-cols-4 mx-auto px-4 w-[95%] sm:w-[90%] max-w-7xl">
@@ -58,13 +63,13 @@ export default function Footer() {
         <div className="flex flex-col gap-2 w-48">
           <h3 className="font-bold text-xl text-zinc-900">Cities</h3>
           <ul className="flex flex-col">
-            {locations.slice(0, 4).map((location) => (
-              <li key={location.id}>
+            {cities.map((city) => (
+              <li key={city}>
                 <Link
-                  href={`/properties?city=${location.city}`}
+                  href={`/properties?city=${city}`}
                   className="block p-1 hover:text-accent-green-100 duration-300"
                 >
-                  {location.city}
+                  {city}
                 </Link>
               </li>
             ))}
