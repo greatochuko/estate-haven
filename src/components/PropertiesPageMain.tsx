@@ -11,16 +11,17 @@ export default function PropertiesPageMain({
   properties,
   searchParams,
   user,
-  wishlist
+  wishlist,
 }: {
   properties: PropertyType[];
   searchParams: PropertySearchParams;
   user: UserType | null;
-  wishlist:WishlistType[]
+  wishlist: WishlistType[];
 }) {
   const [showFilter, setShowFilter] = useState(false);
 
-  const city = searchParams.city?.split("-").join(" ");
+  const state = searchParams.state?.toLowerCase().split("-").join(" ");
+  const city = searchParams.city?.toLowerCase().split("-").join(" ");
   const propertyTypes = searchParams.propertyTypes?.split("-");
   const category = searchParams.category;
   const minPrice = Number(searchParams.minPrice);
@@ -32,6 +33,10 @@ export default function PropertiesPageMain({
 
   let filteredProperties = properties;
 
+  if (state)
+    filteredProperties = filteredProperties.filter(
+      (property) => property.state.toLowerCase() === state.toLowerCase()
+    );
   if (city)
     filteredProperties = filteredProperties.filter(
       (property) => property.city.toLowerCase() === city.toLowerCase()

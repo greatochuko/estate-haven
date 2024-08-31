@@ -5,11 +5,13 @@ import {
   saveAsDraft,
 } from "@/actions/propertyActions";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { PropertyType } from "./Property";
 import { uploadImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
+import { locations } from "./PropertiesByLocationSection";
+
 
 const amenitiesList = [
   "WiFi",
@@ -82,6 +84,16 @@ export default function CreateListingForm({
   setImages: React.Dispatch<React.SetStateAction<string[]>>;
   canSubmit: boolean;
 }) {
+  const [locationState, setLocationState] = useState("Lagos");
+  const cities = locations.find(
+    (location) => location.state.toLowerCase() === locationState.toLowerCase()
+  )!.cities;
+  const [locationCity, setLocationCity] = useState(cities[0]);
+
+  useEffect(() => {
+    setLocationCity(cities[0]);
+  }, [locationState]);
+
   function toggleAmenity(type: string) {
     if (amenities.includes(type)) {
       setAmenities((curr) => curr.filter((t) => t !== type));
@@ -254,13 +266,18 @@ export default function CreateListingForm({
             <select
               name="state"
               id="state"
+              value={locationState}
+              onChange={(e) => setLocationState(e.target.value)}
               className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
-              <option value="lagos">Lagos</option>
-              <option value="abuja">Abuja</option>
-              <option value="edo">Edo</option>
-              <option value="enugu">Enugu</option>
-              <option value="kano">Kano</option>
+              {locations.map((location) => (
+                <option
+                  key={location.state}
+                  value={location.state.toLowerCase()}
+                >
+                  {location.state}
+                </option>
+              ))}
             </select>
           </div>
           <div className="flex flex-col flex-1 gap-1">
@@ -270,10 +287,15 @@ export default function CreateListingForm({
             <select
               name="city"
               id="city"
+              value={locationCity}
+              onChange={(e) => setLocationCity(e.target.value)}
               className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
             >
-              <option value="lagos">Lagos</option>
-              <option value="kano">Kano</option>
+              {cities.map((city) => (
+                <option key={city} value={city.toLowerCase()}>
+                  {city}
+                </option>
+              ))}
             </select>
           </div>
         </div>

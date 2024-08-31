@@ -294,6 +294,21 @@ export async function getProperties(): Promise<PropertyType[]> {
   return data || [];
 }
 
+export async function searchProperties(query: string): Promise<PropertyType[]> {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("isPublished", true)
+    .ilikeAnyOf(
+      "name",
+      query.split(" ").map((q) => `%${q}%`)
+    );
+
+  if (error) console.log(error);
+  return data || [];
+}
+
 export async function getAgentProperties(
   agentId: string
 ): Promise<PropertyType[]> {

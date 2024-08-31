@@ -1,12 +1,13 @@
-import { UserType } from "@/components/AgentPropertyOffers";
 import PropertiesPageMain from "@/components/PropertiesPageMain";
 import SearchForm from "@/components/SearchForm";
-import { getProperties } from "@/services/propertyServices";
+import { searchProperties } from "@/services/propertyServices";
 import { getUserSession } from "@/services/userServices";
 import { getUserWishlist } from "@/services/wishlistServices";
 import React from "react";
 
 export type PropertySearchParams = {
+  q: string;
+  state: string;
   city: string;
   propertyTypes: string;
   category: string;
@@ -19,13 +20,15 @@ export type PropertySearchParams = {
   page: string;
 };
 
+export const revalidate = 60;
+
 export default async function PropertiesPage({
   searchParams,
 }: {
   searchParams: PropertySearchParams;
 }) {
   const user = await getUserSession();
-  const properties = await getProperties();
+  const properties = await searchProperties(searchParams.q);
   const wishlist = await getUserWishlist();
 
   return (

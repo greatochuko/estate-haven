@@ -15,8 +15,18 @@ export default function SearchFilter({
   closeModal: () => void;
   searchParams: PropertySearchParams;
 }) {
+  const [locationState, setLocationState] = useState(
+    searchParams.state?.toLowerCase().split("-").join(" ") || "all"
+  );
+  const cities = locations.find(
+    (location) => location.state.toLowerCase() === locationState.toLowerCase()
+  )?.cities;
+
   const router = useRouter();
-  const [city, setCity] = useState(searchParams.city?.toLowerCase() || "all");
+  const [city, setCity] = useState(
+    searchParams.city?.toLowerCase().split("-").join(" ") || "all"
+  );
+
   const [propertyTypes, setPropertyTypes] = useState<string[]>(
     searchParams.propertyTypes?.split("-") || [
       "house",
@@ -69,7 +79,12 @@ export default function SearchFilter({
   function applyFilters() {
     const newSearchParams = new URLSearchParams(searchParams);
 
-    city !== "all" && newSearchParams.set("city", city);
+    locationState !== "all"
+      ? newSearchParams.set("state", locationState)
+      : newSearchParams.delete("state");
+    city !== "all"
+      ? newSearchParams.set("city", city)
+      : newSearchParams.delete("city");
     propertyTypes.length < 4
       ? newSearchParams.set("propertyTypes", propertyTypes.join("-"))
       : newSearchParams.delete("propertyTypes");
@@ -112,24 +127,45 @@ export default function SearchFilter({
           </button>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="city" className="font-semibold">
-            City
+          <label htmlFor="state" className="font-semibold">
+            State
           </label>
           <select
-            name="city"
-            id="city"
+            name="state"
+            id="state"
             className="p-2 border rounded-md"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
+            value={locationState}
+            onChange={(e) => setLocationState(e.target.value)}
           >
             <option value="all">All</option>
             {locations.map((location) => (
-              <option value={location.city.toLowerCase()} key={location.id}>
-                {location.city}
+              <option value={location.state.toLowerCase()} key={location.state}>
+                {location.state}
               </option>
             ))}
           </select>
         </div>
+        {cities && (
+          <div className="flex flex-col gap-2">
+            <label htmlFor="city" className="font-semibold">
+              City
+            </label>
+            <select
+              name="city"
+              id="city"
+              className="p-2 border rounded-md"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            >
+              <option value="all">All</option>
+              {cities.map((city) => (
+                <option value={city.toLowerCase()} key={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="flex flex-col gap-2">
           <h4 className="font-semibold">Property Type</h4>
           <div className="flex items-center gap-1">

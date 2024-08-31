@@ -1,11 +1,30 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
+import { redirect, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SearchForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState("");
+  const [pending, setPending] = useState(false);
+
+  function handleSearchProperties(e: React.FormEvent) {
+    e.preventDefault();
+    console.log(query);
+    setPending(true);
+    const newSearchParams = new URLSearchParams(searchParams);
+    query ? newSearchParams.set("q", query) : newSearchParams.delete("q");
+    router.push(`/properties?${newSearchParams.toString()}`);
+    setPending(false);
+  }
+
   return (
     <form
       className="relative flex items-center gap-2"
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleSearchProperties}
     >
       <div className="top-[50%] left-2 absolute -translate-y-[50%]">
         <svg
@@ -34,11 +53,18 @@ export default function SearchForm() {
       </div>
       <input
         type="text"
+        name="query"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter an address e.g. street, city, state or zip"
         className="flex-1 border-[3px] p-2 pl-8 rounded-lg"
       />
-      <button className="border-[3px] border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 px-4 p-2 rounded-lg font-bold text-white duration-300">
-        Search
+      <button
+        disabled={pending}
+        type="submit"
+        className="flex-center border-[3px] border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-lg w-24 font-bold text-white duration-300"
+      >
+        {pending ? <LoadingIndicator color="white" /> : "Search"}
       </button>
     </form>
   );
