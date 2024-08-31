@@ -4,7 +4,7 @@ import { UserType } from "./AgentPropertyOffers";
 import { updatePersonalInfo } from "@/actions/userActions";
 import { useFormStatus } from "react-dom";
 import DeleteAccountModal from "./DeleteAccountModal";
-import { uploadImage } from "@/utils/imageUploader";
+import { uploadProfileImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import Image from "next/image";
 
@@ -26,8 +26,8 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
     const file = e.target.files && e.target.files[0];
     if (!file) return;
     setImagePending(true);
-    const { url } = await uploadImage(file);
-    setImageUrl(url);
+    const { url } = await uploadProfileImage(file);
+    url && setImageUrl(url);
     setImagePending(false);
   }
 
