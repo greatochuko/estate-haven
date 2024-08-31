@@ -5,15 +5,18 @@ import SearchResults from "./SearchResults";
 import { PropertyType } from "./Property";
 import { PropertySearchParams } from "@/app/properties/page";
 import { UserType } from "./AgentPropertyOffers";
+import { WishlistType } from "@/app/settings/wishlist/page";
 
 export default function PropertiesPageMain({
   properties,
   searchParams,
   user,
+  wishlist
 }: {
   properties: PropertyType[];
   searchParams: PropertySearchParams;
   user: UserType | null;
+  wishlist:WishlistType[]
 }) {
   const [showFilter, setShowFilter] = useState(false);
 
@@ -83,6 +86,7 @@ export default function PropertiesPageMain({
         showFilter={() => setShowFilter(true)}
         searchParams={searchParams}
         user={user}
+        wishlist={wishlist}
       />
     </div>
   );

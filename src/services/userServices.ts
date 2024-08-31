@@ -35,7 +35,7 @@ export async function getAgent(userId: string) {
 export async function getUserSession() {
   try {
     const session = cookies().get("token");
-    if (!session) return;
+    if (!session) return null;
     const payload = jwt.verify(session.value, process.env.JWT_SECRET!);
     if (typeof payload === "string") return null;
     const supabase = createClient();
@@ -50,7 +50,7 @@ export async function getUserSession() {
       return null;
     }
     const user = data[0];
-    return user;
+    return user as UserType;
   } catch (error) {
     return null;
   }

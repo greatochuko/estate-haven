@@ -46,8 +46,8 @@ export default function MobileNav({
                 href={navLink.href}
                 className={`hover:text-accent-green-200 duration-300 w-full block py-1 ${
                   pathname === navLink.href
-                    ? "text-accent-green-100 font-semibold"
-                    : ""
+                    ? "text-accent-green-100 font-bold"
+                    : "font-semibold"
                 }`}
               >
                 {navLink.name}
@@ -61,8 +61,8 @@ export default function MobileNav({
                   href="/settings"
                   className={`hover:text-accent-green-200 duration-300 w-full block py-2 ${
                     pathname.includes("/settings")
-                      ? "text-accent-green-100 font-semibold"
-                      : ""
+                      ? "text-accent-green-100 font-bold"
+                      : "font-semibold"
                   }`}
                 >
                   Settings
@@ -71,9 +71,9 @@ export default function MobileNav({
               <li key="create-new-listing">
                 <Link
                   href="/properties/new"
-                  className={`hover:bg-accent-green-200 border border-accent-green-100 px-4 rounded-md w-fit duration-300 block py-2 ${
+                  className={`hover:bg-accent-green-200 border font-bold border-accent-green-100 px-4 rounded-md w-fit duration-300 block py-2 ${
                     pathname.includes("/properties/new")
-                      ? "bg-accent-green-100 text-white font-semibold"
+                      ? "bg-accent-green-100 text-white"
                       : "text-accent-green-100"
                   }`}
                 >

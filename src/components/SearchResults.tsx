@@ -4,17 +4,20 @@ import Property, { PropertyType } from "./Property";
 import Paginator from "./Paginator";
 import { PropertySearchParams } from "@/app/properties/page";
 import { UserType } from "./AgentPropertyOffers";
+import { WishlistType } from "@/app/settings/wishlist/page";
 
 export default function SearchResults({
   showFilter,
   properties,
   searchParams,
   user,
+  wishlist,
 }: {
   showFilter: () => void;
   properties: PropertyType[];
   searchParams: PropertySearchParams;
   user: UserType | null;
+  wishlist: WishlistType[];
 }) {
   const [sortBy, setSortBy] = useState("popular");
   let sortedProperties = properties;
@@ -106,7 +109,14 @@ export default function SearchResults({
       {sortedProperties.length ? (
         <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
           {sortedProperties.map((property) => (
-            <Property property={property} key={property.id} user={user} />
+            <Property
+              property={property}
+              key={property.id}
+              user={user}
+              isLiked={wishlist.some(
+                (prop) => prop.property.id === property.id
+              )}
+            />
           ))}
         </div>
       ) : (

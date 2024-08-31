@@ -41,7 +41,7 @@ export default async function AgentDetailsPage({
           {agent.bio && (
             <>
               <hr className="w-full" />
-              <p className="mx-auto w-[90%] lg:w-full text-center text-zinc-600 lg:text-left">
+              <p className="mx-auto w-[90%] lg:w-full max-w-xl text-center text-zinc-600 lg:text-left">
                 {agent.bio}
               </p>
             </>

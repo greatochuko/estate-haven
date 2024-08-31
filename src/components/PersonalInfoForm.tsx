@@ -42,6 +42,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             type="text"
             id="first-name"
             name="first-name"
+            required
             className="p-2 border rounded-md"
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
@@ -56,6 +57,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             type="text"
             id="last-name"
             name="last-name"
+            required
             className="p-2 border rounded-md"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
@@ -250,7 +252,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             Facebook
           </label>
           <input
-            type="text"
+            type="url"
             id="facebook"
             name="facebook"
             className="p-2 border rounded-md"
@@ -263,7 +265,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             LinkedIn
           </label>
           <input
-            type="text"
+            type="url"
             id="linkedIn"
             name="linkedIn"
             className="p-2 border rounded-md"
@@ -276,7 +278,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
             Instagram
           </label>
           <input
-            type="text"
+            type="url"
             id="instagram"
             name="instagram"
             className="p-2 border rounded-md"
