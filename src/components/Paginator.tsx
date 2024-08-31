@@ -59,7 +59,7 @@ export default function Paginator({
   }
 
   return (
-    <div className="flex-center gap-2">
+    <div className="flex-center gap-2 mt-auto">
       <button
         onClick={gotoPrevPage}
         disabled={currentPage <= 1}

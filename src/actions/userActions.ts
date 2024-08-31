@@ -24,17 +24,24 @@ export async function signup(
 
   const supabase = createClient();
 
+  const { data: signupData } = await supabase
+    .from("profiles")
+    .select()
+    .eq("email", email);
+  if (signupData && signupData[0])
+    return { done: null, error: "Email already in use" };
+
   const { data, error } = await supabase
     .from("profiles")
     .insert(newUserData)
     .select();
 
-  if (error && !data) return { done: null, error: "Email already in use" };
+  if (error || !data) return { done: null, error: "Something went wrong" };
 
   const newUser: UserType = data[0];
   const token = jwt.sign({ userId: newUser.id }, process.env.JWT_SECRET!);
   cookies().set("token", token, {
-    expires: Date.now() + 1000 * 1000,
+    expires: Date.now() + 24 * 60 * 60 * 1000,
     httpOnly: true,
   });
   revalidatePath("/", "layout");
@@ -59,7 +66,7 @@ export async function login(email: string, password: string) {
 
   const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!);
   cookies().set("token", token, {
-    expires: Date.now() + 1000 * 1000,
+    expires: Date.now() + 24 * 60 * 60 * 1000,
     httpOnly: true,
   });
   revalidatePath("/", "layout");

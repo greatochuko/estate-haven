@@ -64,6 +64,7 @@ export default function SearchFilter({
   }
 
   function resetFilters() {
+    setLocationState("all");
     setCity("all");
     setPropertyTypes(["house", "apartment", "duplex", "studio"]);
     setCategory("all");

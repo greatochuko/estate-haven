@@ -11,7 +11,7 @@ export function getUserIdFromCookies() {
 
     const payload = jwt.verify(token, jwtSecret);
     if (typeof payload === "string") throw new Error("Invalid payload");
-    const userId = payload.userId;
+    const userId:string = payload.userId;
     return { userId, error: null };
   } catch (error) {
     return { userId: null, error: error };

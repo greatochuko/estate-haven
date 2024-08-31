@@ -4,9 +4,10 @@ export async function middleware(request: NextRequest) {
   const res = NextResponse.next({ request });
 
   const session = request.cookies.get("token");
-  if (!session) return;
+  if (!session) return res;
+
   res.cookies.set("token", session.value, {
-    expires: Date.now() + 60 * 60 * 1000,
+    expires: Date.now() + 24 * 60 * 60 * 1000,
     httpOnly: true,
   });
   return res;
