@@ -85,30 +85,30 @@ export default function AgentPropertyOffers({
         <div className="flex items-center gap-2">
           <button
             onClick={() => setPropertyType("all")}
-            className={` p-2 px-3 rounded-md font-bold duration-300 ${
+            className={` p-2 px-3 rounded-md duration-300 ${
               propertyType === "all"
-                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 "
-                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500"
+                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 font-bold"
+                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500 font-semibold"
             }`}
           >
             All
           </button>
           <button
             onClick={() => setPropertyType("rent")}
-            className={` p-2 px-3 rounded-md font-bold duration-300 ${
+            className={` p-2 px-3 rounded-md duration-300 ${
               propertyType === "rent"
-                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 "
-                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500"
+                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 font-bold"
+                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500 font-semibold"
             }`}
           >
             For rent
           </button>
           <button
             onClick={() => setPropertyType("sale")}
-            className={` p-2 px-3 rounded-md font-bold duration-300 ${
+            className={` p-2 px-3 rounded-md duration-300 ${
               propertyType === "sale"
-                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 "
-                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500"
+                ? "text-white bg-accent-green-100 hover:bg-accent-green-200 font-bold"
+                : "bg-[#f6f6f6] hover:bg-accent-green-100 hover:text-white text-zinc-500 font-semibold"
             }`}
           >
             For sale

@@ -1,10 +1,46 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import heroImage from "../../public/hero-image.png";
 import Image from "next/image";
 import Link from "next/link";
-import { searchProperties } from "@/actions/propertyActions";
+import { locations } from "./PropertiesByLocationSection";
+import { useRouter } from "next/navigation";
 
 export default function Hero() {
+  const router = useRouter();
+
+  const [category, setCategory] = useState("all");
+  const [location, setLocation] = useState("all");
+  const [type, setType] = useState("all");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    const searchParams = new URLSearchParams();
+
+    category && category !== "all"
+      ? searchParams.set("category", category)
+      : searchParams.delete("category");
+    location && location !== "all"
+      ? searchParams.set("state", location)
+      : searchParams.delete("state");
+    type && type !== "all"
+      ? searchParams.set("type", type)
+      : searchParams.delete("type");
+    minPrice
+      ? searchParams.set("minPrice", minPrice)
+      : searchParams.delete("minPrice");
+    maxPrice
+      ? searchParams.set("maxPrice", maxPrice)
+      : searchParams.delete("maxPrice");
+
+    const url = searchParams.toString()
+      ? `/properties?${searchParams.toString()}`
+      : `/properties`;
+
+    router.push(url);
+  }
   return (
     <div className="relative mb-10">
       <div className="relative flex bg-zinc-100 rounded-xl w-full min-h-80 max-h-[30rem] overflow-hidden aspect-[1.2] sm:aspect-[1.5] lg:aspect-video">
@@ -32,7 +68,7 @@ export default function Hero() {
         ></Image>
       </div>
       <form
-        action={searchProperties}
+        onSubmit={handleSearch}
         className="bottom-0 left-[50%] absolute flex justify-between items-center gap-4 bg-white shadow-[0_0_5px] shadow-zinc-200 mx-auto p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl w-[90%] max-w-5xl text-zinc-600 -translate-x-[50%] translate-y-[50%]"
       >
         <div className="sm:flex flex-col flex-1 gap-2 hidden">
@@ -42,6 +78,14 @@ export default function Hero() {
           <select
             name="category"
             id="category"
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+              if (e.target.value === "all") {
+                setMinPrice("");
+                setMaxPrice("");
+              }
+            }}
             className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
@@ -57,16 +101,16 @@ export default function Hero() {
           <select
             name="location"
             id="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
-            <option value="lagos">Lagos</option>
-            <option value="abuja">Abuja</option>
-            <option value="kano">Kano</option>
-            <option value="benin">Benin</option>
-            <option value="port-harcourt">Port Harcourt</option>
-            <option value="ibadan">Ibadan</option>
-            <option value="enugu">Enugu</option>
+            {locations.map((location) => (
+              <option key={location.state} value={location.state.toLowerCase()}>
+                {location.state}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -77,6 +121,8 @@ export default function Hero() {
           <select
             name="property-type"
             id="property-type"
+            value={type}
+            onChange={(e) => setType(e.target.value)}
             className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
@@ -91,18 +137,26 @@ export default function Hero() {
           <label className="font-semibold">Price Range</label>
           <div className="flex items-center gap-2">
             <input
+              disabled={category === "all"}
+              title={category === "all" ? "Please select a category" : ""}
               type="number"
-              name="from-price"
-              id="from-price"
+              name="minPrice"
+              id="minPrice"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
               placeholder="0"
               className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
             -
             <input
+              disabled={category === "all"}
+              title={category === "all" ? "Please select a category" : ""}
               placeholder="any"
               type="number"
-              name="to-price"
-              id="to-price"
+              name="maxPrice"
+              id="maxPrice"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
               className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
           </div>
