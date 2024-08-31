@@ -1,4 +1,4 @@
-import LoadingIndicator from "@/components/LoadingIndicator";
+import LoadingIndicator from "./LoadingIndicator";
 import React from "react";
 
 export default function LoadingPage() {

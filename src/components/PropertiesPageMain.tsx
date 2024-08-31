@@ -86,6 +86,7 @@ export default function PropertiesPageMain({
         showFilter={showFilter}
         searchParams={searchParams}
       />
+
       <SearchResults
         properties={filteredProperties}
         showFilter={() => setShowFilter(true)}

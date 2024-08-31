@@ -8,7 +8,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { PropertyType } from "./Property";
-import { uploadImage } from "@/utils/imageUploader";
+import { uploadPropertyImage } from "@/utils/imageUploader";
 import LoadingIndicator from "./LoadingIndicator";
 import { locations } from "./PropertiesByLocationSection";
 
@@ -113,7 +113,7 @@ export default function CreateListingForm({
     }
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const { url } = await uploadImage(file);
+      const { url, error } = await uploadPropertyImage(file);
       setImageList((curr) =>
         curr.map((img) =>
           img.name === file.name ? { ...img, src: url as string } : img

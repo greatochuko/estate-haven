@@ -7,6 +7,12 @@ const nextConfig = {images: {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'fazgogjawhavphnbqkst.supabase.co',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },};
 
