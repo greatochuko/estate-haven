@@ -370,7 +370,7 @@ function SubmitButton({ imagePending }: { imagePending: boolean }) {
       disabled={pending || imagePending}
       className="bg-accent-green-100 hover:bg-accent-green-200 px-8 p-2 rounded-md w-full sm:w-fit font-bold text-white duration-300"
     >
-      {pending ? <LoadingIndicator color="white" /> : "Save Changes"}
+      {pending ? <LoadingIndicator /> : "Save Changes"}
     </button>
   );
 }

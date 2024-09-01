@@ -1,7 +1,18 @@
 import React from "react";
 import Review, { ReviewType } from "./Review";
+import { getUserSession } from "@/services/userServices";
+import ReviewForm from "./ReviewForm";
+import { PropertyType } from "./Property";
 
-export default function ReviewSection({ reviews }: { reviews: ReviewType[] }) {
+export default async function ReviewSection({
+  reviews,
+  property,
+}: {
+  reviews: ReviewType[];
+  property: PropertyType;
+}) {
+  const user = await getUserSession();
+
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap justify-between items-center gap-4 pb-4 border-b">
@@ -29,10 +40,12 @@ export default function ReviewSection({ reviews }: { reviews: ReviewType[] }) {
           </span>
           <h2 className="font-bold text-xl sm:text-2xl">
             {reviews.length > 0
-              ? reviews.reduce((acc, curr) => acc + curr.rating, 0) /
-                reviews.length
+              ? (
+                  reviews.reduce((acc, curr) => acc + curr.rating, 0) /
+                  reviews.length
+                ).toFixed(1)
               : 0}{" "}
-            ({reviews.length} Reviews)
+            ({reviews.length} Review{reviews.length > 1 ? "s" : ""})
           </h2>
         </div>
 
@@ -64,18 +77,9 @@ export default function ReviewSection({ reviews }: { reviews: ReviewType[] }) {
         </p>
       )}
 
-      <form action="" className="flex flex-col gap-2">
-        <textarea
-          name="review"
-          id=""
-          required
-          placeholder="What do you think about this property?"
-          className="p-2 border rounded-md min-h-32 aspect-[4] resize-none"
-        ></textarea>
-        <button className="bg-accent-green-100 hover:bg-accent-green-200 px-4 p-2 rounded-md sm:w-32 font-semibold text-white duration-300 sm:self-end">
-          Add Review
-        </button>
-      </form>
+      <hr className="border-[#eee]" />
+
+      {user ? <ReviewForm property={property} /> : null}
     </div>
   );
 }

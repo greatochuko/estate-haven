@@ -138,7 +138,7 @@ export default function SignupForm({
           type="submit"
           className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
         >
-          {pending ? <LoadingIndicator color="white" /> : "Signup"}
+          {pending ? <LoadingIndicator /> : "Signup"}
         </button>
         <p className="font-semibold">
           Already have and account?{" "}

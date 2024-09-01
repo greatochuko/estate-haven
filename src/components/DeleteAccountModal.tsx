@@ -68,7 +68,7 @@ export default function DeleteAccountModal({
             className="border-zinc-200 bg-white hover:bg-zinc-100 px-4 p-2 border rounded-md font-bold text-zinc-700 duration-300"
             onClick={closeModal}
           >
-            {pending ? <LoadingIndicator color="white" /> : "Cancel"}
+            {pending ? <LoadingIndicator /> : "Cancel"}
           </button>
           <button
             onClick={handleDeleteAccount}

@@ -1,6 +1,9 @@
 import SettingsPageReviewsList from "@/components/SettingsPageReviewsList";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
-import { getAllUserReviews } from "@/services/reviewServices";
+import {
+  getAllReviewsAboutAgent,
+  getAllReviewsByUser,
+} from "@/services/reviewServices";
 import { getUserSession } from "@/services/userServices";
 import React from "react";
 
@@ -8,7 +11,8 @@ export default async function ReviewsPage() {
   const user = await getUserSession();
   if (!user) return <UserNotAuthenticatedPage />;
 
-  const reviews = await getAllUserReviews(user.id);
+  const reviewsAboutAgent = await getAllReviewsAboutAgent(user.id);
+  const reviewsByUser = await getAllReviewsAboutAgent(user.id);
 
   return (
     <div className="flex flex-col h-full">
@@ -18,7 +22,11 @@ export default async function ReviewsPage() {
           Manage reviews about you and by you here.
         </p>
       </div>
-      <SettingsPageReviewsList reviews={reviews} user={user} />
+      <SettingsPageReviewsList
+        reviewsAboutAgent={reviewsAboutAgent}
+        reviewsByUser={reviewsByUser}
+        user={user}
+      />
     </div>
   );
 }

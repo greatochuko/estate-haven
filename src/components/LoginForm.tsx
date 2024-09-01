@@ -69,7 +69,7 @@ export default function LoginForm({
           type="submit"
           className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
         >
-          {pending ? <LoadingIndicator color="white" /> : "Login"}
+          {pending ? <LoadingIndicator /> : "Login"}
         </button>
         <p className="font-semibold">
           Don&apos;t have and account?{" "}

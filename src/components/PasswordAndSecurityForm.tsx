@@ -301,7 +301,7 @@ export default function PasswordAndSecurityForm() {
           type="submit"
           className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 rounded-md w-full sm:w-44 font-bold text-white duration-300 disabled:cursor-not-allowed"
         >
-          {pending ? <LoadingIndicator color="white" /> : "Update Password"}
+          {pending ? <LoadingIndicator /> : "Update Password"}
         </button>
         <Link
           href={"/forgot-password"}

@@ -2,22 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Rating from "./Rating";
 import Link from "next/link";
+import { UserType } from "./AgentPropertyOffers";
+import { PropertyType } from "./Property";
 
 export type ReviewType = {
   id: string;
-  user: {
-    id: string;
-    firstname: string;
-    lastname: string;
-    imageUrl: string;
-  };
-  agent: {
-    id: string;
-    firstname: string;
-    lastname: string;
-    imageUrl: string;
-  };
-  propertyName: string;
+  user: UserType;
+  agent: UserType;
+  property: PropertyType;
   rating: number;
   upvotes: number;
   downvotes: number;
@@ -27,7 +19,7 @@ export type ReviewType = {
 
 export default function Review({
   review,
-  showFor = true,
+  showFor = false,
   showUser = true,
 }: {
   review: ReviewType;
@@ -65,7 +57,7 @@ export default function Review({
       {showFor ? (
         <div className="flex flex-col gap-2">
           <p className="text-zinc-700">
-            For: <strong>{review.propertyName}</strong>
+            For: <strong>{review.property.name}</strong>
           </p>
           {!showUser ? <Rating rating={review.rating} /> : null}
         </div>

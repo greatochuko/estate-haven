@@ -69,7 +69,7 @@ export default function SignoutModal({
             onClick={handleSignout}
             className="flex-center bg-red-500 hover:bg-red-600 px-4 p-2 rounded-md w-24 font-bold text-white duration-200"
           >
-            {pending ? <LoadingIndicator color="white" /> : "Confirm"}
+            {pending ? <LoadingIndicator /> : "Confirm"}
           </button>
         </div>
       </div>

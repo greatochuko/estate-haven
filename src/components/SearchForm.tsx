@@ -62,7 +62,7 @@ export default function SearchForm() {
         type="submit"
         className="flex-center border-[3px] border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-lg w-24 font-bold text-white duration-300"
       >
-        {pending ? <LoadingIndicator color="white" /> : "Search"}
+        {pending ? <LoadingIndicator /> : "Search"}
       </button>
     </form>
   );

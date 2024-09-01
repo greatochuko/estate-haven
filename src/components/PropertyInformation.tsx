@@ -263,7 +263,7 @@ export default function PropertyInformation({
         </div>
       </div>
       <hr className="border-[#eee]" />
-      <ReviewSection reviews={reviews} />
+      <ReviewSection reviews={reviews} property={property} />
     </div>
   );
 }

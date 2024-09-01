@@ -4,26 +4,21 @@ import Review, { ReviewType } from "./Review";
 import { UserType } from "./AgentPropertyOffers";
 
 export default function SettingsPageReviewsList({
-  reviews,
+  reviewsAboutAgent,
+  reviewsByUser,
   user,
 }: {
-  reviews: ReviewType[];
+  reviewsAboutAgent: ReviewType[];
+  reviewsByUser: ReviewType[];
   user: UserType;
 }) {
   const [filter, setFilter] = useState("reviews-about-you");
   const [sortBy, setSortBy] = useState("popular");
 
-  let filteredReviews = reviews;
+  let filteredReviews = reviewsAboutAgent;
 
   // Filter reviews
-  if (filter === "reviews-about-you")
-    filteredReviews = filteredReviews.filter(
-      (review) => review.agent.id === user.id
-    );
-  if (filter === "reviews-by-you")
-    filteredReviews = filteredReviews.filter(
-      (review) => review.user.id === user.id
-    );
+  if (filter === "reviews-about-you") filteredReviews = reviewsByUser;
 
   // Sort reviews
   if (sortBy === "popular")
@@ -93,6 +88,7 @@ export default function SettingsPageReviewsList({
             </select>
           </div>
         </div>
+        <hr className="border-zinc-100" />
         <ul className="flex flex-col gap-4">
           {filteredReviews.map((review) => (
             <Review

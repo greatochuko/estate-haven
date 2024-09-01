@@ -343,7 +343,7 @@ export async function getProperty(
   const supabase = createClient();
   const { data, error } = await supabase
     .from("properties")
-    .select()
+    .select("*, agent(*)")
     .eq("isPublished", true);
   if (error) return null;
   return data[0];

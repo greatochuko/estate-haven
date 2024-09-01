@@ -847,7 +847,7 @@ function SubmitButton({ canSubmit }: { canSubmit: boolean }) {
       type="submit"
       className="flex-1 flex-center bg-accent-green-100 hover:bg-accent-green-200 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
-      {pending ? <LoadingIndicator color="white" /> : "Publish"}
+      {pending ? <LoadingIndicator /> : "Publish"}
     </button>
   );
 }
@@ -860,7 +860,7 @@ function EditButton({ canSubmit }: { canSubmit: boolean }) {
       type="submit"
       className="flex-1 flex-center bg-accent-green-100 hover:bg-accent-green-200 px-4 sm:px-6 p-2 sm:p-3 rounded-md sm:max-w-40 font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
-      {pending ? <LoadingIndicator color="white" /> : "Edit"}
+      {pending ? <LoadingIndicator /> : "Edit"}
     </button>
   );
 }
