@@ -20,12 +20,6 @@ export default function SettingsPageReviewsList({
   // Filter reviews
   if (filter === "reviews-about-you") filteredReviews = reviewsByUser;
 
-  // Sort reviews
-  if (sortBy === "popular")
-    filteredReviews = filteredReviews
-      .map((_) => _)
-      .sort((a, b) => b.upvotes - a.upvotes);
-
   if (sortBy === "oldest")
     filteredReviews = filteredReviews
       .map((_) => _)
@@ -82,7 +76,6 @@ export default function SettingsPageReviewsList({
               id="sort-by"
               className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
             >
-              <option value="popular">Popular</option>
               <option value="oldest">Oldest</option>
               <option value="newest">Newest</option>
             </select>
