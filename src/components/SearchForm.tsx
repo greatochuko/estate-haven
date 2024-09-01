@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { useFormStatus } from "react-dom";
 import LoadingIndicator from "./LoadingIndicator";
-import { redirect, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export default function SearchForm() {
@@ -13,7 +12,6 @@ export default function SearchForm() {
 
   function handleSearchProperties(e: React.FormEvent) {
     e.preventDefault();
-    console.log(query);
     setPending(true);
     const newSearchParams = new URLSearchParams(searchParams);
     query ? newSearchParams.set("q", query) : newSearchParams.delete("q");
