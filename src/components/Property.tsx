@@ -60,7 +60,7 @@ export default function Property({
     <div className="relative group">
       <Link
         href={`/properties/${property.id}`}
-        className="flex flex-col gap-2 shadow-[0_2px_4px_1px_#e4e4e7] hover:shadow-[0_2px_8px_4px_#e4e4e7] p-0 rounded-xl duration-300 group"
+        className="flex flex-col gap-2 shadow-[0_2px_4px_1px_#e4e4e7] hover:shadow-[0_2px_8px_3px_#e4e4e7] p-0 rounded-xl duration-300 group"
       >
         <div className="relative rounded-t-md overflow-hidden aspect-[1.5]">
           <Image
@@ -71,6 +71,13 @@ export default function Property({
             className="object-cover"
           ></Image>
           <div className="top-0 left-0 absolute bg-black/40 opacity-0 group-hover:opacity-100 w-full h-full duration-300"></div>
+          <p
+            className={`top-2 left-2 absolute ${
+              property.category === "rent" ? "bg-purple-500" : "bg-red-400"
+            } px-2 p-1 rounded-md text-white`}
+          >
+            For{property.category === "rent" ? " rent" : " sale"}
+          </p>
         </div>
 
         <div className="flex flex-col p-2 rounded-md">
