@@ -1,24 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import SearchFilter from "./SearchFilter";
+import React from "react";
 import SearchResults from "./SearchResults";
-import { PropertyType } from "./Property";
 import { PropertySearchParams } from "@/app/properties/page";
-import { UserType } from "./AgentPropertyOffers";
-import { WishlistType } from "@/app/settings/wishlist/page";
+import { getUserSession } from "@/services/userServices";
+import { searchProperties } from "@/services/propertyServices";
+import { getUserWishlist } from "@/services/wishlistServices";
 
-export default function PropertiesPageContainer({
-  properties,
+export default async function SearchResultsContainer({
   searchParams,
-  user,
-  wishlist,
 }: {
-  properties: PropertyType[];
   searchParams: PropertySearchParams;
-  user: UserType | null;
-  wishlist: WishlistType[];
 }) {
-  const [showFilter, setShowFilter] = useState(false);
+  const user = await getUserSession();
+  const properties = await searchProperties(searchParams.q);
+  const wishlist = await getUserWishlist();
 
   const state = searchParams.state?.toLowerCase().split("-").join(" ");
   const city = searchParams.city?.toLowerCase().split("-").join(" ");
@@ -79,20 +73,11 @@ export default function PropertiesPageContainer({
     );
 
   return (
-    <div className="flex lg:flex-row flex-col flex-1 gap-8">
-      <SearchFilter
-        closeModal={() => setShowFilter(false)}
-        showFilter={showFilter}
-        searchParams={searchParams}
-      />
-
-      <SearchResults
-        properties={filteredProperties}
-        showFilter={() => setShowFilter(true)}
-        searchParams={searchParams}
-        user={user}
-        wishlist={wishlist}
-      />
-    </div>
+    <SearchResults
+      properties={filteredProperties}
+      searchParams={searchParams}
+      user={user}
+      wishlist={wishlist}
+    />
   );
 }

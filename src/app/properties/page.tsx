@@ -1,9 +1,8 @@
-import PropertiesPageContainer from "@/components/PropertiesPageContainer";
+import LoadingScreen from "@/components/LoadingScreen";
+import SearchFilter from "@/components/SearchFilter";
 import SearchForm from "@/components/SearchForm";
-import { searchProperties } from "@/services/propertyServices";
-import { getUserSession } from "@/services/userServices";
-import { getUserWishlist } from "@/services/wishlistServices";
-import React from "react";
+import SearchResultsContainer from "@/components/SearchResultsContainer";
+import React, { Suspense } from "react";
 
 export type PropertySearchParams = {
   q: string;
@@ -27,19 +26,15 @@ export default async function PropertiesPage({
 }: {
   searchParams: PropertySearchParams;
 }) {
-  const user = await getUserSession();
-  const properties = await searchProperties(searchParams.q);
-  const wishlist = await getUserWishlist();
-
   return (
     <div className="flex flex-col flex-1 gap-4 lg:gap-6">
       <SearchForm />
-      <PropertiesPageContainer
-        properties={properties}
-        searchParams={searchParams}
-        user={user}
-        wishlist={wishlist}
-      />
+      <div className="flex lg:flex-row flex-col flex-1 gap-8">
+        <SearchFilter searchParams={searchParams} />
+        <Suspense fallback={<LoadingScreen />} key={searchParams.q}>
+          <SearchResultsContainer searchParams={searchParams} />
+        </Suspense>
+      </div>
     </div>
   );
 }
