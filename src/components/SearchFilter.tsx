@@ -5,12 +5,10 @@ import { useRouter } from "next/navigation";
 import { PropertySearchParams } from "@/app/properties/page";
 
 export default function SearchFilter({
-  properties,
   showFilter,
   closeModal,
   searchParams,
 }: {
-  properties: PropertyType[];
   showFilter: boolean;
   closeModal: () => void;
   searchParams: PropertySearchParams;
@@ -39,7 +37,7 @@ export default function SearchFilter({
   const [minPrice, setMinPrice] = useState(searchParams.minPrice || "");
   const [maxPrice, setMaxPrice] = useState(searchParams.maxPrice || "");
 
-  const maxBeds = Math.max(...properties.map((property) => property.beds));
+  const maxBeds = 5;
   const [minBedroom, setMinBedroom] = useState(
     Number(searchParams.minBedroom) || 0
   );
@@ -47,7 +45,7 @@ export default function SearchFilter({
     Number(searchParams.maxBedroom) || maxBeds
   );
 
-  const maxBath = Math.max(...properties.map((property) => property.bath));
+  const maxBath = 5;
   const [minBathroom, setMinBathroom] = useState(
     Number(searchParams.minBathroom) || 0
   );
