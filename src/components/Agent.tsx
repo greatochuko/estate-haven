@@ -2,10 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { UserType } from "./AgentPropertyOffers";
+import { getReviews } from "@/services/reviewServices";
+import Rating from "./Rating";
+import { average } from "@/utils/average";
 
-export default function Agent({ agent }: { agent: UserType }) {
+export default async function Agent({
+  agent,
+  numOfListings,
+}: {
+  agent: UserType;
+  numOfListings: number;
+}) {
+  const reviews = await getReviews(agent.id);
+
   return (
-    <div className="flex flex-col gap-4 shadow-[#eee] shadow-[0_0_10px_1px] p-4 rounded-md">
+    <div className="flex flex-col gap-3 shadow-[#eee] shadow-[0_0_10px_1px] p-4 rounded-md">
       <div className="flex gap-2">
         <div className="relative rounded-full w-14 h-14 overflow-hidden">
           <Image
@@ -23,10 +34,19 @@ export default function Agent({ agent }: { agent: UserType }) {
           <p className="text-zinc-500">{agent.companyName}</p>
         </div>
       </div>
+
+      <div className="flex items-center gap-1">
+        <Rating
+          rating={Math.round(average(reviews.map((review) => review.rating)))}
+        />
+        <p>({reviews.length} Reviews)</p>
+      </div>
+
       <div className="flex flex-col text-sm">
         <p className="text-zinc-400 uppercase">Description</p>
         <p className="line-clamp-2">{agent.bio}</p>
       </div>
+
       <p className="flex items-center gap-1 font-bold text-sm">
         <svg
           height={22}
@@ -56,7 +76,7 @@ export default function Agent({ agent }: { agent: UserType }) {
             </g>{" "}
           </g>
         </svg>
-        12 Listings
+        {numOfListings} Listing{numOfListings > 1 ? "s" : ""}
       </p>
       <Link
         href={`/agents/${agent.id}`}

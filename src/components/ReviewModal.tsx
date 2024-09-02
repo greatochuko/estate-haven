@@ -78,7 +78,7 @@ export default function ReviewModal({
         <form
           onClick={(e) => e.stopPropagation()}
           onSubmit={handlePostReview}
-          className="flex flex-col gap-3 bg-white p-4 rounded-md"
+          className="flex flex-col gap-3 bg-white p-4 rounded-md w-[95%] max-w-lg"
         >
           <h2 className="font-bold text-xl sm:text-2xl">Add New Review</h2>
           <div className="flex items-center">
@@ -144,7 +144,7 @@ export default function ReviewModal({
         <form
           onClick={(e) => e.stopPropagation()}
           onSubmit={handleEditReview}
-          className="flex flex-col gap-3 bg-white p-4 rounded-md"
+          className="flex flex-col gap-3 bg-white p-4 rounded-md w-[95%] max-w-lg"
         >
           <h2 className="font-bold text-xl sm:text-2xl">Add New Review</h2>
           <div className="flex items-center">
@@ -210,7 +210,7 @@ export default function ReviewModal({
         </form>
       ) : type === "delete" ? (
         <div
-          className="flex flex-col bg-white rounded-md max-w-sm overflow-hidden"
+          className="flex flex-col bg-white rounded-md w-[90%] max-w-sm overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex gap-2 p-4">

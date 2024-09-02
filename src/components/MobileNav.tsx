@@ -30,7 +30,7 @@ export default function MobileNav({
       styles="sm:hidden"
     >
       <div
-        className={`flex flex-col gap-4 sm:hidden bg-white w-[80%] max-w-80 h-dvh duration-200 p-8 ${
+        className={`flex flex-col gap-4 sm:hidden bg-white w-[80%] max-w-80 h-screen duration-200 p-8 ${
           mobileNavIsOpen ? "translate-x-0" : "-translate-x-[100%]"
         }`}
       >

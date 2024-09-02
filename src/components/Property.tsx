@@ -62,7 +62,7 @@ export default function Property({
         href={`/properties/${property.id}`}
         className="flex flex-col gap-2 shadow-[0_2px_6px_1px_#e4e4e7] hover:shadow-[0_2px_6px_3px_#e4e4e7] p-2 rounded-xl duration-300 group"
       >
-        <div className="relative rounded-lg overflow-hidden aspect-[1.5]">
+        <div className="relative rounded-md overflow-hidden aspect-[1.5]">
           <Image
             src={property.images[0]}
             alt="property image"

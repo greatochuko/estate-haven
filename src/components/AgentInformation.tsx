@@ -4,6 +4,7 @@ import { PropertyType } from "./Property";
 import Rating from "./Rating";
 import Link from "next/link";
 import { ReviewType } from "./Review";
+import { average } from "@/utils/average";
 
 export default function AgentInformation({
   property,
@@ -13,9 +14,9 @@ export default function AgentInformation({
   reviews: ReviewType[];
 }) {
   return (
-    <div className="top-16 sticky flex-1 h-fit">
-      {/* <div className="flex flex-col border rounded-md">
-        <h2 className="p-4 border-b font-bold text-lg sm:text-xl">
+    <div className="top-20 sticky flex-1 h-fit">
+      <div className="flex flex-col border rounded-md">
+        <h2 className="p-3 border-b font-bold text-center text-lg sm:text-xl">
           Agent Information
         </h2>
         <div className="flex flex-col">
@@ -38,7 +39,11 @@ export default function AgentInformation({
                   {property.agent.firstname} {property.agent.lastname}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <Rating rating={4} />
+                  <Rating
+                    rating={Math.round(
+                      average(reviews.map((review) => review.rating))
+                    )}
+                  />
                   <p>({reviews.length} Reviews)</p>
                 </div>
               </div>
@@ -137,7 +142,7 @@ export default function AgentInformation({
               {property.agent.workEmail}
             </p>
           </div>
-          <form className="flex flex-col gap-2 p-4">
+          <form className="flex flex-col gap-2 p-3">
             <input
               type="text"
               placeholder="Your name*"
@@ -155,7 +160,7 @@ export default function AgentInformation({
               placeholder="Phone number"
               className="p-2 border rounded-md"
             />
-            <input type="date" className="p-2 border rounded-md" required />
+            {/* <input type="date" className="p-2 border rounded-md" required /> */}
             <textarea
               name="message"
               id="message"
@@ -171,7 +176,7 @@ export default function AgentInformation({
             </button>
           </form>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }

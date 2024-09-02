@@ -288,7 +288,7 @@ export async function getProperties(): Promise<PropertyType[]> {
   const supabase = createClient();
   const { data, error } = await supabase
     .from("properties")
-    .select()
+    .select("*, agent(*)")
     .eq("isPublished", true);
   if (error) console.log(error);
   return data || [];
