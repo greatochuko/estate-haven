@@ -57,12 +57,12 @@ export default function Property({
   }
 
   return (
-    <div className="relative">
+    <div className="relative group">
       <Link
         href={`/properties/${property.id}`}
-        className="flex flex-col gap-2 shadow-[0_2px_6px_1px_#e4e4e7] hover:shadow-[0_2px_6px_3px_#e4e4e7] p-2 rounded-xl duration-300 group"
+        className="flex flex-col gap-2 shadow-[0_2px_6px_1px_#e4e4e7] hover:shadow-[0_2px_6px_3px_#e4e4e7] p-0 rounded-xl duration-300 group"
       >
-        <div className="relative rounded-md overflow-hidden aspect-[1.5]">
+        <div className="relative rounded-t-md overflow-hidden aspect-[1.5]">
           <Image
             src={property.images[0]}
             alt="property image"
@@ -70,9 +70,10 @@ export default function Property({
             sizes="600px"
             className="object-cover"
           ></Image>
+          <div className="top-0 left-0 absolute bg-black/30 opacity-0 group-hover:opacity-100 w-full h-full duration-300"></div>
         </div>
 
-        <div className="flex flex-col rounded-md">
+        <div className="flex flex-col p-2 rounded-md">
           <h3 className="group-hover:text-accent-green-200 flex flex-col rounded-md focus-visible:ring ring-accent-green-100 font-bold duration-200">
             {property.name}
           </h3>
@@ -205,12 +206,12 @@ export default function Property({
       {user && (
         <button
           disabled={pending}
-          className="top-4 right-4 absolute flex-center bg-white p-1 rounded-full focus-visible:ring ring-accent-green-100 duration-200 active:scale-90"
+          className="top-4 right-4 absolute flex-center bg-white opacity-0 group-hover:opacity-100 rounded-full focus-visible:ring ring-accent-green-100 w-8 h-8 duration-200 active:scale-90"
           onClick={handleLike}
         >
           <svg
-            height={24}
-            width={24}
+            height={20}
+            width={20}
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +229,7 @@ export default function Property({
                 d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
                 stroke="#2eb57e"
                 className={liked ? "fill-accent-green-100" : "fill-white"}
-                strokeWidth="2"
+                strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               ></path>

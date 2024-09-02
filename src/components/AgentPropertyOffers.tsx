@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Property, { PropertyType } from "./Property";
 import { WishlistType } from "@/app/settings/wishlist/page";
+import PropertiesGrid from "./PropertiesGrid";
 
 export type UserType = {
   id: string;
@@ -81,7 +82,7 @@ export default function AgentPropertyOffers({
       <h2 className="font-bold text-3xl text-center text-zinc-800">
         Property Offers
       </h2>
-      <div className="flex min-[400px]:flex-row flex-col justify-between items-center gap-4">
+      <div className="flex flex-col flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setPropertyType("all")}
@@ -114,6 +115,7 @@ export default function AgentPropertyOffers({
             For sale
           </button>
         </div>
+
         <div className="flex items-center gap-2">
           <label htmlFor="sort-by">Sort by</label>
           <select
@@ -131,16 +133,11 @@ export default function AgentPropertyOffers({
           </select>
         </div>
       </div>
-      <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
-        {filteredProperties.map((property) => (
-          <Property
-            property={property}
-            key={property.id}
-            user={user}
-            isLiked={wishlist.some((prop) => prop.property.id === property.id)}
-          />
-        ))}
-      </div>
+      <PropertiesGrid
+        properties={filteredProperties}
+        user={user}
+        wishlist={wishlist}
+      />
     </div>
   );
 }

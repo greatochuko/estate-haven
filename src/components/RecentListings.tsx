@@ -3,6 +3,7 @@ import Property, { PropertyType } from "./Property";
 import Link from "next/link";
 import { UserType } from "./AgentPropertyOffers";
 import { getUserWishlist } from "@/services/wishlistServices";
+import PropertiesGrid from "./PropertiesGrid";
 
 export default async function RecentListings({
   properties,
@@ -17,16 +18,7 @@ export default async function RecentListings({
       <h3 className="font-bold text-xl sm:text-2xl">
         Explore our latest properties
       </h3>
-      <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]">
-        {properties.map((property) => (
-          <Property
-            property={property}
-            key={property.id}
-            user={user}
-            isLiked={wishlist.some((prop) => prop.property.id === property.id)}
-          />
-        ))}
-      </div>
+      <PropertiesGrid properties={properties} user={user} wishlist={wishlist} />
       <Link
         href={"/properties"}
         className="block border-[3px] border-accent-green-100 hover:bg-accent-green-100 mx-auto mt-8 px-4 py-2 rounded-full w-fit font-bold text-accent-green-100 hover:text-white duration-300"

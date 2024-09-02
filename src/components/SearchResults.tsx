@@ -5,6 +5,7 @@ import Paginator from "./Paginator";
 import { PropertySearchParams } from "@/app/properties/page";
 import { UserType } from "./AgentPropertyOffers";
 import { WishlistType } from "@/app/settings/wishlist/page";
+import PropertiesGrid from "./PropertiesGrid";
 
 export default function SearchResults({
   showFilter,
@@ -107,18 +108,11 @@ export default function SearchResults({
         </div>
       </div>
       {sortedProperties.length ? (
-        <div className="gap-6 grid grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))] mb-4">
-          {sortedProperties.map((property) => (
-            <Property
-              property={property}
-              key={property.id}
-              user={user}
-              isLiked={wishlist.some(
-                (prop) => prop.property.id === property.id
-              )}
-            />
-          ))}
-        </div>
+        <PropertiesGrid
+          properties={sortedProperties}
+          user={user}
+          wishlist={wishlist}
+        />
       ) : (
         <div className="flex-col flex-1 flex-center gap-4">
           <svg
