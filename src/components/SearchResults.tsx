@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Property, { PropertyType } from "./Property";
+import  { PropertyType } from "./Property";
 import Paginator from "./Paginator";
 import { PropertySearchParams } from "@/app/properties/page";
 import { UserType } from "./AgentPropertyOffers";

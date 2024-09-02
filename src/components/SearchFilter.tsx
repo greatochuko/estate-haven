@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { locations } from "./PropertiesByLocationSection";
-import { PropertyType } from "./Property";
 import { useRouter } from "next/navigation";
 import { PropertySearchParams } from "@/app/properties/page";
 

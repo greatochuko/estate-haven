@@ -1,4 +1,4 @@
-import PropertiesPageMain from "@/components/PropertiesPageMain";
+import PropertiesPageContainer from "@/components/PropertiesPageContainer";
 import SearchForm from "@/components/SearchForm";
 import { searchProperties } from "@/services/propertyServices";
 import { getUserSession } from "@/services/userServices";
@@ -34,7 +34,7 @@ export default async function PropertiesPage({
   return (
     <div className="flex flex-col flex-1 gap-4 lg:gap-6">
       <SearchForm />
-      <PropertiesPageMain
+      <PropertiesPageContainer
         properties={properties}
         searchParams={searchParams}
         user={user}

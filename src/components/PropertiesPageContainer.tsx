@@ -7,7 +7,7 @@ import { PropertySearchParams } from "@/app/properties/page";
 import { UserType } from "./AgentPropertyOffers";
 import { WishlistType } from "@/app/settings/wishlist/page";
 
-export default function PropertiesPageMain({
+export default function PropertiesPageContainer({
   properties,
   searchParams,
   user,
