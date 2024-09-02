@@ -1,21 +1,54 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Review, { ReviewType } from "./Review";
-import { getUserSession } from "@/services/userServices";
 import ReviewForm from "./ReviewForm";
 import { PropertyType } from "./Property";
+import { UserType } from "./AgentPropertyOffers";
+import ReviewModal from "./ReviewModal";
 
-export default async function ReviewSection({
+export default function ReviewSection({
   reviews,
   property,
+  user,
 }: {
   reviews: ReviewType[];
   property: PropertyType;
+  user: UserType | null;
 }) {
-  const user = await getUserSession();
+  const [sortBy, setSortBy] = useState("newest");
+  const [reviewModal, setReviewModal] = useState<{
+    open: boolean;
+    type: "" | "new" | "edit" | "delete";
+    review: ReviewType | null;
+  }>({ open: false, type: "", review: null });
+
+  let sortedReviews = reviews;
+
+  if (sortBy === "newest") {
+    sortedReviews = [...reviews].sort(
+      (a, b) =>
+        new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+    );
+  }
+
+  if (sortBy === "oldest") {
+    sortedReviews = [...reviews].sort(
+      (a, b) =>
+        new Date(a.dateCreated).getTime() - new Date(b.dateCreated).getTime()
+    );
+  }
+
+  if (sortBy === "highest-rating") {
+    sortedReviews = [...reviews].sort((a, b) => b.rating - a.rating);
+  }
+
+  if (sortBy === "lowest-rating") {
+    sortedReviews = [...reviews].sort((a, b) => a.rating - b.rating);
+  }
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap justify-between items-center gap-4 pb-4 border-b">
+    <>
+      <div className="flex flex-col gap-6">
         <div className="flex items-center gap-2">
           <span>
             <svg
@@ -48,38 +81,74 @@ export default async function ReviewSection({
             ({reviews.length} Review{reviews.length > 1 ? "s" : ""})
           </h2>
         </div>
-
-        <div className="flex items-center gap-2">
-          <label htmlFor="sort-reviews">Sort by:</label>
-          <select
-            name="sort-reviews"
-            id="sort-reviews"
-            className="p-2 border rounded-md font-semibold"
+        <div className="flex flex-wrap justify-between items-center gap-4 pb-4 border-b">
+          <button
+            onClick={(e) =>
+              setReviewModal({ open: true, type: "new", review: null })
+            }
+            className="border-2 border-accent-green-100 hover:bg-accent-green-100 px-3 p-2 rounded-md font-bold text-accent-green-100 hover:text-white duration-300"
           >
-            <option value="popular">Popular</option>
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="high-rating">High Rating</option>
-            <option value="low-rating">Low Rating</option>
-          </select>
+            Add Review
+          </button>
+
+          <div className="flex items-center gap-2">
+            <label htmlFor="sort-reviews">Sort by:</label>
+            <select
+              name="sort-reviews"
+              id="sort-reviews"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="p-2 border rounded-md font-semibold"
+            >
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="highest-rating">Highest Rating</option>
+              <option value="lowest-rating">Lowest Rating</option>
+            </select>
+          </div>
         </div>
+
+        {reviews.length > 0 ? (
+          <ul className="flex flex-col gap-4">
+            {sortedReviews.map((review) => (
+              <Review
+                review={review}
+                key={review.id}
+                openEditReviewModal={() =>
+                  setReviewModal({
+                    open: true,
+                    type: "edit",
+                    review: review,
+                  })
+                }
+                openDeleteReviewModal={() => {
+                  setReviewModal({
+                    open: true,
+                    type: "delete",
+                    review: review,
+                  });
+                }}
+              />
+            ))}
+          </ul>
+        ) : (
+          <>
+            <p className="flex-center text-zinc-500">
+              There are currently no reviews for this property
+            </p>
+            <hr className="border-[#eee]" />
+          </>
+        )}
       </div>
-
-      {reviews.length > 0 ? (
-        <ul className="flex flex-col gap-4">
-          {reviews.map((review) => (
-            <Review review={review} key={review.id} />
-          ))}
-        </ul>
-      ) : (
-        <p className="flex-center text-zinc-500">
-          There are currently no reviews for this property
-        </p>
-      )}
-
-      <hr className="border-[#eee]" />
-
-      {user ? <ReviewForm property={property} /> : null}
-    </div>
+      <ReviewModal
+        property={property}
+        open={reviewModal.open}
+        review={reviewModal.review}
+        type={reviewModal.type}
+        closeModal={() =>
+          setReviewModal({ open: false, type: "", review: null })
+        }
+      />
+    </>
   );
 }

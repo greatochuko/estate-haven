@@ -3,14 +3,17 @@ import { PropertyType } from "./Property";
 import { formatDateDuration } from "@/utils/dateFormatter";
 import { ReviewType } from "./Review";
 import ReviewSection from "./ReviewSection";
+import { getUserSession } from "@/services/userServices";
 
-export default function PropertyInformation({
+export default async function PropertyInformation({
   property,
   reviews,
 }: {
   property: PropertyType;
   reviews: ReviewType[];
 }) {
+  const user = await getUserSession();
+
   return (
     <div className="flex flex-col flex-[2] gap-8">
       <div className="flex flex-col gap-2">
@@ -263,7 +266,7 @@ export default function PropertyInformation({
         </div>
       </div>
       <hr className="border-[#eee]" />
-      <ReviewSection reviews={reviews} property={property} />
+      <ReviewSection reviews={reviews} property={property} user={user} />
     </div>
   );
 }

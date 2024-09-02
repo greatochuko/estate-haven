@@ -19,10 +19,14 @@ export default function Review({
   review,
   showFor = false,
   showUser = true,
+  openEditReviewModal,
+  openDeleteReviewModal,
 }: {
   review: ReviewType;
   showFor?: boolean;
   showUser?: boolean;
+  openEditReviewModal: () => void;
+  openDeleteReviewModal: () => void;
 }) {
   return (
     <li
@@ -65,7 +69,10 @@ export default function Review({
       ) : null}
       <p className="text-zinc-600">{review.comment}</p>
       <div className="flex gap-4">
-        <button className="flex items-center gap-1 font-semibold text-zinc-500 hover:text-accent-green-100 duration-300 group">
+        <button
+          onClick={openEditReviewModal}
+          className="flex items-center gap-1 font-semibold text-zinc-500 hover:text-accent-green-100 duration-300 group"
+        >
           <svg
             height={18}
             width={18}
@@ -109,7 +116,10 @@ export default function Review({
           </svg>
           Edit
         </button>
-        <button className="flex items-center gap-1 font-semibold text-zinc-500 hover:text-red-500 duration-300 group">
+        <button
+          onClick={openDeleteReviewModal}
+          className="flex items-center gap-1 font-semibold text-zinc-500 hover:text-red-500 duration-300 group"
+        >
           <svg
             height={20}
             width={20}
