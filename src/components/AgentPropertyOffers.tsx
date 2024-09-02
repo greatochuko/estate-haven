@@ -82,7 +82,7 @@ export default function AgentPropertyOffers({
       <h2 className="font-bold text-3xl text-center text-zinc-800">
         Property Offers
       </h2>
-      <div className="flex flex-col flex-wrap justify-between items-center gap-4">
+      <div className="flex sm:flex-row flex-col flex-wrap justify-between items-center gap-4">
         <div className="flex items-center gap-2">
           <button
             onClick={() => setPropertyType("all")}
