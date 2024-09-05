@@ -11,8 +11,8 @@ export default async function MyPropertiesPage() {
   const agentProperties = await getAgentProperties(user.id);
 
   return (
-    <div>
-      <div className="flex flex-col gap-1 mb-4">
+    <div className="flex flex-col gap-4 h-full">
+      <div className="flex flex-col gap-1">
         <h1 className="font-bold text-2xl">My Properties</h1>
         <p className="text-zinc-500">
           Here, you can view and easily manage your property offers.

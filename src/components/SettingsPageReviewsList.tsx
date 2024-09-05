@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Review, { ReviewType } from "./Review";
 import { UserType } from "./AgentPropertyOffers";
+import ReviewModal from "./ReviewModal";
 
 export default function SettingsPageReviewsList({
   reviewsAboutAgent,
@@ -14,6 +15,11 @@ export default function SettingsPageReviewsList({
 }) {
   const [filter, setFilter] = useState("reviews-about-you");
   const [sortBy, setSortBy] = useState("popular");
+  const [reviewModal, setReviewModal] = useState<{
+    open: boolean;
+    type: "" | "new" | "edit" | "delete";
+    review: ReviewType | null;
+  }>({ open: false, type: "", review: null });
 
   let filteredReviews = reviewsAboutAgent;
 
@@ -89,6 +95,20 @@ export default function SettingsPageReviewsList({
               key={review.id}
               showFor
               showUser={filter === "reviews-by-you" ? false : true}
+              openEditReviewModal={() =>
+                setReviewModal({
+                  open: true,
+                  type: "edit",
+                  review: review,
+                })
+              }
+              openDeleteReviewModal={() => {
+                setReviewModal({
+                  open: true,
+                  type: "delete",
+                  review: review,
+                });
+              }}
             />
           ))}
         </ul>

@@ -158,7 +158,7 @@ export default function PersonalInfoForm({ user }: { user: UserType }) {
                     </button>
                   </>
                 ) : imagePending ? (
-                  <LoadingIndicator />
+                  <LoadingIndicator color="#2eb57e" />
                 ) : (
                   <div className="z-10 flex-col flex-center gap-1">
                     <svg

@@ -73,7 +73,7 @@ export default function Property({
           <div className="top-0 left-0 absolute bg-black/40 opacity-0 group-hover:opacity-100 w-full h-full duration-300"></div>
           <p
             className={`top-2 left-2 absolute ${
-              property.category === "rent" ? "bg-purple-500" : "bg-red-400"
+              property.category === "rent" ? "bg-sky-500" : "bg-red-400"
             } px-2 p-1 rounded-md text-white`}
           >
             For{property.category === "rent" ? " rent" : " sale"}

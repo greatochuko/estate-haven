@@ -29,12 +29,14 @@ export default function ReviewModal({
   const [tempRating, setTempRating] = useState<number | null>(null);
 
   const reviewId = review?.id;
+  const reviewRating = review?.rating;
+  const reviewComment = review?.comment;
 
   useEffect(() => {
-    if (!review) return;
-    setComment(review.comment);
-    setRating(review.rating);
-  }, [reviewId]);
+    if (!reviewId || !reviewComment || !reviewRating) return;
+    setComment(reviewComment);
+    setRating(reviewRating);
+  }, [reviewId, reviewComment, reviewRating]);
 
   async function handleDeleteReview() {
     setPending(true);

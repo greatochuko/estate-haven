@@ -126,12 +126,12 @@ export default function MobileSearchFilter({
           </button>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="state" className="font-semibold">
+          <label htmlFor="mobile-state" className="font-semibold">
             State
           </label>
           <select
             name="state"
-            id="state"
+            id="mobile-state"
             className="p-2 border rounded-md"
             value={locationState}
             onChange={(e) => setLocationState(e.target.value)}
@@ -146,12 +146,12 @@ export default function MobileSearchFilter({
         </div>
         {cities && (
           <div className="flex flex-col gap-2">
-            <label htmlFor="city" className="font-semibold">
+            <label htmlFor="mobile-city" className="font-semibold">
               City
             </label>
             <select
               name="city"
-              id="city"
+              id="mobile-city"
               className="p-2 border rounded-md"
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -171,12 +171,12 @@ export default function MobileSearchFilter({
             <input
               type="checkbox"
               name="house"
-              id="house"
+              id="mobile-house"
               className="hidden"
               checked={propertyTypes.includes("house")}
               onChange={() => toggleAddType("house")}
             />
-            <label htmlFor="house" className="flex items-center gap-2">
+            <label htmlFor="mobile-house" className="flex items-center gap-2">
               <span
                 className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("house")
@@ -215,12 +215,15 @@ export default function MobileSearchFilter({
             <input
               type="checkbox"
               name="apartment"
-              id="apartment"
+              id="mobile-apartment"
               className="hidden"
               checked={propertyTypes.includes("apartment")}
               onChange={() => toggleAddType("apartment")}
             />
-            <label htmlFor="apartment" className="flex items-center gap-2">
+            <label
+              htmlFor="mobile-apartment"
+              className="flex items-center gap-2"
+            >
               <span
                 className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("apartment")
@@ -259,12 +262,12 @@ export default function MobileSearchFilter({
             <input
               type="checkbox"
               name="duplex"
-              id="duplex"
+              id="mobile-duplex"
               className="hidden"
               checked={propertyTypes.includes("duplex")}
               onChange={() => toggleAddType("duplex")}
             />
-            <label htmlFor="duplex" className="flex items-center gap-2">
+            <label htmlFor="mobile-duplex" className="flex items-center gap-2">
               <span
                 className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("duplex")
@@ -303,12 +306,12 @@ export default function MobileSearchFilter({
             <input
               type="checkbox"
               name="studio"
-              id="studio"
+              id="mobile-studio"
               className="hidden"
               checked={propertyTypes.includes("studio")}
               onChange={() => toggleAddType("studio")}
             />
-            <label htmlFor="studio" className="flex items-center gap-2">
+            <label htmlFor="mobile-studio" className="flex items-center gap-2">
               <span
                 className={`flex-center border-accent-green-100 ${
                   propertyTypes.includes("studio")
@@ -380,7 +383,7 @@ export default function MobileSearchFilter({
           </div>
           <div className="flex gap-4">
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="min-price" className="font-semibold">
+              <label htmlFor="mobile-min-price" className="font-semibold">
                 Min {category === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
@@ -390,7 +393,7 @@ export default function MobileSearchFilter({
                 <input
                   type="text"
                   name="min-price"
-                  id="min-price"
+                  id="mobile-min-price"
                   value={minPrice ? Number(minPrice).toLocaleString() : ""}
                   onChange={(e) => {
                     const oldValue = e.target.value.split(",").join("");
@@ -403,7 +406,7 @@ export default function MobileSearchFilter({
               </div>
             </div>
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="max-price" className="font-semibold">
+              <label htmlFor="mobile-max-price" className="font-semibold">
                 Max {category === "rent" ? "Rent" : "Price"}
               </label>
               <div className="relative">
@@ -413,7 +416,7 @@ export default function MobileSearchFilter({
                 <input
                   type="text"
                   name="max-price"
-                  id="max-price"
+                  id="mobile-max-price"
                   value={maxPrice ? Number(maxPrice).toLocaleString() : ""}
                   onChange={(e) => {
                     const oldValue = e.target.value.split(",").join("");
@@ -433,12 +436,12 @@ export default function MobileSearchFilter({
           </div>
           <div className="flex gap-4">
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="min-bedroom" className="font-semibold">
+              <label htmlFor="mobile-min-bedroom" className="font-semibold">
                 Min
               </label>
               <select
                 name="min-bedroom"
-                id="min-bedroom"
+                id="mobile-min-bedroom"
                 className="p-2 border rounded-md"
                 value={minBedroom}
                 onChange={(e) => setMinBedroom(Number(e.target.value))}
@@ -451,12 +454,12 @@ export default function MobileSearchFilter({
               </select>
             </div>
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="max-bedroom" className="font-semibold">
+              <label htmlFor="mobile-max-bedroom" className="font-semibold">
                 Max
               </label>
               <select
                 name="max-bedroom"
-                id="max-bedroom"
+                id="mobile-max-bedroom"
                 className="p-2 border rounded-md"
                 value={maxBedroom}
                 onChange={(e) => setMaxBedroom(Number(e.target.value))}
@@ -476,12 +479,12 @@ export default function MobileSearchFilter({
           </div>
           <div className="flex gap-4">
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="min-bathroom" className="font-semibold">
+              <label htmlFor="mobile-min-bathroom" className="font-semibold">
                 Min
               </label>
               <select
                 name="min-bathroom"
-                id="min-bathroom"
+                id="mobile-min-bathroom"
                 className="p-2 border rounded-md"
                 value={minBathroom}
                 onChange={(e) => setMinBathroom(Number(e.target.value))}
@@ -494,12 +497,12 @@ export default function MobileSearchFilter({
               </select>
             </div>
             <div className="flex flex-col flex-1 gap-1">
-              <label htmlFor="max-bathroom" className="font-semibold">
+              <label htmlFor="mobile-max-bathroom" className="font-semibold">
                 Max
               </label>
               <select
                 name="max-bathroom"
-                id="max-bathroom"
+                id="mobile-max-bathroom"
                 className="p-2 border rounded-md"
                 value={maxBathroom}
                 onChange={(e) => setMaxBathroom(Number(e.target.value))}
