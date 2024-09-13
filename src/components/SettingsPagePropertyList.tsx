@@ -139,7 +139,7 @@ export default function SettingsPagePropertyList({
               onChange={(e) => setCategory(e.target.value)}
               name="property-type"
               id="property-type"
-              className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
+              className="border-2 sm:px-1.5 sm:py-2 p-1 rounded-lg focus-visible:ring ring-accent-green-100"
             >
               <option value="all">All</option>
               <option value="rent">For rent</option>
@@ -153,7 +153,7 @@ export default function SettingsPagePropertyList({
               onChange={(e) => setSortBy(e.target.value)}
               name="sort-by"
               id="sort-by"
-              className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
+              className="border-2 sm:px-1.5 sm:py-2 p-1 rounded-lg focus-visible:ring ring-accent-green-100"
             >
               <option value="popular">Popular</option>
               <option value="oldest">Oldest</option>
@@ -163,9 +163,9 @@ export default function SettingsPagePropertyList({
             </select>
           </div>
         </div>
-        <ul className="flex flex-col flex-1 gap-6">
-          {filteredProperties.length ? (
-            filteredProperties.map((property) => (
+        {filteredProperties.length ? (
+          <ul className="flex flex-col flex-1 gap-6">
+            {filteredProperties.map((property) => (
               <li
                 key={property.id}
                 className="flex sm:flex-row flex-col shadow-[0_0_5px_1px] shadow-zinc-200 rounded-lg aspect-[5]"
@@ -480,19 +480,19 @@ export default function SettingsPagePropertyList({
                   </div>
                 </div>
               </li>
-            ))
-          ) : (
-            <p className="flex flex-col justify-center items-center gap-2 h-full font-semibold text-center text-zinc-400 md:text-lg">
-              You currently have no properties listed.{" "}
-              <Link
-                href={"/properties/new"}
-                className="bg-accent-green-100 hover:bg-accent-green-200 px-4 p-2 rounded-md font-bold text-white duration-300"
-              >
-                Create New
-              </Link>
-            </p>
-          )}
-        </ul>
+            ))}
+          </ul>
+        ) : (
+          <p className="flex flex-col justify-center items-center gap-2 h-40 md:h-full font-semibold text-center text-zinc-400 md:text-lg">
+            You currently have no properties listed.{" "}
+            <Link
+              href={"/properties/new"}
+              className="bg-accent-green-100 hover:bg-accent-green-200 px-4 p-2 rounded-md font-bold text-white duration-300"
+            >
+              Create New
+            </Link>
+          </p>
+        )}
       </div>
       <DeletePropertyModal
         closeModal={() =>

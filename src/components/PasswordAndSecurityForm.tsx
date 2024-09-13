@@ -303,12 +303,12 @@ export default function PasswordAndSecurityForm() {
         >
           {pending ? <LoadingIndicator /> : "Update Password"}
         </button>
-        <Link
+        {/* <Link
           href={"/forgot-password"}
           className="p-2 font-semibold text-red-400 hover:text-red-500 duration-300"
         >
           Forgot Password?
-        </Link>
+        </Link> */}
       </div>
     </form>
   );
