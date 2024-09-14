@@ -1,10 +1,13 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { PropertyType } from "./Property";
 import Rating from "./Rating";
 import Link from "next/link";
 import { ReviewType } from "./Review";
 import { average } from "@/utils/average";
+import { makeEnquiry } from "@/actions/propertyActions";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function AgentInformation({
   property,
@@ -13,6 +16,17 @@ export default function AgentInformation({
   property: PropertyType;
   reviews: ReviewType[];
 }) {
+  const [pending, setPending] = useState(false);
+
+  async function handleMakeEnquiry(e: React.FormEvent) {
+    e.preventDefault();
+    setPending(true);
+    const enquiryForm = e.target as HTMLFormElement;
+    await makeEnquiry(new FormData(enquiryForm));
+    enquiryForm.reset();
+    setPending(false);
+  }
+
   return (
     <div className="top-20 sticky flex-1 h-fit">
       <div className="flex flex-col border rounded-md">
@@ -148,7 +162,10 @@ export default function AgentInformation({
               </p>
             ) : null}
           </div>
-          <form className="flex flex-col gap-2 p-3">
+          <form
+            className="flex flex-col gap-2 p-3"
+            onSubmit={handleMakeEnquiry}
+          >
             <input
               type="text"
               placeholder="Your name*"
@@ -175,10 +192,11 @@ export default function AgentInformation({
               required
             ></textarea>
             <button
+              disabled={pending}
               type="submit"
-              className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md w-full font-bold text-white duration-300"
+              className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-accent-green-100/50 p-2 rounded-md w-full font-bold text-white duration-300 disabled:cursor-not-allowed"
             >
-              Send Request
+              {pending ? <LoadingIndicator /> : "Send Request"}
             </button>
           </form>
         </div>

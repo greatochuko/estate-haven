@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import ModalContainer from "./ModalContainer";
-import { signout } from "@/actions/userActions";
+import { signout } from "@/actions/authActions";
 import LoadingIndicator from "./LoadingIndicator";
 
 export default function SignoutModal({

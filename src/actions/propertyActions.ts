@@ -198,3 +198,5 @@ export async function deleteListing(propertyId: string) {
   if (error) return;
   revalidatePath("/", "layout");
 }
+
+export async function makeEnquiry(formData: FormData) {}

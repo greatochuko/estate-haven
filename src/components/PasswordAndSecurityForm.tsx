@@ -1,5 +1,5 @@
 "use client";
-import { updatePassword } from "@/actions/userActions";
+import { updatePassword } from "@/actions/authActions";
 import Link from "next/link";
 import React, { useRef, useState } from "react";
 import { useFormStatus } from "react-dom";

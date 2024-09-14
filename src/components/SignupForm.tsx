@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LoadingIndicator from "./LoadingIndicator";
-import { signup } from "@/actions/userActions";
+import { signup } from "@/actions/authActions";
 
 export default function SignupForm({
   switchModal,

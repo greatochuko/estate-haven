@@ -1,4 +1,4 @@
-import { login } from "@/actions/userActions";
+import { login } from "@/actions/authActions";
 import React, { useState } from "react";
 import LoadingIndicator from "./LoadingIndicator";
 
