@@ -36,7 +36,6 @@ export async function createListing(formData: FormData) {
       agent: userId,
     };
 
-    // console.log(newPropertyData);
     const supabase = createClient();
     const { error } = await supabase.from("properties").insert(newPropertyData);
     if (error) {
@@ -44,7 +43,6 @@ export async function createListing(formData: FormData) {
     }
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    // console.log(error);
   } finally {
     revalidatePath("/", "layout");
     redirectUrl && redirect(redirectUrl);
@@ -82,7 +80,6 @@ export async function saveAsDraft(formData: FormData) {
       agent: userId,
     };
 
-    // console.log(newPropertyData);
     const supabase = createClient();
     const { error } = await supabase.from("properties").insert(newPropertyData);
     if (error) {
@@ -90,7 +87,6 @@ export async function saveAsDraft(formData: FormData) {
     }
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    // console.log(error);
   } finally {
     revalidatePath("/", "layout");
     redirectUrl && redirect(redirectUrl);
@@ -129,7 +125,6 @@ export async function editListing(formData: FormData) {
       agent: userId,
     };
 
-    // console.log(newPropertyData);
     const supabase = createClient();
     const { error } = await supabase
       .from("properties")
@@ -140,7 +135,6 @@ export async function editListing(formData: FormData) {
     }
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    // console.log(error);
   } finally {
     revalidatePath("/", "layout");
     redirectUrl && redirect(redirectUrl);
@@ -179,7 +173,6 @@ export async function editAsDraft(formData: FormData) {
       agent: userId,
     };
 
-    // console.log(newPropertyData);
     const supabase = createClient();
     const { error } = await supabase
       .from("properties")
@@ -190,7 +183,6 @@ export async function editAsDraft(formData: FormData) {
     }
     redirectUrl = "/settings/my-properties";
   } catch (error) {
-    // console.log(error);
   } finally {
     revalidatePath("/", "layout");
     redirectUrl && redirect(redirectUrl);

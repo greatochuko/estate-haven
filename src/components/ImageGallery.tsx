@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ImageViewModal from "./ImageViewModal";
 import Image from "next/image";
 import { PropertyType } from "./Property";
+import PropertyImage from "./PropertyImage";
 
 export default function ImageGallery({ property }: { property: PropertyType }) {
   const [modal, setModal] = useState({ open: false, index: 0 });
@@ -34,14 +35,10 @@ export default function ImageGallery({ property }: { property: PropertyType }) {
           }`}
           onClick={() => openModal(0)}
         >
-          <Image
-            src={property.images[0]}
-            alt={property.name}
-            fill
-            sizes="1680px"
-            className="object-cover"
-            priority
-          ></Image>
+          <PropertyImage
+            propertyName={property.name}
+            imageUrl={property.images[0]}
+          />
           <div className="top-0 left-0 absolute flex-center bg-black/50 opacity-0 group-hover:opacity-100 w-full h-full duration-300">
             <svg
               height={35}
@@ -74,13 +71,10 @@ export default function ImageGallery({ property }: { property: PropertyType }) {
               className="relative flex-1 rounded-lg cursor-pointer overflow-hidden aspect-[1.5] group"
               onClick={() => setModal({ open: true, index: 1 })}
             >
-              <Image
-                src={property.images[1]}
-                alt={property.name}
-                fill
-                sizes="640px"
-                className="object-cover"
-              ></Image>
+              <PropertyImage
+                propertyName={property.name}
+                imageUrl={property.images[1]}
+              />
               <div className="top-0 left-0 absolute flex-center bg-black/50 opacity-0 group-hover:opacity-100 w-full h-full duration-300">
                 <svg
                   height={35}
@@ -112,13 +106,10 @@ export default function ImageGallery({ property }: { property: PropertyType }) {
                 className="relative flex-1 rounded-lg cursor-pointer overflow-hidden aspect-[1.5] group"
                 onClick={() => setModal({ open: true, index: 2 })}
               >
-                <Image
-                  src={property.images[2]}
-                  alt={property.name}
-                  fill
-                  sizes="640px"
-                  className="object-cover"
-                ></Image>
+                <PropertyImage
+                  propertyName={property.name}
+                  imageUrl={property.images[2]}
+                />
                 {property.images.length > 3 ? (
                   <div className="top-0 left-0 absolute flex-center bg-black/50 w-full h-full font-semibold text-white group-hover:underline">
                     `+${property.images.length - 3} More`
