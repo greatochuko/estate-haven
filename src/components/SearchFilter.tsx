@@ -72,7 +72,7 @@ export default function SearchFilter({
     setMaxBedroom(maxBeds);
     setMinBathroom(0);
     setMaxBathroom(maxBath);
-    router.push("/properties");
+    router.push(`/properties?q=${searchParams.q}`);
   }
 
   function applyFilters() {
@@ -431,11 +431,13 @@ export default function SearchFilter({
               value={minBedroom}
               onChange={(e) => setMinBedroom(Number(e.target.value))}
             >
-              {Array.from({ length: maxBeds + 1 }).map((_, i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
+              {Array.from({ length: maxBeds + 1 }).map((_, i) =>
+                i <= maxBedroom ? (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ) : null
+              )}
             </select>
           </div>
           <div className="flex flex-col flex-1 gap-1">
@@ -474,11 +476,13 @@ export default function SearchFilter({
               value={minBathroom}
               onChange={(e) => setMinBathroom(Number(e.target.value))}
             >
-              {Array.from({ length: maxBath + 1 }).map((_, i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
+              {Array.from({ length: maxBath + 1 }).map((_, i) =>
+                i <= maxBathroom ? (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ) : null
+              )}
             </select>
           </div>
           <div className="flex flex-col flex-1 gap-1">

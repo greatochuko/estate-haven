@@ -16,7 +16,7 @@ export default async function Home() {
       <Hero />
       <RecentListings properties={properties} user={user} />
       <WhyUsSection />
-      <PropertiesByLocationSection />
+      <PropertiesByLocationSection properties={properties} />
       <CustomerReviews />
       <NewsLetterSection />
     </div>

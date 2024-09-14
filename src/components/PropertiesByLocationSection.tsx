@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { PropertyType } from "./Property";
 
 // export const locations2 = [
 //   {
@@ -124,7 +125,11 @@ export const locations = [
   },
 ];
 
-export default function PropertiesByLocationSection() {
+export default function PropertiesByLocationSection({
+  properties,
+}: {
+  properties: PropertyType[];
+}) {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-bold text-2xl text-center">
@@ -159,7 +164,12 @@ export default function PropertiesByLocationSection() {
                 {location.state}
               </h3>
               <p className="text-sm text-zinc-500 sm:text-base">
-                {23} listings
+                {
+                  properties.filter(
+                    (property) => property.state === location.state
+                  ).length
+                }{" "}
+                listings
               </p>
             </div>
           </Link>

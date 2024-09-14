@@ -10,7 +10,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 bg-zinc-100 p-4 sm:p-8 rounded-md"
+      className="flex flex-col gap-4 bg-zinc-100 p-4 md:p-8 rounded-md"
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="fullName" className="font-semibold">

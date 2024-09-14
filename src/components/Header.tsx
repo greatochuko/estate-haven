@@ -97,7 +97,7 @@ export default function Header({ user }: { user: UserType | null }) {
                 className="flex items-center gap-1 cursor-pointer group"
                 onClick={() => setdropdown((curr) => !curr)}
               >
-                <div className="relative bg-zinc-100 min-[400px]:mr-1 rounded-full w-10 h-10 overflow-hidden">
+                <div className="relative bg-zinc-100 sm:mr-1 rounded-full w-10 h-10 overflow-hidden">
                   <Image
                     src={user.imageUrl}
                     alt={user.firstname + " " + user.lastname}
@@ -106,7 +106,7 @@ export default function Header({ user }: { user: UserType | null }) {
                     className="object-cover"
                   ></Image>
                 </div>
-                <p className="max-[400px]:hidden">
+                <p className="sm:block hidden">
                   {user.firstname} {user.lastname}
                 </p>
                 <div className={`duration-300 ${dropdown ? "rotate-180" : ""}`}>

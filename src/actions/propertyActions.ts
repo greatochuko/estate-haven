@@ -1,12 +1,9 @@
 "use server";
 
-import { getUserSession } from "@/services/userServices";
 import { getUserIdFromCookies } from "@/utils/getUserId";
 import { createClient } from "@/utils/supabase/server";
-import { request } from "http";
 import { revalidatePath } from "next/cache";
-import { ReadonlyURLSearchParams, redirect } from "next/navigation";
-import { NextRequest } from "next/server";
+import { redirect } from "next/navigation";
 
 export async function createListing(formData: FormData) {
   let redirectUrl;

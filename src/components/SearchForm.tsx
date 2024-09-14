@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function SearchForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(searchParams.get("q") || "");
   const [pending, setPending] = useState(false);
 
   function handleSearchProperties(e: React.FormEvent) {
