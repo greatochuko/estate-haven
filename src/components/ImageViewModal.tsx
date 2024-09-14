@@ -34,7 +34,8 @@ export default function ImageViewModal({
   }, [fullscreen]);
 
   function closeImageView() {
-    document.exitFullscreen();
+    if (document.fullscreenElement === modalRef.current)
+      document.exitFullscreen();
     closeModal();
   }
 
