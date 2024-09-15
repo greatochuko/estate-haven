@@ -72,6 +72,30 @@ export async function login(email: string, password: string) {
   return { done: true, error: "" };
 }
 
+export async function loginWithDemoUser() {
+  const supabase = createClient();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select()
+    .eq("email", "johndoe@gmail.com");
+
+  if (!data?.length || error)
+    return { done: false, error: "Invalid email and password combination" };
+
+  const user: UserType = data[0];
+  const passwordIsCorrect = await bcrypt.compare("12345678", user.password);
+  if (!passwordIsCorrect)
+    return { done: false, error: "Invalid email and password combination" };
+
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!);
+  cookies().set("token", token, {
+    expires: Date.now() + 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  });
+  revalidatePath("/", "layout");
+  return { done: true, error: "" };
+}
+
 export async function signout() {
   cookies().delete("token");
   revalidatePath("/", "layout");

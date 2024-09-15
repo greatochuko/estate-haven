@@ -172,7 +172,7 @@ export default function AgentInformation({
             <input
               type="text"
               placeholder="Your name*"
-              defaultValue={user?.firstname + " " + user?.lastname}
+              defaultValue={user ? user.firstname + " " + user.lastname : ""}
               disabled={!!user}
               className="p-2 border rounded-md"
               required

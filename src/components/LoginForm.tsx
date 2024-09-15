@@ -14,11 +14,7 @@ export default function LoginForm({
   const [loginError, setLoginError] = useState("");
   const [pending, setPending] = useState(false);
 
-  function clearInputs() {
-    setEmail("");
-    setPassword("");
-    setLoginError("");
-  }
+  const cannotSubmit = !email || !password || pending;
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -26,7 +22,7 @@ export default function LoginForm({
     const { done, error } = await login(email, password);
     setLoginError(error);
     if (done) {
-      clearInputs();
+      (e.target as HTMLFormElement).reset();
       closeModal();
     }
     setPending(false);
@@ -63,11 +59,11 @@ export default function LoginForm({
       {loginError ? (
         <p className="mt-[-2px] text-red-500 text-sm">{loginError}</p>
       ) : null}
-      <div className="flex flex-col gap-3">
+      <div className="flex sm:flex-row flex-col justify-between items-start sm:items-center gap-2">
         <button
-          disabled={pending}
+          disabled={cannotSubmit}
           type="submit"
-          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
+          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md w-full sm:w-20 font-bold text-white duration-300 disabled:cursor-not-allowed"
         >
           {pending ? <LoadingIndicator /> : "Login"}
         </button>

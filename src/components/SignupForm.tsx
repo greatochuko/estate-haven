@@ -29,7 +29,8 @@ export default function SignupForm({
     !password ||
     !confirmPassword ||
     !!passwordError ||
-    !!confirmPasswordError;
+    !!confirmPasswordError ||
+    pending;
 
   function clearInputs() {
     setFirstname("");
@@ -132,11 +133,11 @@ export default function SignupForm({
           </p>
         ) : null}
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="flex sm:flex-row flex-col justify-between items-start sm:items-center gap-2">
         <button
-          disabled={cannotSubmit || pending}
+          disabled={cannotSubmit}
           type="submit"
-          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md font-bold text-white duration-300"
+          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md w-full sm:w-20 font-bold text-white duration-300 disabled:cursor-not-allowed"
         >
           {pending ? <LoadingIndicator /> : "Signup"}
         </button>

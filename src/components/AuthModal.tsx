@@ -5,6 +5,9 @@ import Image from "next/image";
 import loginBackground from "../../public/login-bg.jpg";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
+import { loginWithDemoUser } from "@/actions/authActions";
+import { useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function AuthModal({
   type,
@@ -23,8 +26,8 @@ export default function AuthModal({
         className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-xl max-h-[95dvh] md:max-h-[90dvh]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 md:gap-8 p-4 md:p-8">
-          <h1 className="font-semibold text-xl sm:text-2xl capitalize">
+        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 p-4 md:p-8">
+          <h1 className="mb-2 font-bold text-xl sm:text-2xl capitalize">
             {type}
           </h1>
           {type === "login" ? (
@@ -32,6 +35,9 @@ export default function AuthModal({
           ) : (
             <SignupForm switchModal={switchModal} closeModal={closeModal} />
           )}
+          <form action={loginWithDemoUser} className="flex">
+            <LoginWithDemoUserButton />
+          </form>
         </div>
         <button
           onClick={closeModal}
@@ -97,5 +103,17 @@ export default function AuthModal({
         </button>
       </div>
     </ModalContainer>
+  );
+}
+
+function LoginWithDemoUserButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      disabled={pending}
+      className="flex-1 flex-center border-accent-green-100 bg-accent-green-100 hover:bg-accent-green-200 p-2 border rounded-md font-bold text-white duration-300 disabled:cursor-not-allowed"
+    >
+      {pending ? <LoadingIndicator /> : "Sign in with demo user"}
+    </button>
   );
 }
