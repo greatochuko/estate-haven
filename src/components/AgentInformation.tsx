@@ -8,13 +8,16 @@ import { ReviewType } from "./Review";
 import { average } from "@/utils/average";
 import { makeEnquiry } from "@/actions/propertyActions";
 import LoadingIndicator from "./LoadingIndicator";
+import { UserType } from "./AgentPropertyOffers";
 
 export default function AgentInformation({
   property,
   reviews,
+  user,
 }: {
   property: PropertyType;
   reviews: ReviewType[];
+  user: UserType | null;
 }) {
   const [pending, setPending] = useState(false);
 
@@ -169,12 +172,16 @@ export default function AgentInformation({
             <input
               type="text"
               placeholder="Your name*"
+              defaultValue={user?.firstname + " " + user?.lastname}
+              disabled={!!user}
               className="p-2 border rounded-md"
               required
             />
             <input
               type="email"
               placeholder="Email*"
+              defaultValue={user?.email}
+              disabled={!!user}
               className="p-2 border rounded-md"
               required
             />

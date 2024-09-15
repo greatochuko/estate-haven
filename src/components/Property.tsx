@@ -213,7 +213,7 @@ export default function Property({
       {user && (
         <button
           disabled={pending}
-          className="top-4 right-4 absolute flex-center bg-white opacity-0 group-hover:opacity-100 rounded-full focus-visible:ring ring-accent-green-100 w-8 h-8 duration-200 active:scale-90"
+          className="top-4 right-4 absolute flex-center bg-white sm:opacity-0 group-hover:opacity-100 rounded-full focus-visible:ring ring-accent-green-100 w-8 h-8 duration-200 active:scale-90"
           onClick={handleLike}
         >
           <svg
