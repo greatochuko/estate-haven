@@ -1,8 +1,10 @@
 "use server";
 
 import { getUserIdFromCookies } from "@/utils/getUserId";
+import { sendMail } from "@/utils/sendMail";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { tree } from "next/dist/build/templates/app-page";
 import { redirect } from "next/navigation";
 
 export async function createListing(formData: FormData) {
@@ -199,4 +201,18 @@ export async function deleteListing(propertyId: string) {
   revalidatePath("/", "layout");
 }
 
-export async function makeEnquiry(formData: FormData) {}
+export async function makeEnquiry(formData: FormData) {
+  const data = {
+    clientName: formData.get("clientName") as string,
+    clientEmail: formData.get("clientEmail") as string,
+    clientPhoneNumber: formData.get("phoneNumber") as string,
+    clientMessage: formData.get("message") as string,
+    agentName: formData.get("agentName") as string,
+    recipient: formData.get("agentEmail") as string,
+    propertyName: formData.get("propertyName") as string,
+    location: formData.get("location") as string,
+    propertyId: formData.get("propertyId") as string,
+  };
+
+  return await sendMail(data);
+}

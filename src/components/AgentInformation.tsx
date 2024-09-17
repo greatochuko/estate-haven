@@ -19,14 +19,28 @@ export default function AgentInformation({
   reviews: ReviewType[];
   user: UserType | null;
 }) {
+  const [name, setName] = useState(
+    user ? user?.firstname + " " + user?.lastname : ""
+  );
+  const [email, setEmail] = useState(user?.email || "");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [message, setMessage] = useState("");
   const [pending, setPending] = useState(false);
+
+  function clearInputs() {
+    setName(user ? user?.firstname + " " + user?.lastname : "");
+    setEmail(user?.email || "");
+    setPhoneNumber("");
+    setMessage("");
+  }
 
   async function handleMakeEnquiry(e: React.FormEvent) {
     e.preventDefault();
     setPending(true);
     const enquiryForm = e.target as HTMLFormElement;
-    await makeEnquiry(new FormData(enquiryForm));
-    enquiryForm.reset();
+    const { done, error } = await makeEnquiry(new FormData(enquiryForm));
+    console.log(error);
+    clearInputs();
     setPending(false);
   }
 
@@ -170,34 +184,59 @@ export default function AgentInformation({
             onSubmit={handleMakeEnquiry}
           >
             <input
+              name="clientName"
               type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Your name*"
-              defaultValue={user ? user.firstname + " " + user.lastname : ""}
-              disabled={!!user}
               className="p-2 border rounded-md"
-              required
             />
             <input
+              name="clientEmail"
               type="email"
-              placeholder="Email*"
-              defaultValue={user?.email}
-              disabled={!!user}
-              className="p-2 border rounded-md"
-              required
-            />
-            <input
-              type="phone"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Phone number"
               className="p-2 border rounded-md"
             />
-            {/* <input type="date" className="p-2 border rounded-md" required /> */}
+            <input
+              name="phoneNumber"
+              type="phone"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Phone number"
+              className="p-2 border rounded-md"
+            />
             <textarea
               name="message"
               id="message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               className="p-2 border rounded-md max-h-28 aspect-video resize-none"
               placeholder="Message*"
               required
             ></textarea>
+            <input
+              type="hidden"
+              name="agentName"
+              defaultValue={property.agent.firstname}
+            />
+            <input
+              type="hidden"
+              name="agentEmail"
+              defaultValue={property.agent.email}
+            />
+            <input
+              type="hidden"
+              name="propertyName"
+              defaultValue={property.name}
+            />
+            <input
+              type="hidden"
+              name="location"
+              defaultValue={property.city + ", " + property.state}
+            />
+            <input type="hidden" name="propertyId" defaultValue={property.id} />
             <button
               disabled={pending}
               type="submit"

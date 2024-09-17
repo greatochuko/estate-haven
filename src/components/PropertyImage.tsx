@@ -22,9 +22,8 @@ export default function PropertyImage({
         sizes="1680px"
         className="object-cover"
         priority
-        onLoadingComplete={(e) => {
+        onLoad={(e) => {
           setLoading(false);
-          console.log("asdf");
         }}
       ></Image>
     </>

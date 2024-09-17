@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/nodejs": "^4.0.4",
     "@supabase/ssr": "^0.5.1",
     "@supabase/supabase-js": "^2.45.2",
     "@types/bcrypt": "^5.0.2",
