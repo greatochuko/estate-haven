@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Estate-Haven
+![Estate Haven home page](/public/homepage.png)
 
-## Getting Started
+**Estate-Haven** is a real estate website built using modern web technologies. The platform allows users to explore real estate listings, search for properties, and get detailed information on various housing options. This project leverages **Next.js**, **TypeScript**, **Supabase**, and **Tailwind CSS** for a responsive and efficient user experience.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Browse Listings**: View real estate listings with detailed property information.
+- **Search Properties**: Filter properties by location, price, and type.
+- **Create & Edit Listings**: Users can create new real estate listings and edit existing ones (admin functionality).
+- **Wishlist**: Save favorite properties to a wishlist for future reference.
+- **Responsive Design**: Seamless experience across devices, optimized for both mobile and desktop views.
+- **Real-time Data Management**: Powered by Supabase for fast, real-time property updates.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: Server-side rendering and static site generation for fast loading times and SEO optimization.
+- **TypeScript**: Strongly typed JavaScript for better code quality and debugging.
+- **Supabase**: Backend as a service (BaaS) providing real-time databases and authentication.
+- **Tailwind CSS**: Utility-first CSS framework for building responsive and modern designs quickly.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+To get started with the project, follow the steps below:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/estate-haven.git
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Navigate into the project directory:
+   ```bash
+   cd estate-haven
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+4. Set up your environment variables. Create a `.env.local` file in the root directory with your Supabase keys:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   JWT_SECRET=your-jwt-secret
+   NEXT_PUBLIC_ORIGIN=your-origin
+   NEXT_PUBLIC_EMAILJS_PRIVATE_KEY=your-emailjs-private-key
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your-emailjs-public-key
+   
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+6. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+## Deployment
+
+To deploy this project, you can use platforms such as **Vercel** or **Netlify**:
+
+1. Connect your repository to the platform.
+2. Ensure your environment variables are correctly set up.
+3. Deploy your site directly from the platform's dashboard.
+
+## Contribution
+
+If you'd like to contribute to **Estate-Haven**, feel free to submit a pull request. Make sure to follow the coding standards and ensure that your changes are well tested.
+
+---
+
+### Contact
+
+If you have any questions or suggestions regarding this project, feel free to reach out to me:
+
+- **Portfolio**: [https://greatochuko.vercel.app/](https://greatochuko.vercel.app/)
+- **Email**: greatochuko123@gmail.com
