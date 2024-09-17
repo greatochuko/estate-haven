@@ -24,11 +24,15 @@ export default async function PropertyInformation({
             {property.category === "rent" && "/Mo"}
           </span>
         </h1>
-        <p className="font-semibold text-zinc-600">
+        <p className="font-semibold text-zinc-600 capitalize">
           {property.city}, {property.state}
-          {property.state.toLowerCase() !== "fct" && "State"}
+          {property.state.toLowerCase() !== "fct" && " state"}
         </p>
         <p>{property.description}</p>
+        <p>
+          <span className="font-bold">Amenities: </span>
+          {property.amenities.join(", ")}
+        </p>
       </div>
       <hr className="border-[#eee]" />
       <div className="flex flex-col gap-2">
