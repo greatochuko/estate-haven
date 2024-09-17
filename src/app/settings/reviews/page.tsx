@@ -12,7 +12,7 @@ export default async function ReviewsPage() {
   if (!user) return <UserNotAuthenticatedPage />;
 
   const reviewsAboutAgent = await getAllReviewsAboutAgent(user.id);
-  const reviewsByUser = await getAllReviewsAboutAgent(user.id);
+  const reviewsByUser = await getAllReviewsByUser(user.id);
 
   return (
     <div className="flex flex-col h-full">
@@ -25,7 +25,6 @@ export default async function ReviewsPage() {
       <SettingsPageReviewsList
         reviewsAboutAgent={reviewsAboutAgent}
         reviewsByUser={reviewsByUser}
-        user={user}
       />
     </div>
   );

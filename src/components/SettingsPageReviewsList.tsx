@@ -1,17 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import Review, { ReviewType } from "./Review";
-import { UserType } from "./AgentPropertyOffers";
-import ReviewModal from "./ReviewModal";
 
 export default function SettingsPageReviewsList({
   reviewsAboutAgent,
   reviewsByUser,
-  user,
 }: {
   reviewsAboutAgent: ReviewType[];
   reviewsByUser: ReviewType[];
-  user: UserType;
 }) {
   const [filter, setFilter] = useState("reviews-about-you");
   const [sortBy, setSortBy] = useState("popular");
@@ -24,7 +20,7 @@ export default function SettingsPageReviewsList({
   let filteredReviews = reviewsAboutAgent;
 
   // Filter reviews
-  if (filter === "reviews-about-you") filteredReviews = reviewsByUser;
+  if (filter === "reviews-by-you") filteredReviews = reviewsByUser;
 
   if (sortBy === "oldest")
     filteredReviews = filteredReviews
@@ -63,7 +59,7 @@ export default function SettingsPageReviewsList({
               : "bg-[#f6f6f6] hover:shadow-[0_1px_6px_1px_#e0e0e0] text-zinc-500"
           }`}
         >
-          Review by you
+          Reviews by you
         </button>
       </div>
       <hr className="border-zinc-100" />
@@ -71,7 +67,7 @@ export default function SettingsPageReviewsList({
         <div className="flex justify-between items-center gap-4">
           <h2 className="font-bold text-xl">
             {filteredReviews.length} Review
-            {filteredReviews.length > 1 ? "s" : ""}
+            {filteredReviews.length === 1 ? "" : "s"}
           </h2>
           <div className="flex items-center gap-2">
             <label htmlFor="sort-by">Sort by</label>

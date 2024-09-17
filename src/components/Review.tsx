@@ -56,7 +56,7 @@ export default function Review({
       {showFor ? (
         <div className="flex flex-col gap-2">
           <p className="text-zinc-700">
-            For:
+            For:{" "}
             <Link
               href={`/properties/${review.property.id}`}
               className="font-bold hover:text-accent-green-100 duration-300"
