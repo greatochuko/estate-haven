@@ -1,12 +1,21 @@
 "use client";
+import { subscribeToNewsletter } from "@/actions/newsletterActions";
 import React, { useState } from "react";
+import { useFormStatus } from "react-dom";
+import LoadingIndicator from "./LoadingIndicator";
 
 export default function NewsLetterSection() {
   const [email, setEmail] = useState("");
+  const [pending, setPending] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setPending(true);
+    const { done, error } = await subscribeToNewsletter(
+      new FormData(e.target as HTMLFormElement)
+    );
     setEmail("");
+    setPending(false);
   }
 
   return (
@@ -28,14 +37,16 @@ export default function NewsLetterSection() {
           className="flex-1 bg-white p-4 pr-28 sm:pr-28 rounded-xl w-full text-zinc-800"
           placeholder="Enter your email"
           name="email"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <button
+          disabled={pending}
           type="submit"
-          className="top-[50%] right-2 absolute bg-accent-green-100 px-4 p-2 rounded-md -translate-y-[50%]"
+          className="top-[50%] right-2 absolute flex-center bg-accent-green-100 disabled:bg-accent-green-100/50 p-2 rounded-md w-24 -translate-y-[50%]"
         >
-          Join Now
+          {pending ? <LoadingIndicator /> : "Join Now"}
         </button>
       </form>
     </div>
