@@ -52,11 +52,15 @@ export default function CreateListingForm({
   setImageList,
   images,
   setImages,
+  frequency,
+  setFrequency,
   canSubmit,
 }: {
   property: PropertyType | null;
   propertyName: string;
   setPropertyName: React.Dispatch<React.SetStateAction<string>>;
+  frequency: string;
+  setFrequency: React.Dispatch<React.SetStateAction<string>>;
   price: number;
   setPrice: React.Dispatch<React.SetStateAction<number>>;
   area: number;
@@ -615,6 +619,8 @@ export default function CreateListingForm({
           />
           <select
             name="frequency"
+            value={frequency}
+            onChange={(e) => setFrequency(e.target.value)}
             className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100"
           >
             {category === "rent" ? (

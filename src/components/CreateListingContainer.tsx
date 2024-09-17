@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropertyCompletionStatus from "./PropertyCompletionStatus";
 import CreateListingForm from "./CreateListingForm";
 import { PropertyType } from "./Property";
@@ -10,6 +10,7 @@ export default function CreateListingContainer({
   property: PropertyType | null;
 }) {
   const [propertyName, setPropertyName] = useState(property?.name || "");
+  const [frequency, setFrequency] = useState("per-month");
   const [category, setCategory] = useState(property?.category || "rent");
   const [streetAddress, setStreetAddress] = useState(
     property?.streetAddress || ""
@@ -36,6 +37,14 @@ export default function CreateListingContainer({
   );
   const [images, setImages] = useState<string[]>(property?.images || []);
 
+  useEffect(() => {
+    if (category === "sale") {
+      setFrequency("outright");
+    } else {
+      setFrequency("per-month");
+    }
+  }, [category]);
+
   const basicInfoCompleted = !!propertyName.length;
   const locationCompleted = !!streetAddress.length;
   const propertyDetailsCompleted = !!area && area !== 0 && !!amenities.length;
@@ -58,6 +67,8 @@ export default function CreateListingContainer({
         photosCompleted={photosCompleted}
       />
       <CreateListingForm
+        frequency={frequency}
+        setFrequency={setFrequency}
         property={property}
         propertyName={propertyName}
         setPropertyName={setPropertyName}

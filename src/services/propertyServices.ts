@@ -408,7 +408,8 @@ export async function getProperty(
   const { data, error } = await supabase
     .from("properties")
     .select("*, agent(*)")
-    .eq("isPublished", true);
+    .eq("isPublished", true)
+    .eq("id", propertyId);
   if (error) return null;
   return data[0];
 }
@@ -417,7 +418,10 @@ export async function getPropertyToEdit(
   propertyId: string
 ): Promise<PropertyType | null> {
   const supabase = createClient();
-  const { data, error } = await supabase.from("properties").select();
+  const { data, error } = await supabase
+    .from("properties")
+    .select()
+    .eq("id", propertyId);
   if (error) return null;
   return data[0];
 }
