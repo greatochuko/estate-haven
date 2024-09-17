@@ -1,7 +1,12 @@
 import PasswordAndSecurityForm from "@/components/PasswordAndSecurityForm";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getUserSession } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Password and Security",
+};
 
 export default async function PasswordAndSecurityPage() {
   const user = await getUserSession();

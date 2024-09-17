@@ -1,8 +1,13 @@
 import Link from "next/link";
 import React from "react";
-import aboutImage1 from "../../../public/about-image-1.jpg";
-import aboutImage2 from "../../../public/about-image-2.jpg";
+import aboutImage1 from "@/../public/about-image-1.jpg";
+import aboutImage2 from "@/../public/about-image-2.jpg";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+};
 
 export default function AboutPage() {
   return (

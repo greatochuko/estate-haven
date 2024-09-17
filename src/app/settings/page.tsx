@@ -1,7 +1,12 @@
 import PersonalInfoForm from "@/components/PersonalInfoForm";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getUserSession } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Personal Info",
+};
 
 export default async function PersonalInfoSettingsPage() {
   const user = await getUserSession();

@@ -4,8 +4,21 @@ import PropertyInformation from "@/components/PropertyInformation";
 import { getProperty } from "@/services/propertyServices";
 import { getReviews } from "@/services/reviewServices";
 import { getUserSession } from "@/services/userServices";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { propertyId: string };
+}): Promise<Metadata> {
+  const property = await getProperty(params.propertyId);
+
+  return {
+    title: property?.name || "Property Detail",
+  };
+}
 
 export default async function PropertyDetailsPage({
   params,

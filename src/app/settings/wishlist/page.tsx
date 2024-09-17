@@ -3,6 +3,7 @@ import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import UserWishlist from "@/components/UserWishlist";
 import { getUserSession } from "@/services/userServices";
 import { getUserWishlist } from "@/services/wishlistServices";
+import { Metadata } from "next";
 import React from "react";
 
 export type WishlistType = {
@@ -10,6 +11,10 @@ export type WishlistType = {
   user: string;
   property: PropertyType;
   dateCreated: string;
+};
+
+export const metadata: Metadata = {
+  title: "Wishlist",
 };
 
 export default async function WishlistPage() {

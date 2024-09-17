@@ -2,6 +2,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import SearchFilter from "@/components/SearchFilter";
 import SearchForm from "@/components/SearchForm";
 import SearchResultsContainer from "@/components/SearchResultsContainer";
+import { Metadata } from "next";
 import React, { Suspense } from "react";
 
 export type PropertySearchParams = {
@@ -20,6 +21,10 @@ export type PropertySearchParams = {
 };
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Properties",
+};
 
 export default async function PropertiesPage({
   searchParams,

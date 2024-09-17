@@ -5,9 +5,14 @@ import Footer from "@/components/Footer";
 import { getUserSession } from "@/services/userServices";
 
 export const metadata: Metadata = {
-  title: "Estate Haven",
+  title: { template: "%s - Estate Haven", absolute: "Estate Haven" },
   description:
     "The ultimate destination for the latest property listings and market insights!",
+  openGraph: {
+    images: ["https://estatehaven.vercel.app/homepage.png"],
+    url: "https://estatehaven.vercel.app",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({

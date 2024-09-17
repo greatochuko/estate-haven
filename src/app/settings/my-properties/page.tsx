@@ -2,7 +2,12 @@ import SettingsPagePropertyList from "@/components/SettingsPagePropertyList";
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getAgentProperties } from "@/services/propertyServices";
 import { getUserSession } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "My Properties",
+};
 
 export default async function MyPropertiesPage() {
   const user = await getUserSession();

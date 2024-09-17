@@ -3,7 +3,12 @@ import { PropertyType } from "@/components/Property";
 
 import UserNotAuthenticatedPage from "@/components/UserNotAuthenticatedPage";
 import { getUserSession } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Add New Property",
+};
 
 export default async function CreateNewListingPage({
   property,

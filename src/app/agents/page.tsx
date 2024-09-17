@@ -1,7 +1,12 @@
 import Agent from "@/components/Agent";
 import { getProperties } from "@/services/propertyServices";
 import { getAgents } from "@/services/userServices";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Agents",
+};
 
 export default async function AgentListPage() {
   const agents = await getAgents();
