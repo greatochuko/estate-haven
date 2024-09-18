@@ -81,14 +81,16 @@ export default function ReviewSection({
           </h2>
         </div>
         <div className="flex flex-wrap justify-between items-center gap-4 pb-4 border-b">
-          <button
-            onClick={(e) =>
-              setReviewModal({ open: true, type: "new", review: null })
-            }
-            className="border-2 border-accent-green-100 hover:bg-accent-green-100 px-3 p-2 rounded-md font-bold text-accent-green-100 hover:text-white duration-300"
-          >
-            Add Review
-          </button>
+          {user ? (
+            <button
+              onClick={(e) =>
+                setReviewModal({ open: true, type: "new", review: null })
+              }
+              className="border-2 border-accent-green-100 hover:bg-accent-green-100 px-3 p-2 rounded-md font-bold text-accent-green-100 hover:text-white duration-300"
+            >
+              Add Review
+            </button>
+          ) : null}
 
           <div className="flex items-center gap-2">
             <label htmlFor="sort-reviews">Sort by:</label>
@@ -111,6 +113,7 @@ export default function ReviewSection({
           <ul className="flex flex-col gap-4">
             {sortedReviews.map((review) => (
               <Review
+                user={user}
                 review={review}
                 key={review.id}
                 openEditReviewModal={() =>
