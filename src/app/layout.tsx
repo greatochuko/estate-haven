@@ -8,10 +8,19 @@ export const metadata: Metadata = {
   title: { template: "%s - Estate Haven", absolute: "Estate Haven" },
   description:
     "The ultimate destination for the latest property listings and market insights!",
+  authors: [
+    { name: "Great Ogheneochuko", url: "https://greatochuko.vercel.app" },
+  ],
   openGraph: {
-    images: ["https://estatehaven.vercel.app/homepage.png"],
-    url: "https://estatehaven.vercel.app",
+    title: "Bloggerzine",
     type: "website",
+    url: "https://estatehaven.vercel.app",
+    images: ["https://estatehaven.vercel.app/ogImage.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bloggerzine",
+    images: ["https://estatehaven.vercel.app/ogImage.png"],
   },
 };
 
