@@ -39,7 +39,6 @@ export default function AgentInformation({
     setPending(true);
     const enquiryForm = e.target as HTMLFormElement;
     const { done, error } = await makeEnquiry(new FormData(enquiryForm));
-    console.log(error);
     clearInputs();
     setPending(false);
   }

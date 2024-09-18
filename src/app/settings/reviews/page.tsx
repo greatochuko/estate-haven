@@ -28,6 +28,7 @@ export default async function ReviewsPage() {
         </p>
       </div>
       <SettingsPageReviewsList
+        user={user}
         reviewsAboutAgent={reviewsAboutAgent}
         reviewsByUser={reviewsByUser}
       />

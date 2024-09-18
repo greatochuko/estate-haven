@@ -143,7 +143,7 @@ export default function ReviewSection({
         )}
       </div>
       <ReviewModal
-        property={property}
+      property={property}
         open={reviewModal.open}
         review={reviewModal.review}
         type={reviewModal.type}

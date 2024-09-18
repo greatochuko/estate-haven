@@ -5,22 +5,23 @@ import { postReview, editReview } from "@/actions/reviewActions";
 import { PropertyType } from "./Property";
 import { ReviewType } from "./Review";
 import { deleteReview } from "@/services/reviewServices";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { useRouter } from "next/navigation";
 
 export default function ReviewModal({
-  closeModal,
   property,
+  closeModal,
   open,
   review,
   type,
 }: {
+  property: PropertyType;
   closeModal: () => void;
   open: boolean;
   review: ReviewType | null;
   type: "" | "new" | "edit" | "delete";
-  property: PropertyType;
 }) {
+  console.log(review?.property.agent);
   const router = useRouter();
 
   const [pending, setPending] = useState(false);
@@ -134,7 +135,7 @@ export default function ReviewModal({
 
           <input type="hidden" name="agent" value={property.agent.id} />
           <input type="hidden" name="rating" value={rating} />
-          <input type="hidden" name="property" value={property.id} />
+          <input type="hidden" name="property" value={review?.property.id} />
           <button
             disabled={pending}
             className="flex-center bg-accent-green-100 hover:bg-accent-green-200 px-4 p-2 rounded-md sm:w-32 font-semibold text-white duration-300 sm:self-end"
@@ -198,9 +199,13 @@ export default function ReviewModal({
             className="p-2 sm:p-3 border rounded-md min-h-32 aspect-[4] resize-none"
           ></textarea>
 
-          <input type="hidden" name="agent" value={property.agent.id} />
+          <input
+            type="hidden"
+            name="agent"
+            value={review?.property.agent as string}
+          />
           <input type="hidden" name="rating" value={rating} />
-          <input type="hidden" name="property" value={property.id} />
+          <input type="hidden" name="property" value={review?.property.id} />
           <input type="hidden" name="reviewId" value={review?.id} />
 
           <button

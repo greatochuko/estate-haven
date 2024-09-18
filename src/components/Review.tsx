@@ -9,7 +9,7 @@ export type ReviewType = {
   id: string;
   user: UserType;
   agent: UserType;
-  property: PropertyType;
+  property: PropertyType & { agent: string };
   rating: number;
   dateCreated: string;
   comment: string;

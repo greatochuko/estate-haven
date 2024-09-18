@@ -18,6 +18,7 @@ export async function postReview(formData: FormData) {
     rating: formData.get("rating"),
     comment: formData.get("comment"),
   };
+  console.log(newReview);
 
   const supabase = createClient();
   const { error } = await supabase.from("reviews").insert(newReview);
