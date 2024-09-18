@@ -12,14 +12,14 @@ export const metadata: Metadata = {
     { name: "Great Ogheneochuko", url: "https://greatochuko.vercel.app" },
   ],
   openGraph: {
-    title: "Bloggerzine",
+    title: "Estate Haven",
     type: "website",
     url: "https://estatehaven.vercel.app",
     images: ["https://estatehaven.vercel.app/ogImage.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bloggerzine",
+    title: "Estate Haven",
     images: ["https://estatehaven.vercel.app/ogImage.png"],
   },
 };
