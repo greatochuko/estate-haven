@@ -80,7 +80,7 @@ export default async function Agent({
       </p>
       <Link
         href={`/agents/${agent.id}`}
-        className="block bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-bold text-center text-white duration-300"
+        className="block bg-accent-green-100 hover:bg-accent-green-200 mt-auto p-2 rounded-md font-bold text-center text-white duration-300"
       >
         View Profile
       </Link>
