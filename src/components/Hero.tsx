@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { locations } from "./PropertiesByLocationSection";
 import { useRouter } from "next/navigation";
+import { UserType } from "./AgentPropertyOffers";
 
-export default function Hero() {
+export default function Hero({ user }: { user: UserType | null }) {
   const router = useRouter();
 
   const [category, setCategory] = useState("all");
@@ -53,12 +54,14 @@ export default function Hero() {
               Our platform offers the best opportunity to find the best real
               estate possible. We make this process easy and comfortable
             </p>
-            <Link
-              href={"/properties/new"}
-              className="bg-accent-green-100 px-4 p-2 rounded-md w-fit font-bold text-sm text-white sm:text-base"
-            >
-              Add Listing
-            </Link>
+            {user && (
+              <Link
+                href={"/properties/new"}
+                className="bg-accent-green-100 px-4 p-2 rounded-md w-fit font-bold text-sm text-white sm:text-base"
+              >
+                Add Listing
+              </Link>
+            )}
           </div>
         </div>
         <Image

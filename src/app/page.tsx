@@ -13,7 +13,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-20">
-      <Hero />
+      <Hero user={user} />
       <RecentListings properties={properties} user={user} />
       <WhyUsSection />
       <PropertiesByLocationSection properties={properties} />
