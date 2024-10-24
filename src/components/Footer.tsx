@@ -5,7 +5,7 @@ import { locations } from "./PropertiesByLocationSection";
 const socialLinks = [
   { name: "Facebook", url: "#" },
   { name: "LinkedIn", url: "https://linkedin.com/in/greatochuko" },
-  { name: "Twitter", url: "https://x.com/greatochuko4" },
+  { name: "Twitter", url: "https://x.com/officialochuko" },
   { name: "GitHub", url: "https://github.com/greatochuko" },
 ];
 
