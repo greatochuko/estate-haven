@@ -75,4 +75,4 @@ If you'd like to contribute to **Estate-Haven**, feel free to submit a pull requ
 If you have any questions or suggestions regarding this project, feel free to reach out to me:
 
 - **Portfolio**: [https://greatochuko.vercel.app/](https://greatochuko.vercel.app/)
-- **Email**: officialgreatochuko@gmail.com
+- **Email**: greatochuko123@gmail.com
