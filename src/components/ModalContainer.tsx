@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function ModalContainer({
   background = "#00000099",
@@ -17,6 +17,14 @@ export default function ModalContainer({
   flexCenter?: boolean;
   styles?: string;
 }) {
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
   return (
     <div
       ref={elementRef}

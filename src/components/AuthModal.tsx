@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import ModalContainer from "./ModalContainer";
-import Image from "next/image";
-import loginBackground from "../../public/login-bg.jpg";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
 import { loginWithDemoUser } from "@/actions/authActions";
@@ -23,22 +21,22 @@ export default function AuthModal({
   return (
     <ModalContainer open={open} closeModal={closeModal}>
       <div
-        className="relative flex gap-2 bg-white p-2 rounded-md w-[90%] max-w-xl max-h-[95dvh] md:max-h-[90dvh]"
+        className="relative flex flex-col gap-4 bg-white p-4 md:p-8 rounded-md w-[90%] max-w-xl max-h-[95dvh] md:max-h-[90dvh] overflow-y-scroll no-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-col flex-[1_0_50%] justify-between gap-4 p-4 md:p-8">
-          <h1 className="mb-2 font-bold text-xl sm:text-2xl capitalize">
-            {type}
-          </h1>
-          {type === "login" ? (
-            <LoginForm switchModal={switchModal} closeModal={closeModal} />
-          ) : (
-            <SignupForm switchModal={switchModal} closeModal={closeModal} />
-          )}
-          <form action={loginWithDemoUser} className="flex">
-            <LoginWithDemoUserButton />
-          </form>
-        </div>
+        {/* <div className="flex flex-col justify-between gap-4 p-4 md:p-8"> */}
+        <h1 className="mb-2 font-bold text-xl sm:text-2xl capitalize">
+          {type}
+        </h1>
+        {type === "login" ? (
+          <LoginForm switchModal={switchModal} closeModal={closeModal} />
+        ) : (
+          <SignupForm switchModal={switchModal} closeModal={closeModal} />
+        )}
+        <form action={loginWithDemoUser} className="flex">
+          <LoginWithDemoUserButton />
+        </form>
+        {/* </div> */}
         <button
           onClick={closeModal}
           className="top-2 right-2 absolute p-2 rounded-full group"
