@@ -613,6 +613,8 @@ export default function CreateListingForm({
           <input
             type="number"
             name="price"
+            min={1}
+            max={1000000000000}
             value={price}
             onChange={(e) => setPrice(Number(e.target.value))}
             className="border-zinc-300 p-2 sm:p-3 border rounded-md focus-visible:ring ring-accent-green-100 w-full sm:w-fit"

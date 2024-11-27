@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { UserType } from "./AgentPropertyOffers";
 import { addToWishlist, removeFromWishlist } from "@/actions/wishlistActions";
+import { formatPrice } from "@/utils/priceFormatter";
 
 export type PropertyType = {
   id: string;
@@ -89,7 +90,7 @@ export default function Property({
           </p>
           <p className="font-semibold text-zinc-500">{property.type}</p>
           <h5 className="mt-1 font-bold sm:text-lg">
-            ₦{property.price.toLocaleString()}
+            ₦{formatPrice(property.price)}
             {property.category === "rent" ? "/Mo" : ""}
           </h5>
           <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">

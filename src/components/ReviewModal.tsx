@@ -21,7 +21,6 @@ export default function ReviewModal({
   review: ReviewType | null;
   type: "" | "new" | "edit" | "delete";
 }) {
-  console.log(review?.property.agent);
   const router = useRouter();
 
   const [pending, setPending] = useState(false);

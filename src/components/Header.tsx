@@ -77,7 +77,7 @@ export default function Header({ user }: { user: UserType | null }) {
           <Link href={"/"} className="font-bold">
             Estate Haven
           </Link>
-          <ul className="sm:flex items-center gap-4 hidden font-bold">
+          <ul className="sm:flex items-center gap-4 hidden font-semibold">
             {navLinks.map((navLink) => (
               <li key={navLink.name}>
                 <Link
