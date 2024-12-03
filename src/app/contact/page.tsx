@@ -11,9 +11,9 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex md:flex-row flex-col gap-4">
-        <div className="flex flex-col flex-1 gap-4">
-          <h1 className="font-bold text-4xl">Get in touch</h1>
-          <p className="max-w-sm text-zinc-400">
+        <div className="flex flex-col flex-1 gap-2">
+          <h1 className="font-bold text-2xl">Get in touch</h1>
+          <p className="max-w-sm text-zinc-400 text-sm">
             Fill out the form and out team will try to get back to you within 24
             hours.
           </p>

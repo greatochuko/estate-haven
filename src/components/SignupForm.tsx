@@ -137,16 +137,16 @@ export default function SignupForm({
         <button
           disabled={cannotSubmit}
           type="submit"
-          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 p-2 sm:p-3 rounded-md w-full sm:w-20 font-bold text-white duration-300 disabled:cursor-not-allowed"
+          className="flex-center bg-accent-green-100 hover:bg-accent-green-200 disabled:bg-zinc-400 px-4 py-2 rounded-md w-full sm:w-20 font-bold text-white duration-300 disabled:cursor-not-allowed"
         >
           {pending ? <LoadingIndicator /> : "Signup"}
         </button>
-        <p className="font-semibold">
+        <p className="font-medium">
           Already have and account?{" "}
           <button
             type="button"
             onClick={() => switchModal("login")}
-            className="text-accent-green-100 hover:text-accent-green-200 duration-300"
+            className="text-accent-green-100 hover:underline duration-300"
           >
             Login
           </button>

@@ -10,7 +10,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 bg-zinc-100 p-4 md:p-8 rounded-md"
+      className="flex flex-col gap-4 bg-zinc-100 p-4 md:p-8 rounded-md text-sm"
     >
       <div className="flex flex-col gap-1">
         <label htmlFor="fullName" className="font-semibold">
@@ -47,7 +47,7 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <button className="bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-md font-bold text-white sm:text-lg duration-300">
+      <button className="bg-accent-green-100 hover:bg-accent-green-200 text-sm p-2 rounded-md font-bold text-white duration-300">
         Send
       </button>
     </form>

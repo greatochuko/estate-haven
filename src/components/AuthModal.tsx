@@ -21,10 +21,13 @@ export default function AuthModal({
   return (
     <ModalContainer open={open} closeModal={closeModal}>
       <div
-        className="relative flex flex-col gap-4 bg-white p-4 md:p-8 rounded-md w-[90%] max-w-xl max-h-[95dvh] md:max-h-[90dvh] overflow-y-scroll no-scrollbar"
+        className="relative flex text-sm flex-col gap-4 bg-white p-4 md:p-8 rounded-md w-[90%] max-w-xl max-h-[95dvh] md:max-h-[90dvh] overflow-y-scroll no-scrollbar"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* <div className="flex flex-col justify-between gap-4 p-4 md:p-8"> */}
+        {/* <div className="flex gap-2 rounded-md p-2 bg-zinc-100">
+          <button className="p-2 rounded-md flex-1">Login</button>
+          <button className="p-2 rounded-md flex-1">Signup</button>
+        </div> */}
         <h1 className="mb-2 font-bold text-xl sm:text-2xl capitalize">
           {type}
         </h1>
@@ -33,10 +36,15 @@ export default function AuthModal({
         ) : (
           <SignupForm switchModal={switchModal} closeModal={closeModal} />
         )}
+        <div className="relative my-2">
+          <p className="bg-white w-fit absolute top-[50%] left-[50%] px-1 font-medium text-zinc-500 -translate-x-[50%] -translate-y-[50%]">
+            OR
+          </p>
+          <hr className="border-[#eee]" />
+        </div>
         <form action={loginWithDemoUser} className="flex">
           <LoginWithDemoUserButton />
         </form>
-        {/* </div> */}
         <button
           onClick={closeModal}
           className="top-2 right-2 absolute p-2 rounded-full group"
@@ -109,7 +117,7 @@ function LoginWithDemoUserButton() {
   return (
     <button
       disabled={pending}
-      className="flex-1 flex-center border-accent-green-100 bg-accent-green-100 hover:bg-accent-green-200 p-2 border rounded-md font-bold text-white duration-300 disabled:cursor-not-allowed"
+      className="flex-1 flex-center border-accent-green-100 bg-accent-green-100 hover:bg-accent-green-200 py-2 px-4 border rounded-md font-bold text-white duration-300 disabled:cursor-not-allowed"
     >
       {pending ? <LoadingIndicator /> : "Sign in with demo user"}
     </button>
