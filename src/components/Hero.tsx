@@ -72,7 +72,7 @@ export default function Hero({ user }: { user: UserType | null }) {
       </div>
       <form
         onSubmit={handleSearch}
-        className="bottom-0 left-[50%] absolute flex justify-between items-center gap-4 bg-white shadow-[0_0_5px] shadow-zinc-200 mx-auto p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl w-[90%] max-w-5xl text-zinc-600 -translate-x-[50%] translate-y-[50%]"
+        className="bottom-0 left-[50%] text-sm absolute flex justify-between items-center gap-4 bg-white shadow-[0_0_5px] shadow-zinc-200 mx-auto p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl w-[90%] max-w-5xl text-zinc-600 -translate-x-[50%] translate-y-[50%]"
       >
         <div className="sm:flex flex-col flex-1 gap-2 hidden">
           <label className="font-semibold" htmlFor="category">
@@ -89,7 +89,7 @@ export default function Hero({ user }: { user: UserType | null }) {
                 setMaxPrice("");
               }
             }}
-            className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
+            className="border-2 px-2 py-1.5 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
             <option value="rent">For rent</option>
@@ -106,7 +106,7 @@ export default function Hero({ user }: { user: UserType | null }) {
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
+            className="border-2 px-2 py-1.5 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
             {locations.map((location) => (
@@ -126,7 +126,7 @@ export default function Hero({ user }: { user: UserType | null }) {
             id="property-type"
             value={type}
             onChange={(e) => setType(e.target.value)}
-            className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100"
+            className="border-2 px-2 py-1.5 rounded-md focus-visible:ring ring-accent-green-100"
           >
             <option value="all">All</option>
             <option value="apartment">Apartment</option>
@@ -148,7 +148,7 @@ export default function Hero({ user }: { user: UserType | null }) {
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
               placeholder="0"
-              className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
+              className="border-2 px-2 py-1.5 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
             -
             <input
@@ -160,7 +160,7 @@ export default function Hero({ user }: { user: UserType | null }) {
               id="maxPrice"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
-              className="border-2 p-2 rounded-md focus-visible:ring ring-accent-green-100 w-28"
+              className="border-2 px-2 py-1.5 rounded-md focus-visible:ring ring-accent-green-100 w-28"
             />
           </div>
         </div>

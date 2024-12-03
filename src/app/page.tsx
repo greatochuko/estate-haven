@@ -12,7 +12,7 @@ export default async function Home() {
   const properties = await getProperties();
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-16">
       <Hero user={user} />
       <RecentListings properties={properties} user={user} />
       <WhyUsSection />

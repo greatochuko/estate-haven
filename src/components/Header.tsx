@@ -39,8 +39,8 @@ export default function Header({ user }: { user: UserType | null }) {
 
   return (
     <>
-      <header className="top-0 z-30 sticky bg-white shadow-[#eee] shadow-md">
-        <div className="flex justify-between items-center mx-auto py-3 p-2 w-[95%] sm:w-[90%] max-w-7xl">
+      <header className="top-0 z-30 sticky bg-white shadow-[#eee] shadow-md text-sm">
+        <div className="flex justify-between items-center mx-auto py-3 w-[92%] sm:w-[90%] max-w-7xl">
           <button
             className="sm:hidden bg-red-00"
             onClick={() => setMobileNav(true)}
@@ -74,7 +74,7 @@ export default function Header({ user }: { user: UserType | null }) {
               </g>
             </svg>
           </button>
-          <Link href={"/"} className="font-bold">
+          <Link href={"/"} className="font-bold text-base">
             Estate Haven
           </Link>
           <ul className="sm:flex items-center gap-4 hidden font-semibold">
@@ -148,16 +148,16 @@ export default function Header({ user }: { user: UserType | null }) {
               />
             </div>
           ) : (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <button
                 onClick={() => setAuthModal({ open: true, type: "login" })}
-                className="px-2 py-1 font-semibold text-accent-green-100 hover:text-accent-green-200"
+                className="border-2 border-accent-green-100 hover:bg-accent-green-100 hover:text-white px-3 py-1 rounded-md font-semibold text-accent-green-100 duration-200"
               >
                 Login
               </button>
               <button
                 onClick={() => setAuthModal({ open: true, type: "signup" })}
-                className="bg-accent-green-100 hover:bg-accent-green-200 px-2 py-1 rounded-md font-semibold text-white duration-300"
+                className="border-2 max-[400px]:hidden border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 text-white px-3 py-1 rounded-md font-semibold duration-200"
               >
                 Sign Up
               </button>

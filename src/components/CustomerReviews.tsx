@@ -88,14 +88,14 @@ export default function CustomerReviews() {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h3 className="font-bold text-2xl text-center sm:text-2xl">
-        Our Happy Customers
-      </h3>
-      <p className="text-center">What our customers say about Estate Haven</p>
+    <div className="flex flex-col gap-3">
+      <h3 className="font-bold text-2xl text-center">Our Happy Customers</h3>
+      <p className="mx-auto max-w-[40rem] text-center mb-1 text-sm text-zinc-500">
+        What our customers say about Estate Haven
+      </p>
       <div className="overflow-hidden">
         <div
-          className="flex gap-4 duration-300"
+          className="flex gap-4 duration-200"
           style={{
             transform: `translateX(calc(${(
               (currentIndex * 100) /
@@ -111,7 +111,7 @@ export default function CustomerReviews() {
       <div className="flex justify-center gap-10">
         <button
           onClick={handlePrev}
-          className="hover:border-zinc-300 bg-zinc-100 hover:bg-zinc-200 p-2 border rounded-full width-10 duration-300 aspect-square"
+          className="hover:border-zinc-300 group hover:bg-zinc-100 p-2 border rounded-full width-10 duration-200 aspect-square"
         >
           <svg
             height={20}
@@ -133,13 +133,14 @@ export default function CustomerReviews() {
                 clipRule="evenodd"
                 d="M15.2071 6.29289C15.5976 6.68342 15.5976 7.31658 15.2071 7.70711L10.9142 12L15.2071 16.2929C15.5976 16.6834 15.5976 17.3166 15.2071 17.7071C14.8166 18.0976 14.1834 18.0976 13.7929 17.7071L8.79289 12.7071C8.40237 12.3166 8.40237 11.6834 8.79289 11.2929L13.7929 6.29289C14.1834 5.90237 14.8166 5.90237 15.2071 6.29289Z"
                 fill="#000000"
+                className="fill-zinc-600 group-hover:fill-zinc-800 duration-200"
               ></path>{" "}
             </g>
           </svg>
         </button>
         <button
           onClick={handleNext}
-          className="hover:border-zinc-300 bg-zinc-100 hover:bg-zinc-200 p-2 border rounded-full width-10 duration-300 aspect-square"
+          className="hover:border-zinc-300 group hover:bg-zinc-100 p-2 border rounded-full width-10 duration-200 aspect-square"
         >
           <svg
             height={20}
@@ -161,6 +162,7 @@ export default function CustomerReviews() {
                 clipRule="evenodd"
                 d="M8.79289 6.29289C9.18342 5.90237 9.81658 5.90237 10.2071 6.29289L15.2071 11.2929C15.5976 11.6834 15.5976 12.3166 15.2071 12.7071L10.2071 17.7071C9.81658 18.0976 9.18342 18.0976 8.79289 17.7071C8.40237 17.3166 8.40237 16.6834 8.79289 16.2929L13.0858 12L8.79289 7.70711C8.40237 7.31658 8.40237 6.68342 8.79289 6.29289Z"
                 fill="#000000"
+                className="fill-zinc-600 group-hover:fill-zinc-800 duration-200"
               ></path>{" "}
             </g>
           </svg>

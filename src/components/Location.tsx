@@ -31,7 +31,7 @@ export default function Location({
       className="flex items-center gap-2 group"
       key={location.id}
     >
-      <div className="relative rounded-lg w-[4.5rem] sm:w-20 overflow-hidden aspect-square">
+      <div className="relative rounded-lg w-16 sm:w-[4.5rem] overflow-hidden aspect-[1.2]">
         <Image
           src={location.imageUrl}
           alt={location.state}
@@ -41,10 +41,10 @@ export default function Location({
         ></Image>
       </div>
       <div className="flex flex-col flex-1 gap-1">
-        <h3 className="group-hover:text-accent-green-100 font-bold sm:text-lg duration-300">
+        <h3 className="group-hover:text-accent-green-100 font-bold duration-300">
           {location.state}
         </h3>
-        <p className="text-sm text-zinc-500 sm:text-base">
+        <p className="text-sm text-zinc-500">
           {numOfListings} listing{numOfListings > 1 ? "s" : ""}
         </p>
       </div>

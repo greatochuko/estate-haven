@@ -33,9 +33,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="flex flex-col gap-8 min-h-dvh text-zinc-700">
+      <body className="flex flex-col gap-4 sm:gap-6 min-h-dvh text-zinc-700">
         <Header user={user} />
-        <main className="flex flex-col flex-1 mx-auto w-[95%] sm:w-[90%] max-w-7xl">
+        <main className="flex flex-col flex-1 mx-auto w-[92%] sm:w-[90%] max-w-7xl">
           {children}
         </main>
         <Footer />

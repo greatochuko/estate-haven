@@ -71,14 +71,13 @@ export default function PropertiesByLocationSection({
   properties: PropertyType[];
 }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       <h2 className="font-bold text-2xl text-center">
         Find properties by location
       </h2>
-      <p className="mx-auto max-w-[40rem] text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-        soluta autem ullam nostrum consequatur labore, incidunt sit animi minus
-        in a commodi porro ipsam.
+      <p className="mx-auto max-w-[40rem] text-center mb-1 text-sm text-zinc-500">
+        Explore our extensive listings to discover your perfect home in the
+        neighborhood that suits your lifestyle.
       </p>
       <div className="gap-x-4 gap-y-8 sm:gap-x-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-2">
         {locations.map((location) => (

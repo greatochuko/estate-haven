@@ -19,7 +19,7 @@ export default function Testimonial({
   testimonial: TestimonialType;
 }) {
   return (
-    <div className="flex flex-col flex-[0_0_100%] sm:flex-[0_0_calc(100%/2_-_.5rem)] lg:flex-[0_0_calc(100%/3_-_.67rem)] items-center gap-2 border-2 p-6 rounded-xl text-center">
+    <div className="flex flex-col flex-[0_0_100%] sm:flex-[0_0_calc(100%/2_-_.5rem)] lg:flex-[0_0_calc(100%/3_-_.67rem)] items-center gap-1 border p-6 rounded-xl text-center">
       <div className="relative bg-zinc-100 rounded-full w-20 overflow-hidden aspect-square">
         <Image
           src={testimonial.user.imageUrl}
@@ -32,8 +32,8 @@ export default function Testimonial({
       <h4 className="font-bold sm:text-lg">
         {testimonial.user.firstname + " " + testimonial.user.lastname}
       </h4>
-      <Rating rating={testimonial.rating} />
-      <p className="text-zinc-600">{testimonial.comment}</p>
+      <Rating rating={testimonial.rating} size={14} />
+      <p className="text-zinc-600 text-sm mt-1">{testimonial.comment}</p>
     </div>
   );
 }

@@ -85,10 +85,10 @@ export default function Property({
           <h3 className="group-hover:text-accent-green-200 flex flex-col rounded-md focus-visible:ring ring-accent-green-100 font-bold duration-200">
             {property.name}
           </h3>
-          <p className="font-semibold text-zinc-500">
+          <p className="font-semibold text-zinc-500 text-sm">
             {property.city}, {property.state}
           </p>
-          <p className="font-semibold text-zinc-500">{property.type}</p>
+          <p className="font-semibold text-zinc-500 text-sm">{property.type}</p>
           <h5 className="mt-1 font-bold sm:text-lg">
             ₦{formatPrice(property.price)}
             {property.category === "rent" ? "/Mo" : ""}

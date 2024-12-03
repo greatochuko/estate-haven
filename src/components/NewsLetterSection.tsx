@@ -19,11 +19,11 @@ export default function NewsLetterSection() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4 md:gap-6 lg:gap-8 bg-accent-green-100 p-4 sm:p-8 rounded-xl min-h-72 text-center text-white aspect-[3]">
-      <h1 className="font-bold text-[min(max(1.4rem,_4vw),_2.5rem)]">
+    <div className="flex flex-col justify-center items-center gap-4 md:gap-6 lg:gap-8 bg-accent-green-100 p-4 sm:p-8 rounded-xl text-center text-white">
+      <h1 className="font-bold text-2xl sm:text-3xl">
         Ready to find your new home?
       </h1>
-      <p className="mx-auto max-w-[30rem] text-[min(max(.9rem,_2.5vw),_1.1rem)]">
+      <p className="mx-auto max-w-[30rem] text-sm sm:text-base">
         Sign Up for Our Newsletter to Receive Exclusive Property Listings,
         Market Trends, and Expert Real Estate Advice Delivered Straight to Your
         Inbox
@@ -34,7 +34,7 @@ export default function NewsLetterSection() {
       >
         <input
           type="email"
-          className="flex-1 bg-white p-4 pr-28 sm:pr-28 rounded-xl w-full text-zinc-800"
+          className="flex-1 bg-white p-4 pr-28 sm:pr-28 rounded-lg w-full text-zinc-800 text-sm"
           placeholder="Enter your email"
           name="email"
           required
@@ -44,7 +44,7 @@ export default function NewsLetterSection() {
         <button
           disabled={pending}
           type="submit"
-          className="top-[50%] right-2 absolute flex-center bg-accent-green-100 disabled:bg-accent-green-100/50 p-2 rounded-md w-24 -translate-y-[50%]"
+          className="top-[50%] right-2 absolute text-sm font-semibold flex-center bg-accent-green-100 disabled:bg-accent-green-100/50 p-2 rounded-md w-24 -translate-y-[50%]"
         >
           {pending ? <LoadingIndicator /> : "Join Now"}
         </button>

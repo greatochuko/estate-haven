@@ -30,7 +30,7 @@ export default function MobileNav({
       styles="sm:hidden"
     >
       <div
-        className={`flex flex-col gap-4 sm:hidden bg-white w-[80%] max-w-80 h-screen duration-200 p-8 ${
+        className={`flex flex-col gap-4 sm:hidden bg-white w-[80%] max-w-80 h-screen duration-200 text-sm p-8 ${
           mobileNavIsOpen ? "translate-x-0" : "-translate-x-[100%]"
         }`}
       >
@@ -84,13 +84,13 @@ export default function MobileNav({
           ) : (
             <>
               <button
-                className={`font-semibold bg-accent-green-100 duration-300 w-fit rounded-md px-4 text-white block py-2`}
+                className="border-2 w-fit border-accent-green-100 hover:bg-accent-green-100 hover:text-white px-3 py-1 rounded-md font-semibold text-accent-green-100 duration-200"
                 onClick={() => openAuthModal("login")}
               >
                 Login
               </button>
               <button
-                className={`font-semibold bg-accent-green-100 duration-300 w-fit rounded-md px-4 text-white block py-2`}
+                className="border-2 border-accent-green-100 w-fit hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 text-white px-3 py-1 rounded-md font-semibold duration-200"
                 onClick={() => openAuthModal("sign-up")}
               >
                 Sign Up
