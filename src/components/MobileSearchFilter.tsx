@@ -106,7 +106,7 @@ export default function MobileSearchFilter({
   return (
     <div
       onClick={closeModal}
-      className={`top-0 left-0 z-40 fixed bg-black/50 w-full duration-300 ${
+      className={`top-0 left-0 z-40 fixed bg-black/50 w-full duration-300 text-sm ${
         showFilter ? "visible opacity-100" : "invisible opacity-0"
       }`}
     >

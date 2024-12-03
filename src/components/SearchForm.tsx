@@ -21,13 +21,13 @@ export default function SearchForm() {
 
   return (
     <form
-      className="relative flex items-center gap-2"
+      className="relative flex items-center gap-2 text-sm"
       onSubmit={handleSearchProperties}
     >
       <div className="top-[50%] left-2 absolute -translate-y-[50%]">
         <svg
-          width={20}
-          height={20}
+          width={18}
+          height={18}
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -55,14 +55,20 @@ export default function SearchForm() {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter an address e.g. street, city, state or zip"
-        className="flex-1 border-[3px] p-2 pl-8 rounded-lg"
+        className="flex-1 border-2 px-4 py-1.5 pl-8 rounded-md"
       />
       <button
         disabled={pending}
         type="submit"
-        className="flex-center border-[3px] border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 p-2 rounded-lg w-24 font-bold text-white duration-300"
+        className="flex-center gap-2 border-2 disabled:bg-accent-green-100/50 border-accent-green-100 hover:border-accent-green-200 bg-accent-green-100 hover:bg-accent-green-200 px-4 py-1.5 rounded-md font-bold text-white duration-300"
       >
-        {pending ? <LoadingIndicator /> : "Search"}
+        {pending ? (
+          <>
+            <LoadingIndicator size={18} /> Searching...
+          </>
+        ) : (
+          "Search"
+        )}
       </button>
     </form>
   );
