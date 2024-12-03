@@ -1,5 +1,6 @@
 import AgentInformation from "@/components/AgentInformation";
 import ImageGallery from "@/components/ImageGallery";
+import MobileImageGallery from "@/components/MobileImageGallery";
 import PropertyInformation from "@/components/PropertyInformation";
 import { getProperty } from "@/services/propertyServices";
 import { getReviews } from "@/services/reviewServices";
@@ -34,6 +35,7 @@ export default async function PropertyDetailsPage({
   return (
     <div className="flex flex-col gap-4">
       <ImageGallery property={property} />
+      <MobileImageGallery property={property} />
 
       <div className="flex md:flex-row flex-col gap-8">
         <PropertyInformation property={property} reviews={reviews} />

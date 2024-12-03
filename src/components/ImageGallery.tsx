@@ -26,7 +26,7 @@ export default function ImageGallery({ property }: { property: PropertyType }) {
 
   return (
     <>
-      <div className="flex md:flex-row flex-col gap-4">
+      <div className="md:flex-row flex-col gap-4 hidden sm:flex">
         <div
           className={`relative ${
             property.images.length === 2 ? "flex-1" : "flex-[2]"
