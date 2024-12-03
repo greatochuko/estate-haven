@@ -239,7 +239,7 @@ export default function ImageViewModal({
 
         <div className="relative flex flex-1 items-center gap-4 duration-300">
           <button
-            className={`p-4 group bg-black/50 ${
+            className={`py-3 px-1 group bg-black/50 absolute z-10 left-0 sm:static ${
               zoom ? "absolute top-[50%] -translate-y-[50%] left-0 z-20" : ""
             }`}
             onClick={() => gotoSlide("prev")}
@@ -290,7 +290,7 @@ export default function ImageViewModal({
           </div>
 
           <button
-            className={`p-4 group bg-black/50 ${
+            className={`py-3 px-1 group bg-black/50 absolute right-0 sm:static ${
               zoom ? "absolute top-[50%] -translate-y-[50%] right-0 z-20" : ""
             }`}
             onClick={() => gotoSlide("next")}
