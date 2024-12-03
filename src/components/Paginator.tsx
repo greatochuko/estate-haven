@@ -59,11 +59,11 @@ export default function Paginator({
   }
 
   return (
-    <div className="flex-center gap-2 mt-auto">
+    <div className="flex-center gap-2 mt-auto text-sm">
       <button
         onClick={gotoPrevPage}
         disabled={currentPage <= 1}
-        className="flex-center hover:bg-zinc-200 active:bg-zinc-300 rounded-full w-9 h-9 duration-300 group"
+        className="flex-center hover:bg-zinc-100 active:bg-zinc-200 rounded-full w-8 h-8 duration-300 group"
       >
         <svg
           height={24}
@@ -98,7 +98,7 @@ export default function Paginator({
               currentPage === page
                 ? "text-white bg-accent-green-100 hover:bg-accent-green-200"
                 : "hover:text-accent-green-200 hover:bg-zinc-200"
-            }  rounded-full w-9 h-9 font-bold duration-300`}
+            }  rounded-full w-8 h-8 font-bold duration-300`}
           >
             {page}
           </button>
@@ -110,7 +110,7 @@ export default function Paginator({
       <button
         disabled={currentPage >= maxPage}
         onClick={gotoNextPage}
-        className="flex-center hover:bg-zinc-200 active:bg-zinc-300 rounded-full w-9 h-9 duration-300 group"
+        className="flex-center hover:bg-zinc-100 active:bg-zinc-200 rounded-full w-8 h-8 duration-300 group"
       >
         <svg
           height={24}

@@ -59,18 +59,18 @@ export default function SearchResults({
   return (
     <>
       <div className="flex flex-col flex-1 gap-4">
-        <div className="flex flex-wrap justify-between items-center gap-2">
+        <div className="flex flex-wrap justify-between items-center gap-2 text-sm">
           <h3 className="font-bold whitespace-nowrap">
             Results: {properties.length} Properties found
           </h3>
-          <div className="flex items-center gap-2 w-full lg:w-fit text-sm sm:text-base">
+          <div className="flex items-center gap-2 w-full lg:w-fit">
             <label htmlFor="sort-by">Sort by</label>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               name="sort-by"
               id="sort-by"
-              className="border-2 p-1 sm:p-2 rounded-lg focus-visible:ring ring-accent-green-100"
+              className="border-2 px-2 py-1.5 rounded-lg focus-visible:ring ring-accent-green-100"
             >
               <option value="popular">Popular</option>
               <option value="oldest">Oldest</option>

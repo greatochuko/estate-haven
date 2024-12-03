@@ -39,7 +39,7 @@ export default function Header({ user }: { user: UserType | null }) {
 
   return (
     <>
-      <header className="top-0 z-30 sticky bg-white shadow-[#eee] shadow-md text-sm">
+      <header className="top-0 z-30 sticky bg-white shadow-zinc-100 shadow-md text-sm">
         <div className="flex justify-between items-center mx-auto py-3 w-[92%] sm:w-[90%] max-w-7xl">
           <button
             className="sm:hidden bg-red-00"

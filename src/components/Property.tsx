@@ -93,12 +93,12 @@ export default function Property({
             ₦{formatPrice(property.price)}
             {property.category === "rent" ? "/Mo" : ""}
           </h5>
-          <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t">
+          <div className="flex justify-between items-center mt-2 px-2 p-2 pt-3 border-t text-sm">
             <p className="flex items-center gap-2 font-semibold">
               <span className="flex-center p-1 border rounded-full w-8 h-8">
                 <svg
-                  height={20}
-                  width={20}
+                  height={18}
+                  width={18}
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -130,8 +130,8 @@ export default function Property({
             <p className="flex items-center gap-2 font-semibold">
               <span className="flex-center p-1 border rounded-full w-8 h-8">
                 <svg
-                  height={20}
-                  width={20}
+                  height={18}
+                  width={18}
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -178,8 +178,8 @@ export default function Property({
             <p className="flex items-center gap-2 font-semibold">
               <span className="flex-center p-1 border rounded-full w-8 h-8">
                 <svg
-                  height={20}
-                  width={20}
+                  height={18}
+                  width={18}
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

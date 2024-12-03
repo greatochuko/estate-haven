@@ -5,12 +5,8 @@ import { useRouter } from "next/navigation";
 import { PropertySearchParams } from "@/app/properties/page";
 
 export default function SearchFilter({
-  // showFilter,
-  // closeModal,
   searchParams,
 }: {
-  // showFilter: boolean;
-  // closeModal: () => void;
   searchParams: PropertySearchParams;
 }) {
   const [locationState, setLocationState] = useState(
@@ -103,7 +99,7 @@ export default function SearchFilter({
   }
 
   return (
-    <div className="lg:flex flex-col gap-6 hidden bg-white p-0 w-[16rem] max-w-80 h-fit translate-x-0 duration-300">
+    <div className="lg:flex flex-col gap-6 hidden bg-white p-0 w-[16rem] max-w-80 h-fit translate-x-0 duration-300 text-sm">
       <div className="flex justify-between border-zinc-100 pb-1 border-b-2">
         <h3 className="font-bold">Filters</h3>
         <button
