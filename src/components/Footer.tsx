@@ -6,6 +6,7 @@ const socialLinks = [
   { name: "LinkedIn", url: "https://linkedin.com/in/greatochuko" },
   { name: "Twitter", url: "https://x.com/greatochuko123" },
   { name: "GitHub", url: "https://github.com/greatochuko" },
+  { name: "Email", url: "mailto:greatochuko123@gmail.com" },
 ];
 
 export default function Footer() {
@@ -20,7 +21,6 @@ export default function Footer() {
         <div className="flex flex-col gap-2 w-48">
           <h3 className="font-semibold text-lg text-zinc-900">Estate Haven</h3>
           <p>1234 Example Road Suite 567 Lagos, NG 100001 Nigeria</p>
-          <p>greatochuko123@gmail.com</p>
         </div>
         <div className="flex flex-col justify-self-end sm:justify-self-auto gap-2 w-32 sm:w-48">
           <h3 className="font-semibold text-lg text-zinc-900">Company</h3>

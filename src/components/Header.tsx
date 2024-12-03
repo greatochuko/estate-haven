@@ -12,6 +12,8 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "Properties", href: "/properties" },
   { name: "Agents", href: "/agents" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Header({ user }: { user: UserType | null }) {
@@ -42,7 +44,7 @@ export default function Header({ user }: { user: UserType | null }) {
       <header className="top-0 z-30 sticky bg-white shadow-zinc-100 shadow-md text-sm">
         <div className="flex justify-between items-center mx-auto py-3 w-[92%] sm:w-[90%] max-w-7xl">
           <button
-            className="sm:hidden bg-red-00"
+            className="md:hidden bg-red-00"
             onClick={() => setMobileNav(true)}
           >
             <svg
@@ -77,7 +79,7 @@ export default function Header({ user }: { user: UserType | null }) {
           <Link href={"/"} className="font-bold text-base">
             Estate Haven
           </Link>
-          <ul className="sm:flex items-center gap-4 hidden font-semibold">
+          <ul className="md:flex items-center gap-4 hidden font-semibold">
             {navLinks.map((navLink) => (
               <li key={navLink.name}>
                 <Link
